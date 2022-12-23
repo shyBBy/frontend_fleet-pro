@@ -1,11 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {useAuth} from "./hooks/useAuth";
+import {AuthenticatedApp} from "./pages/AuthenticatedApp";
+import { UnAuthenticatedApp } from './pages/UnAuthenticatedApp';
 
-function App() {
+export const App = () => {
+
+    const {user} = useAuth()
+
   return (
     <>
-
+        {user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
     </>
   );
 }

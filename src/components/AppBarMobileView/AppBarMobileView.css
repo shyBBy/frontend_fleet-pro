@@ -1,0 +1,9 @@
+.inactive {
+    color: #2E3440;
+    text-decoration: none;
+}
+
+.active {
+    color: #FFB400;
+    text-decoration: none;
+}
