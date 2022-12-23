@@ -2,7 +2,7 @@ import {Box, Container, CssBaseline, Grid, Link,Toolbar, Typography} from "@mui/
 import React, {FC} from "react";
 import {AppBarMobileView} from "../components/AppBarMobileView/AppBarMobileView";
 
-function Copyright(props: any) {
+export const  Copyright = (props: any) => {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
