@@ -4,6 +4,8 @@ import './App.css';
 import {MainLayout} from "./layouts/MainLayout";
 import {Grid, Paper} from "@mui/material";
 
+
+
 function App() {
   return (
     <>
@@ -18,7 +20,7 @@ function App() {
                 height: 240,
               }}
           >
-            <p>KARTA JAKAS TAM 1</p>
+              <i className="fa-solid fa-cars"></i>
           </Paper>
         </Grid>
 

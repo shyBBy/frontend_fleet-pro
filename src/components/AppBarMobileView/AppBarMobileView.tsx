@@ -1,21 +1,16 @@
-import {Badge, Box, Divider, IconButton, List, ListItemButton,
-    ListItemIcon, ListItemText, Toolbar, Tooltip, Typography, useTheme} from "@mui/material";
+import {Badge, Divider, IconButton, List,
+    Toolbar,Typography} from "@mui/material";
 import React, { useContext } from "react";
 import {AppBar, Drawer, MobileViewContext} from "../../context/MobileViewContext";
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import {navigationItems} from "../../config/navigation";
 import Logo from '../../assets/img/logoLetter.png'
-import {Link, useLocation, useNavigate} from "react-router-dom";
 import './AppBarMobileView.css'
-
+import {AppBarMobileViewNavigationList} from "./AppBarMobileViewNavigationList";
 
 
 export const AppBarMobileView = () => {
-
-    const location = useLocation()
-    const navigation = useNavigate()
 
 
     const context = useContext(MobileViewContext);
@@ -24,6 +19,7 @@ export const AppBarMobileView = () => {
 
     const {drawerSideBarWidth, handleDrawerToggleSideBar, mobileOpenSideBar} = context;
 
+    // @ts-ignore
     // @ts-ignore
     // @ts-ignore
     return(
@@ -83,24 +79,7 @@ export const AppBarMobileView = () => {
                 </Toolbar>
                 <Divider />
                 <List component="nav">
-                    {
-                        navigationItems.main.map((item) => (
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    <Link key={item.text}
-                                          to={item.to}
-                                          className={
-                                              location.pathname.includes(item.to) ? "active" : "inactive"
-                                          }>
-                                        <i className={item.icon} style={{textAlign: 'center'}}></i>
-                                    </Link>
-                                </ListItemIcon>
-                                <ListItemText primary={item.text} />
-                            </ListItemButton>
-                        ))
-                    }
-                    <Divider sx={{ my: 1 }} />
-                    <p>ddsad</p>
+                    <AppBarMobileViewNavigationList/>
                 </List>
             </Drawer>
         </>

@@ -7,6 +7,7 @@ import { CssBaseline } from '@mui/material';
 import {MobileViewProvider} from "./context/MobileViewContext";
 import {BrowserRouter} from "react-router-dom";
 
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
