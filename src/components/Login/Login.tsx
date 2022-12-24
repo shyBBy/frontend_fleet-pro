@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 
 import logo from '../../assets/img/logoBlackv2.png'
-import bg from '../../assets/bg/group-of-trucks-parked-in-a-row.jpg'
+import bg from '../../assets/bg/group-trucks-parked-raow.jpg'
 import {Copyright} from "../../layouts/MainLayout";
 export const Login = () => {
 
@@ -89,7 +89,7 @@ export const Login = () => {
                                     </Link>
                                 </Grid>
                                 <Grid item>
-                                    <Link href="#" variant="body2">
+                                    <Link href="/register" variant="body2">
                                         {"Nie masz konta? Zarejestruj się"}
                                     </Link>
                                 </Grid>

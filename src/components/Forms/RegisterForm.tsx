@@ -52,10 +52,11 @@ export const RegisterForm = () => {
                 render={({ field }) => (
                 <TextField
                     {...field}
-                    id="filled-search"
+                    id="email"
                     label="Adres e-mail"
                     type="text"
                     variant="standard"
+                    required
                     fullWidth
                     autoComplete="off"
                     sx={{ mx: 1, my: 1 }}
@@ -71,10 +72,11 @@ export const RegisterForm = () => {
                 render={({ field }) => (
                 <TextField
                     {...field}
-                    id="filled-search"
+                    id="password"
                     label="Hasło"
                     type="password"
                     variant="standard"
+                    required
                     fullWidth
                     autoComplete="off"
                     sx={{ mx: 1, my: 1 }}
@@ -88,7 +90,7 @@ export const RegisterForm = () => {
         </Button>
         <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/login" variant="body2">
                   Masz już konto? Zaloguj się
                 </Link>
               </Grid>
