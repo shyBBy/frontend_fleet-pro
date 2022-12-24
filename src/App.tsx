@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import {useAuth} from "./hooks/useAuth";
-import {AuthenticatedApp} from "./pages/AuthenticatedApp";
-import { UnAuthenticatedApp } from './pages/UnAuthenticatedApp';
+import {AuthenticatedApp} from "./views/AuthenticatedApp";
+import { UnAuthenticatedApp } from './views/UnAuthenticatedApp';
 
 export const App = () => {
 
@@ -10,9 +10,9 @@ export const App = () => {
 
   return (
     <>
-        {user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+
+        {!user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
     </>
   );
 }
 
-export default App;
