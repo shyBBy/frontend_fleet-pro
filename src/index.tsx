@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import {App} from './App';
+
 import reportWebVitals from './reportWebVitals';
 import { CssBaseline } from '@mui/material';
 import {MobileViewProvider} from "./context/MobileViewContext";
 import {BrowserRouter} from "react-router-dom";
+import { App } from './App';
+import {AppProviders} from "./providers/AppProviders";
 
 
 const root = ReactDOM.createRoot(
@@ -13,12 +15,14 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <BrowserRouter>
-      <React.StrictMode>
-          <CssBaseline/>
-          <MobileViewProvider>
-              <App />
-          </MobileViewProvider>
-      </React.StrictMode>
+    <AppProviders>
+        <>
+            <CssBaseline/>
+            <MobileViewProvider>
+                <App />
+            </MobileViewProvider>
+        </>
+    </AppProviders>
   </BrowserRouter>
 );
 
