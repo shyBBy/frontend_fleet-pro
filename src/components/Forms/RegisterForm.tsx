@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { useForm , Controller} from 'react-hook-form';
-import {TextField, Button, Box, Grid, Link} from '@mui/material';
+import {TextField, Button, Box, Grid, Link} from '@mui/material'
 
 export const RegisterForm = () => {
     const {
         control,
         handleSubmit,
         reset,
+        register,
         formState,
         formState: { isSubmitSuccessful },
       } = useForm({
@@ -49,7 +50,7 @@ export const RegisterForm = () => {
                 name="email"
                 control={control}
                 rules={{ required: true }}
-                render={({ field }) => (
+                render={({ field: {...field } }) => (
                 <TextField
                     {...field}
                     id="email"
@@ -95,6 +96,7 @@ export const RegisterForm = () => {
                 </Link>
               </Grid>
             </Grid>
+          
     </Box>
   );
 };
