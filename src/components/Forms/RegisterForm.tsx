@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useForm , Controller} from 'react-hook-form';
-import {TextField, Button, Box, Grid, Link} from '@mui/material'
+import {TextField, Button, Box, Grid, Link, FormControlLabel, FormGroup, FormHelperText} from '@mui/material'
 
 export const RegisterForm = () => {
     const {
@@ -8,8 +8,7 @@ export const RegisterForm = () => {
         handleSubmit,
         reset,
         register,
-        formState,
-        formState: { isSubmitSuccessful },
+        formState: { errors, isSubmitSuccessful },
       } = useForm({
         defaultValues: {
           email: "",
@@ -37,10 +36,10 @@ export const RegisterForm = () => {
       };
     
       useEffect(() => {
-        if (formState.isSubmitSuccessful) {
+        if (isSubmitSuccessful) {
           reset({ email: "", password: '', });
         }
-      }, [formState, reset]);
+      }, [isSubmitSuccessful, reset]);
 
   return (
     <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
@@ -61,6 +60,9 @@ export const RegisterForm = () => {
                     fullWidth
                     autoComplete="off"
                     sx={{ mx: 1, my: 1 }}
+                    error={!!errors['email']}
+                    helperText={errors['email'] ? errors['email'].message : 'Podaj adres e-mail'}
+                    {...register('email')}
                 />
                 )}
             />
@@ -81,11 +83,16 @@ export const RegisterForm = () => {
                     fullWidth
                     autoComplete="off"
                     sx={{ mx: 1, my: 1 }}
+                    error={!!errors['password']}
+                    helperText={errors['password'] ? errors['password'].message : 'Podaj hasło'}
+                    {...register('password')}
                 />
                 )}
             />
         </Grid>
       </Grid>
+
+      {/* https://codevoweb.com/form-validation-react-hook-form-material-ui-react/ */}
       <Button type="submit" variant="contained" color="primary">
             Zarejestruj się
         </Button>

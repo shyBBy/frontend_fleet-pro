@@ -9,7 +9,6 @@ export const LoginForm = () => {
         handleSubmit,
         reset,
         register,
-        formState,
         formState: { isSubmitSuccessful },
       } = useForm({
         defaultValues: {
@@ -39,10 +38,10 @@ export const LoginForm = () => {
 
 
       useEffect(() => {
-        if (formState.isSubmitSuccessful) {
+        if (isSubmitSuccessful) {
           reset({ email: "", password: '', });
         }
-      }, [formState, reset]);
+      }, [isSubmitSuccessful, reset]);
 
 
     return(
