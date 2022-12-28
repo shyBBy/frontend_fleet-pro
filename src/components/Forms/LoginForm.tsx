@@ -2,6 +2,11 @@ import React, { useEffect } from 'react';
 import { useForm , Controller} from 'react-hook-form';
 import {TextField, Button, Box, Grid, Link} from '@mui/material'
 import { Copyright } from '../../layouts/MainLayout';
+import {yupResolver} from "@hookform/resolvers/yup";
+import {loginSchema} from "../../schemas/schema";
+
+
+
 
 export const LoginForm = () => {
     const {
@@ -9,8 +14,10 @@ export const LoginForm = () => {
         handleSubmit,
         reset,
         register,
-        formState: { isSubmitSuccessful },
+        formState: { isSubmitSuccessful, errors },
       } = useForm({
+        mode: 'onSubmit',
+        resolver: yupResolver(loginSchema),
         defaultValues: {
           email: "",
           password: '',
@@ -54,9 +61,12 @@ export const LoginForm = () => {
                 render={({ field: {...field } }) => (
                 <TextField
                     {...field}
+                    {...register('email')}
                     margin="normal"
                     id="email"
                     label="Adres e-mail"
+                    error={!!errors?.email}
+                    helperText={errors['email'] ? errors['email'].message : ''}
                     type="text"
                     variant="standard"
                     required
@@ -76,15 +86,19 @@ export const LoginForm = () => {
                     margin="normal"
                     id="password"
                     label="Hasło"
-                    type="text"
+                    type="password"
                     variant="standard"
                     required
                     fullWidth
                     autoComplete="current-password"
+                    {...register('password')}
+                    error={!!errors?.password}
+                    helperText={errors['password'] ? errors['password'].message : ''}
                     sx={{ mx: 1, my: 1 }}
                 />
                 )}
             />
+
             <Button
                 type="submit"
                 fullWidth

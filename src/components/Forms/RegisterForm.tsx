@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useForm , Controller} from 'react-hook-form';
 import {TextField, Button, Box, Grid, Link, FormControlLabel, FormGroup, FormHelperText} from '@mui/material'
+import {yupResolver} from "@hookform/resolvers/yup";
+import {loginSchema} from "../../schemas/schema";
 
 export const RegisterForm = () => {
     const {
@@ -10,6 +12,8 @@ export const RegisterForm = () => {
         register,
         formState: { errors, isSubmitSuccessful },
       } = useForm({
+        mode: 'onSubmit',
+        resolver: yupResolver(loginSchema),
         defaultValues: {
           email: "",
           password: '',
@@ -52,6 +56,9 @@ export const RegisterForm = () => {
                 render={({ field: {...field } }) => (
                 <TextField
                     {...field}
+                    {...register('email')}
+                    error={!!errors?.email}
+                    helperText={errors['email'] ? errors['email'].message : ''}
                     id="email"
                     label="Adres e-mail"
                     type="text"
@@ -60,9 +67,6 @@ export const RegisterForm = () => {
                     fullWidth
                     autoComplete="off"
                     sx={{ mx: 1, my: 1 }}
-                    error={!!errors['email']}
-                    helperText={errors['email'] ? errors['email'].message : 'Podaj adres e-mail'}
-                    {...register('email')}
                 />
                 )}
             />
@@ -72,7 +76,7 @@ export const RegisterForm = () => {
                 name="password"
                 control={control}
                 rules={{ required: true }}
-                render={({ field }) => (
+                render={({ field: {...field } }) => (
                 <TextField
                     {...field}
                     id="password"
@@ -83,16 +87,15 @@ export const RegisterForm = () => {
                     fullWidth
                     autoComplete="off"
                     sx={{ mx: 1, my: 1 }}
-                    error={!!errors['password']}
-                    helperText={errors['password'] ? errors['password'].message : 'Podaj hasło'}
                     {...register('password')}
+                    error={!!errors?.password}
+                    helperText={errors['password'] ? errors['password'].message : ''}
                 />
                 )}
             />
         </Grid>
       </Grid>
 
-      {/* https://codevoweb.com/form-validation-react-hook-form-material-ui-react/ */}
       <Button type="submit" variant="contained" color="primary">
             Zarejestruj się
         </Button>

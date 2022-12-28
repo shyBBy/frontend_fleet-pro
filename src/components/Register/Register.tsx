@@ -5,6 +5,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { RegisterForm } from "../Forms/RegisterForm";
+import {Copyright} from "../../layouts/MainLayout";
 
 export const Register = () => {
     return(
@@ -26,7 +27,7 @@ export const Register = () => {
           </Typography>
           <RegisterForm/>
         </Box>
-            info
+            <Box p={10}><Copyright/></Box>
       </Container>
         </>
     )
