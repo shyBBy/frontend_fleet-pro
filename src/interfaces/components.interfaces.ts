@@ -8,4 +8,5 @@ export interface MainCardPropInterface {
     variant?: string,
     description?: string,
     chipColor?: string,
+    icon?: any,
 }

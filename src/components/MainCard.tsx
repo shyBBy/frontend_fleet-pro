@@ -1,6 +1,7 @@
 import React from "react";
 import {CardMedia, Paper, CardContent, Stack, Grid, Typography, Chip, Box } from '@mui/material';
-import { MainCardPropInterface } from "../interfaces/components.interfaces"; 
+import { MainCardPropInterface } from "../interfaces/components.interfaces";
+import CarCrashIcon from '@mui/icons-material/CarCrash';
 
 const bull = (
     <Box
@@ -14,7 +15,7 @@ const bull = (
 export const MainCard = (props: MainCardPropInterface) => {
     
 
-    const {title, count, color, direction, spacing, variant, description, chipColor} = props;
+    const {title, count, direction, spacing, variant, description, chipColor, icon} = props;
 
     return(
         <>
@@ -31,12 +32,14 @@ export const MainCard = (props: MainCardPropInterface) => {
                                 </Typography>
                             </Grid>
                             <Grid item>
-                                <Chip 
-                                variant="filled"
-                                label={`s`} 
-                                sx={{ ml: 1.25, pl: 1 }}
-                                size="small"
-                                />
+                                <Box color={'white'}>
+                                    <Chip
+                                        variant="filled"
+                                        icon={icon}
+                                        sx={{ ml: 1.25, pl: 1, backgroundColor: `${chipColor}`, borderRadius: '4px', }}
+                                        size="small"
+                                    />
+                                </Box>
                                 {/* <Chip variant="combined"
                                 color='blue'
                                 label='d'
