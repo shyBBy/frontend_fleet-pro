@@ -1,11 +1,6 @@
 import React from "react";
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import {Chip, Stack} from "@mui/material";
+import {CardMedia, Paper, CardContent, Stack, Grid, Typography, Chip, Box } from '@mui/material';
+import { MainCardPropInterface } from "../interfaces/components.interfaces"; 
 
 const bull = (
     <Box
@@ -16,26 +11,48 @@ const bull = (
     </Box>
 );
 
-export const MainCard = (props: any) => {
+export const MainCard = (props: MainCardPropInterface) => {
+    
 
-    const {title, count, color, direction, spacing, variant} = props;
+    const {title, count, color, direction, spacing, variant, description, chipColor} = props;
 
     return(
         <>
-            <Card sx={{ minWidth: 275 }}>
+            <Paper sx={{ minWidth: 275 }}>
                 <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        {title}
-                    </Typography>
-                    <Stack direction={direction} spacing={spacing}>
-                        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                            adjective
+                    <Stack spacing={0.5}>
+                        <Typography variant="subtitle2" color="textSecondary">
+                            {title}
                         </Typography>
-                        <Chip label="primary" color="primary" sx={{width: '25%'}} />
-                    </Stack>
-
+                        <Grid container alignItems="center">
+                            <Grid item>
+                                <Typography variant="h4" color="inherit">
+                                {count}
+                                </Typography>
+                            </Grid>
+                            <Grid item>
+                                <Chip 
+                                variant="filled"
+                                label={`s`} 
+                                sx={{ ml: 1.25, pl: 1 }}
+                                size="small"
+                                />
+                                {/* <Chip variant="combined"
+                                color='blue'
+                                label='d'
+                                sx={{ ml: 1.25, pl: 1 }}
+                                size="small"
+                                /> */}
+                            </Grid>
+                        </Grid>
+        </Stack>
+        <Box width='auto'>
+            <Typography variant="subtitle2" color="textSecondary">
+                {description}
+            </Typography>
+        </Box>
                 </CardContent>
-            </Card>
+            </Paper>
         </>
     )
 }

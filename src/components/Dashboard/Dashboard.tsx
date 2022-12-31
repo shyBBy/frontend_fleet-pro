@@ -50,22 +50,19 @@ const status = [
 export const Dashboard = () => {
     return(
         <>
-            <Grid container rowSpacing={4.5} columnSpacing={2.75}>
+            
                 {/* row 1 */}
-                <Grid item xs={12} sx={{ mb: -2.25 }}>
-                    <Typography variant="h5">Dashboard</Typography>
+                <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <MainCard title={'Pojazdy'} count={134} description={'Wszystkie pojazdy w firmie.'}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <MainCard title={'Testowy'}/>
+                    <MainCard title={'Oddziały'} count={9} description={'Ilość wszystkich aktywnych oddziałów.'}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <MainCard/>
+                    <MainCard title={'Pojazdy'} count={78} description={'Zbliżający się termin badania technicznego.'}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <MainCard/>
-                </Grid>
-                <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <MainCard/>
+                    <MainCard title={'Pojazdy'} count={3} description={'Brak badania technicznego.'}/>
                 </Grid>
 
                 <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
@@ -102,7 +99,7 @@ export const Dashboard = () => {
                         </Grid>
                         <Grid item />
                     </Grid>
-                    COS TAM ZNOW
+                   
                 </Grid>
                 <Grid item xs={12} md={5} lg={4}>
                     <Grid container alignItems="center" justifyContent="space-between">
@@ -114,7 +111,7 @@ export const Dashboard = () => {
                     dsadsa
                 </Grid>
 
-            </Grid>
+            
         </>
     )
 }
