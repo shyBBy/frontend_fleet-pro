@@ -15,6 +15,9 @@ import CarCrashIcon from '@mui/icons-material/CarCrash';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import DepartureBoardIcon from '@mui/icons-material/DepartureBoard';
+import {DashboardLastDriver} from "./DashboardLastDriver/DashboardLastDriver";
+import {Changelog} from "./Changelog/Changelog";
+import {DashboardLastVehicles} from "./DashboardLastVehicles/DashboardLastVehicles";
 
 
 
@@ -75,24 +78,23 @@ export const Dashboard = () => {
                 <Grid item xs={12} md={7} lg={8}>
                     <Grid container alignItems="center" justifyContent="space-between">
                         <Grid item>
-                            <Typography variant="h5">TYTUL CZEGOS</Typography>
-                        </Grid>
-                        <Grid item>
-                            <Stack direction="row" alignItems="center" spacing={0}>
-                               <Button variant={'contained'}>Jakis przycisk</Button>
-                            </Stack>
+                            <Typography variant="h5">Ostatnie zmiany</Typography>
                         </Grid>
                     </Grid>
-                    ZAWARTOSC
+                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                        <Changelog/>
+                    </Paper>
                 </Grid>
                 <Grid item xs={12} md={5} lg={4}>
                     <Grid container alignItems="center" justifyContent="space-between">
-                        <Grid item>
-                            <Typography variant="h5">TYTUL CZEGOS/SEKCJI</Typography>
+                        <Grid item p={1}>
+                            <Typography variant="body1">Ostatnio dodani kierowcy</Typography>
                         </Grid>
                         <Grid item />
                     </Grid>
-                    cos tam
+                    <Paper>
+                        <DashboardLastDriver/>
+                    </Paper>
                 </Grid>
 
                 {/* row 3 */}
@@ -108,11 +110,13 @@ export const Dashboard = () => {
                 <Grid item xs={12} md={5} lg={4}>
                     <Grid container alignItems="center" justifyContent="space-between">
                         <Grid item>
-                            <Typography variant="h5">TYTUL CZEGOS/SEKCJI</Typography>
+                            <Typography variant="body1">Ostatnio dodane pojazdy</Typography>
                         </Grid>
                         <Grid item />
                     </Grid>
-                    Tabelki, informacje, teksty - cos tu bedzie
+                    <Paper>
+                        <DashboardLastVehicles/>
+                    </Paper>
                 </Grid>
 
             
