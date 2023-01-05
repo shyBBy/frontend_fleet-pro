@@ -27,7 +27,7 @@ export const LoginForm = () => {
       const onSubmit = async (data: any) => {
         console.log(data);
         try {
-          const res = await fetch("http://localhost:3002/account/create", {
+          const res = await fetch("http://localhost:3002/auth/login", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

@@ -23,7 +23,7 @@ export const RegisterForm = () => {
       const onSubmit = async (data: any) => {
         console.log(data);
         try {
-          const res = await fetch("http://localhost:3002/account/create", {
+          const res = await fetch("http://localhost:3002/user/create", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
