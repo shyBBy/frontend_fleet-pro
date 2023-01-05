@@ -9,6 +9,9 @@ import {loginSchema} from "../../schemas/schema";
 
 
 export const LoginForm = () => {
+  
+  const [message, setMessage] = useState('');
+  
     const {
         control,
         handleSubmit,
@@ -36,6 +39,7 @@ export const LoginForm = () => {
           });
           return res.json().then((data) => {
             console.log(data.message); 
+            setMessage(data.message)
             return data; 
           });
         } catch (error) {
@@ -107,6 +111,7 @@ export const LoginForm = () => {
                 >
                 Zaloguj
                 </Button>
+                <p>{message}</p>
                 <Grid container>
                     <Grid item xs>
                         <Link href="#" variant="body2">
