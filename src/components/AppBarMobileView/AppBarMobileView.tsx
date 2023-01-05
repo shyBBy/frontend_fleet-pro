@@ -8,9 +8,31 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Logo from '../../assets/img/logoLetter.png'
 import './AppBarMobileView.css'
 import {AppBarMobileViewNavigationList} from "./AppBarMobileViewNavigationList";
+import {useAuth} from "./hooks/useAuth";
 
 
 export const AppBarMobileView = () => {
+  
+  
+    const {user} = useAuth()
+    const handleLogout = async (data: any) => {
+        try {
+          const res = await fetch("http://localhost:3002/auth/logout", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          });
+          return res.json().then((data) => {
+            console.log(data.message); 
+            setMessage(data.message)
+            return data; 
+          });
+        } catch (error) {
+          console.log(error);
+        }
+      };
 
 
     const context = useContext(MobileViewContext);
@@ -57,6 +79,10 @@ export const AppBarMobileView = () => {
                     >
                         FleetPRO
                     </Typography>
+                    
+                    {user ? <Button onClick={handleLogout} >Wyloguj</Button> : ''
+                    }
+                    
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
                             <NotificationsIcon />

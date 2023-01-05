@@ -1,10 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm , Controller} from 'react-hook-form';
 import {TextField, Button, Box, Grid, Link, FormControlLabel, FormGroup, FormHelperText} from '@mui/material'
 import {yupResolver} from "@hookform/resolvers/yup";
 import {loginSchema} from "../../schemas/schema";
 
 export const RegisterForm = () => {
+  
+  const [message, setMessage] = useState('');
+  
     const {
         control,
         handleSubmit,
@@ -32,6 +35,7 @@ export const RegisterForm = () => {
           });
           return res.json().then((data) => {
             console.log(data.message); 
+            setMessage(data.message);
             return data; 
           });
         } catch (error) {
@@ -99,6 +103,7 @@ export const RegisterForm = () => {
       <Button type="submit" variant="contained" color="primary">
             Zarejestruj się
         </Button>
+        <p>{message}</p>
         <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">
