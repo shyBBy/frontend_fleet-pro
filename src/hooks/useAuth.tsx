@@ -80,7 +80,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
 
     const signIn = async (data: Login) => {
         try {
-            const res = await fetch(config.API_URL + 'api/auth/login', {
+            const res = await fetch('http://localhost:3002/auth/login', {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -88,9 +88,9 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(data),
-            },);
+            },
+                );
             if (!res.ok) {
-
                 setUser(null);
             }
             const userData = (await res.json()) as LoggedUserRes;

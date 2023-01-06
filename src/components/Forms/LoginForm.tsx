@@ -4,13 +4,16 @@ import {TextField, Button, Box, Grid, Link} from '@mui/material'
 import { Copyright } from '../../layouts/MainLayout';
 import {yupResolver} from "@hookform/resolvers/yup";
 import {loginSchema} from "../../schemas/schema";
+import {useAuth} from "../../hooks/useAuth";
 
 
 
 
 export const LoginForm = () => {
+    const [login, setLogin] = useState(true);
+    const {signIn, user} = useAuth()
   
-  const [message, setMessage] = useState('');
+    const [message, setMessage] = useState('');
   
     const {
         control,
@@ -28,23 +31,8 @@ export const LoginForm = () => {
       });
 
       const onSubmit = async (data: any) => {
-        console.log(data);
-        try {
-          const res = await fetch("http://localhost:3002/auth/login", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-          return res.json().then((data) => {
-            console.log(data.message); 
-            setMessage(data.message)
-            return data; 
-          });
-        } catch (error) {
-          console.log(error);
-        }
+          const credential = {email: data.email, password: data.password}
+          await signIn(credential);
       };
 
 

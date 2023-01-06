@@ -1,5 +1,5 @@
 import {Badge, Divider, IconButton, List,
-    Toolbar,Typography} from "@mui/material";
+    Toolbar,Typography, Button} from "@mui/material";
 import React, { useContext } from "react";
 import {AppBar, Drawer, MobileViewContext} from "../../context/MobileViewContext";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -8,7 +8,8 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Logo from '../../assets/img/logoLetter.png'
 import './AppBarMobileView.css'
 import {AppBarMobileViewNavigationList} from "./AppBarMobileViewNavigationList";
-import {useAuth} from "./hooks/useAuth";
+import { useAuth } from "../../hooks/useAuth";
+
 
 
 export const AppBarMobileView = () => {
@@ -26,7 +27,7 @@ export const AppBarMobileView = () => {
           });
           return res.json().then((data) => {
             console.log(data.message); 
-            setMessage(data.message)
+
             return data; 
           });
         } catch (error) {
