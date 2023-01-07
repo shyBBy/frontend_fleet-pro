@@ -8,17 +8,21 @@ export enum Role {
 
 export interface UserData {
     id: string;
-    isActive: boolean;
-    role: Role;
+    name: string;
+    surname: string;
     email: string;
+    isActive: boolean;
+    avatar: string;
+    role: string;
+    jobPosition: string;
     password: string;
 }
 
-export type UserRes = Pick<UserData, 'id' | 'role' | 'email'>;
+export type UserRes = Pick<UserData, 'id' | 'role' | 'email' | 'name' | 'surname' | 'avatar'>;
 
 export interface LoggedUserRes extends UserRes {
-    firstName: string;
-    lastName: string;
+    name: string;
+    surname: string;
 }
 
 export interface Login {
@@ -90,10 +94,14 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 body: JSON.stringify(data),
             },
                 );
+            console.log(res.ok)
             if (!res.ok) {
                 setUser(null);
             }
             const userData = (await res.json()) as LoggedUserRes;
+            console.log('USER DATA W useAUTH ----------')
+            console.log(userData)
+            console.log('KONIEC ----------')
             setUser(userData);
         } catch (e) {
 

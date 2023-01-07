@@ -1,5 +1,7 @@
-import {Badge, Divider, IconButton, List,
-    Toolbar,Typography, Button} from "@mui/material";
+import {
+    Badge, Divider, IconButton, List,
+    Toolbar, Typography, Button, Tooltip, Avatar, Box, MenuItem, Menu
+} from "@mui/material";
 import React, { useContext } from "react";
 import {AppBar, Drawer, MobileViewContext} from "../../context/MobileViewContext";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -9,31 +11,36 @@ import Logo from '../../assets/img/logoLetter.png'
 import './AppBarMobileView.css'
 import {AppBarMobileViewNavigationList} from "./AppBarMobileViewNavigationList";
 import { useAuth } from "../../hooks/useAuth";
+import avatar from '../../assets/img/1.jpg';
 
 
 
 export const AppBarMobileView = () => {
-  
-  
-    const {user} = useAuth()
-    const handleLogout = async (data: any) => {
-        try {
-          const res = await fetch("http://localhost:3002/auth/logout", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-          });
-          return res.json().then((data) => {
-            console.log(data.message); 
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
-            return data; 
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      };
+    const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
+        React.useState<null | HTMLElement>(null);
+
+    const isMenuOpen = Boolean(anchorEl);
+    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+    const handleMobileMenuClose = () => {
+        setMobileMoreAnchorEl(null);
+    };
+
+    const handleMenuClose = () => {
+        setAnchorEl(null);
+        handleMobileMenuClose();
+    };
+
+    const {user, signOut} = useAuth()
+
+    const checkUserDataTest = () => {
+
+        console.log('TEST')
+        console.log(user?.id)
+    }
+
 
 
     const context = useContext(MobileViewContext);
@@ -80,15 +87,24 @@ export const AppBarMobileView = () => {
                     >
                         FleetPRO
                     </Typography>
-                    
-                    {user ? <Button onClick={handleLogout} >Wyloguj</Button> : ''
-                    }
-                    
-                    <IconButton color="inherit">
-                        <Badge badgeContent={4} color="secondary">
-                            <NotificationsIcon />
-                        </Badge>
-                    </IconButton>
+                    <Box sx={{ flexGrow: 1 }} />
+                    <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
+                        <Typography
+                        component="p"
+                        variant="subtitle2"
+                        >
+                        </Typography>
+                        <Button onClick={checkUserDataTest}>Sprawdz dane</Button>
+                                <Avatar alt={user?.name} src={avatar} />
+                                <Menu open={isMenuOpen} onClose={handleMenuClose}>
+                                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+                                </Menu>
+                        <IconButton color="inherit">
+                            <Badge badgeContent={4} color="secondary">
+                                <NotificationsIcon />
+                            </Badge>
+                        </IconButton>
+                    </Box>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={mobileOpenSideBar}>
