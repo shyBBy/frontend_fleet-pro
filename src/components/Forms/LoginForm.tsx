@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { useForm , Controller} from 'react-hook-form';
+import {useForm, Controller, SubmitHandler} from 'react-hook-form';
 import {TextField, Button, Box, Grid, Link} from '@mui/material'
 import { Copyright } from '../../layouts/MainLayout';
 import {yupResolver} from "@hookform/resolvers/yup";
 import {loginSchema} from "../../schemas/schema";
 import {useAuth} from "../../hooks/useAuth";
-
+import {Login} from "../../interfaces/auth.interfaces";
 
 
 
 export const LoginForm = () => {
     const [login, setLogin] = useState(true);
     const {signIn, user} = useAuth()
-  
     const [message, setMessage] = useState('');
   
     const {
@@ -21,7 +20,7 @@ export const LoginForm = () => {
         reset,
         register,
         formState: { isSubmitSuccessful, errors },
-      } = useForm({
+      } = useForm<Login>({
         mode: 'onSubmit',
         resolver: yupResolver(loginSchema),
         defaultValues: {
@@ -30,17 +29,11 @@ export const LoginForm = () => {
         },
       });
 
-      const onSubmit = async (data: any) => {
-          const credential = {email: data.email, password: data.password}
-          await signIn(credential);
-      };
-
-
-      useEffect(() => {
-        if (isSubmitSuccessful) {
-          reset({ email: "", password: '', });
+    const onSubmit: SubmitHandler<Login> = async (data) => {
+            const credential = { email: data.email, password: data.password };
+            await signIn(credential);
         }
-      }, [isSubmitSuccessful, reset]);
+
 
 
     return(

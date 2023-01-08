@@ -35,14 +35,6 @@ export const AppBarMobileView = () => {
 
     const {user, signOut} = useAuth()
 
-    const checkUserDataTest = () => {
-
-        console.log(typeof user)
-        console.log('TEST')
-        console.log(user?.id)
-    }
-
-
 
     const context = useContext(MobileViewContext);
 
@@ -95,8 +87,7 @@ export const AppBarMobileView = () => {
                         variant="subtitle2"
                         >
                         </Typography>
-                        {user ? `nie ma uzytkownika: ${user}` : `jest uzytkownik: ${user}` }
-                        <Button onClick={checkUserDataTest}>Sprawdz dane</Button>
+                        <Button onClick={signOut}>Wyloguj</Button>
                                 <Avatar alt={user?.name} src={avatar} />
                                 <Menu open={isMenuOpen} onClose={handleMenuClose}>
                                     <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
