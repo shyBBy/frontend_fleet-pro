@@ -33,7 +33,7 @@ export interface Login {
 interface AuthContextType {
     user: LoggedUserRes | null;
     setUser: React.Dispatch<React.SetStateAction<LoggedUserRes | null>>;
-    signIn: (data: Login) => Promise<void>;
+    signIn: (data: Login) => Promise<any> ;
     signOut: () => void;
 }
 
@@ -50,11 +50,9 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 },
             );
             if (!res.ok) {
-
                 setUser(null);
             }
         } catch (e) {
-
             setUser(null)
         } finally {
             setUser(null)
@@ -63,8 +61,15 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
 
     useEffect(() => {
         (async () => {
-            try {
-                const res = await fetch(config.API_URL + 'api/auth/getuser',
+            const token = localStorage.getItem('token');
+            const userId = localStorage.getItem('user');
+
+            if (token && userId) {
+                console.log('loading true')
+            }
+
+                try {
+                const res = await fetch(config.API_URL + 'user/',
                     {
                         credentials: 'include',
                     },
@@ -74,7 +79,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                     const userData = await res.json();
                     setUser(userData);
                 } else {
-                    setUser(null);
+                    return '3'
                 }
             } catch (e) {
 
@@ -82,7 +87,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         })();
     }, []);
 
-    const signIn = async (data: Login) => {
+    const signIn = async (data: Login): Promise<void> => {
         try {
             const res = await fetch('http://localhost:3002/auth/login', {
                 method: 'POST',
@@ -94,9 +99,13 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 body: JSON.stringify(data),
             },
                 );
+            const {access_token, user_id} = await res.json()
+            localStorage.setItem('token', access_token);
+            localStorage.setItem('user', user_id);
+
             console.log(res.ok)
             if (!res.ok) {
-                setUser(null);
+                return '4'
             }
             const userData = (await res.json()) as LoggedUserRes;
             console.log('USER DATA W useAUTH ----------')
@@ -104,8 +113,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
             console.log('KONIEC ----------')
             setUser(userData);
         } catch (e) {
-
-            setUser(null);
+            return '5'
         }
     };
 

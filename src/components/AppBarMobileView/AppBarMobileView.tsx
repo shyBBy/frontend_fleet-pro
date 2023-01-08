@@ -37,6 +37,7 @@ export const AppBarMobileView = () => {
 
     const checkUserDataTest = () => {
 
+        console.log(typeof user)
         console.log('TEST')
         console.log(user?.id)
     }
@@ -94,6 +95,7 @@ export const AppBarMobileView = () => {
                         variant="subtitle2"
                         >
                         </Typography>
+                        {user ? `nie ma uzytkownika: ${user}` : `jest uzytkownik: ${user}` }
                         <Button onClick={checkUserDataTest}>Sprawdz dane</Button>
                                 <Avatar alt={user?.name} src={avatar} />
                                 <Menu open={isMenuOpen} onClose={handleMenuClose}>
