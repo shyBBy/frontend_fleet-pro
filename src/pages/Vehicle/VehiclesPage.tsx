@@ -1,13 +1,14 @@
-import React from "react";
-import {MainLayout} from "../layouts/MainLayout";
+import React, {useState} from "react";
+import {MainLayout} from "../../layouts/MainLayout";
 import Link from '@mui/material/Link';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import {Avatar, Grid, Paper, TableContainer, TablePagination} from "@mui/material";
+import {Avatar, Box, Button, Grid, Modal, Paper, TableContainer, TablePagination, Typography} from "@mui/material";
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import {VehicleAddContainer} from "../../components/Vehicle/VehicleAddContainer";
 
 function createData(
     id: number,
@@ -66,8 +67,12 @@ function preventDefault(event: React.MouseEvent) {
     event.preventDefault();
 }
 
+
 export const VehiclesPage = () => {
 
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
 
     return(
         <MainLayout>
@@ -125,9 +130,8 @@ export const VehiclesPage = () => {
                                     ))}
                                 </TableBody>
                             </Table>
-                            <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-                                See more orders
-                            </Link>
+                            <Button onClick={handleOpen}>Dodaj nowy pojazd</Button>
+                            <VehicleAddContainer open={open} onClose={handleClose} onOpen={handleOpen} setOpen={setOpen}/>
                         </React.Fragment>
                     </Paper>
                 </Grid>

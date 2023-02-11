@@ -6,8 +6,8 @@ import { useAuth } from "../hooks/useAuth";
 import {DashboardPage} from "../pages/DashboardPage";
 import {NotFound404} from "./NotFound404";
 import {EmployeesPage} from "../pages/EmployeesPage";
-import {VehiclesPage} from "../pages/VehiclesPage";
-import {PlacesPage} from "../pages/PlacesPage";
+import {VehiclesPage} from "../pages/Vehicle/VehiclesPage";
+import {PlacesPage} from "../pages/Place/PlacesPage";
 import {SettingsPage} from "../pages/SettingsPage";
 
 export const AuthenticatedApp = () => {
