@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import {GetOneVehResponse} from 'types'
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import {Avatar, IconButton, Tooltip} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import BusAlertIcon from '@mui/icons-material/BusAlert';
+import {Link} from "react-router-dom";
 
 export const VehicleSingleItem = (props: any) => {
+
     const {vehicle} = props
     return(
         <>
@@ -25,11 +27,13 @@ export const VehicleSingleItem = (props: any) => {
                                 <DeleteIcon />
                             </IconButton>
                         </Tooltip>
-                        <Tooltip title="Profil pojazdu">
-                            <IconButton>
-                                <BusAlertIcon />
-                            </IconButton>
-                        </Tooltip>
+                        <Link to={`/vehicle/${vehicle.id}`}>
+                            <Tooltip title="Profil pojazdu">
+                                <IconButton>
+                                    <BusAlertIcon />
+                                </IconButton>
+                            </Tooltip>
+                        </Link>
                     </TableCell>
                 </TableRow>
         </>
