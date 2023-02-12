@@ -11,8 +11,8 @@ import {Login} from "../../interfaces/auth.interfaces";
 
 export const LoginForm = () => {
     const [login, setLogin] = useState(true);
-    const {signIn, user} = useAuth()
-    const [message, setMessage] = useState('');
+    const {signIn} = useAuth()
+    const [message] = useState('');
   
     const {
         control,
@@ -34,6 +34,11 @@ export const LoginForm = () => {
             await signIn(credential);
         }
 
+    useEffect(() => {
+        if (isSubmitSuccessful) {
+            reset({ email: "", password: '', });
+        }
+    }, [isSubmitSuccessful, reset]);
 
 
     return(

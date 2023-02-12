@@ -5,10 +5,6 @@ import {
     Button,
     Box,
     Grid,
-    Link,
-    FormControlLabel,
-    FormGroup,
-    FormHelperText,
     Select,
     MenuItem
 } from '@mui/material'
@@ -47,22 +43,21 @@ export const CreateVehicleForm = () => {
     });
 
     const onSubmit = async (data: any) => {
-        console.log(data);
         try {
             const res = await fetch("http://localhost:3002/vehicle/create", {
                 method: "POST",
+                credentials: 'include',
                 headers: {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(data),
             });
             return res.json().then((data) => {
-                console.log(data.message);
                 setMessage(data.message);
                 return data;
             });
         } catch (error) {
-            console.log(error);
+
         }
     };
 
@@ -77,7 +72,6 @@ export const CreateVehicleForm = () => {
         <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={8} lg={5}>
-                    Typ pojazdu:
                     <Controller
                         name="vehicleType"
                         control={control}
@@ -88,10 +82,10 @@ export const CreateVehicleForm = () => {
                                 {...register('vehicleType')}
                                 error={!!errors?.vehicleType}
                                 id="vehicleType"
-                                value={field.value || ''}
+                                value={field.value || 'Wybierz typ pojazdu'}
                                 sx={{ mx: 1, my: 1 }}
                             >
-                                <MenuItem value="" disabled>
+                                <MenuItem value="Wybierz typ pojazdu">
                                     Wybierz typ pojazdu
                                 </MenuItem>
                                 {Object.values(VEHICLE_TYPE).map((value) => (
@@ -101,27 +95,10 @@ export const CreateVehicleForm = () => {
                                 ))}
 
                             </Select>
-
-
-                            // <TextField
-                            //     {...field}
-                            //     {...register('vehicleType')}
-                            //     error={!!errors?.vehicleType}
-                            //     helperText={errors['vehicleType'] ? errors['vehicleType'].message : ''}
-                            //     id="vehicleType"
-                            //     label="Typ pojazdu"
-                            //     type="text"
-                            //     variant="standard"
-                            //     required
-                            //     fullWidth
-                            //     autoComplete="off"
-                            //     sx={{ mx: 1, my: 1 }}
-                            // />
                         )}
                     />
                 </Grid>
                 <Grid item xs={12} md={8} lg={5}>
-                    Marka pojazdu:
                     <Controller
                         name="name"
                         control={control}
@@ -132,10 +109,10 @@ export const CreateVehicleForm = () => {
                                 {...register('name')}
                                 error={!!errors?.name}
                                 id="name"
-                                value={field.value || ''}
+                                value={field.value || 'Wybierz markę pojazdu'}
                                 sx={{ mx: 1, my: 1 }}
                             >
-                                <MenuItem value="" disabled>
+                                <MenuItem value="Wybierz markę pojazdu" disabled>
                                     Wybierz markę pojazdu
                                 </MenuItem>
                                 {Object.values(VEHICLE_BRAND).map((value) => (
@@ -149,7 +126,6 @@ export const CreateVehicleForm = () => {
                     />
                 </Grid>
                 <Grid item xs={12} md={8} lg={5}>
-                    Model pojazdu:
                     <Controller
                         name="model"
                         control={control}
@@ -160,11 +136,11 @@ export const CreateVehicleForm = () => {
                                 {...register('model')}
                                 error={!!errors?.model}
                                 id="model"
-                                value={field.value || ''}
+                                value={field.value || 'Wybierz model pojazdu'}
                                 sx={{ mx: 1, my: 1 }}
                             >
-                                <MenuItem value="" disabled>
-                                    Wybierz markę pojazdu
+                                <MenuItem value="Wybierz model pojazdu" disabled>
+                                    Wybierz model pojazdu
                                 </MenuItem>
                                 {Object.values(VEHICLE_MODEL).map((value) => (
                                     <MenuItem key={value} value={VEHICLE_MODEL[value]}>
@@ -200,6 +176,7 @@ export const CreateVehicleForm = () => {
                     />
                 </Grid>
                 <Grid item xs={12} md={8} lg={5}>
+                    Data ostatniego przeglądu:
                     <Controller
                         name="lastDateOfVehicleInspection"
                         control={control}
@@ -208,7 +185,6 @@ export const CreateVehicleForm = () => {
                             <TextField
                                 {...field}
                                 id="lastDateOfVehicleInspection"
-                                label="Data ostatniego przeglądu"
                                 type="date"
                                 variant="standard"
                                 required
@@ -223,6 +199,7 @@ export const CreateVehicleForm = () => {
                     />
                 </Grid>
                 <Grid item xs={12} md={8} lg={5}>
+                    Data następnego przeglądu:
                     <Controller
                         name="nextDateOfVehicleInspection"
                         control={control}
@@ -231,7 +208,6 @@ export const CreateVehicleForm = () => {
                             <TextField
                                 {...field}
                                 id="nextDateOfVehicleInspection"
-                                label="Data następnego przeglądu"
                                 type="date"
                                 variant="standard"
                                 required

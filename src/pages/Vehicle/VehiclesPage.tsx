@@ -1,67 +1,17 @@
 import React, {useState} from "react";
 import {MainLayout} from "../../layouts/MainLayout";
-import Link from '@mui/material/Link';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import {Avatar, Box, Button, Grid, Modal, Paper, TableContainer, TablePagination, Typography} from "@mui/material";
-import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import {
+    Box,
+    Button,
+    Grid,
+    Paper,
+} from "@mui/material";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import {a11yProps, TabPanel} from "../../components/TabPanel";
+import {VehiclesList} from "../../components/Vehicle/VehiclesList";
 import {VehicleAddContainer} from "../../components/Vehicle/VehicleAddContainer";
 
-function createData(
-    id: number,
-    photo: string,
-    model: string,
-    plateNumber: string,
-    location: string,
-    settings: string,
-) {
-    return { id, photo, plateNumber, model, location, settings };
-}
-
-const rows = [
-    createData(
-        0,
-        '16 Mar, 2019',
-        'Mercedes Sprinter',
-        'ELW GH72',
-        'Łódź',
-        'Opcje',
-    ),
-    createData(
-        1,
-        '16 Mar, 2019',
-        'Mercedes Sprinter',
-        'DW 3SW70',
-        'Łódź',
-        'Opcje',
-    ),
-    createData(
-        2,
-        '16 Mar, 2019',
-        'Opel Insignia',
-        'EL 765GV',
-        'Łódź',
-        'Opcje'),
-    createData(
-        3,
-        '16 Mar, 2019',
-        'Mercedes Sprinter',
-        'EL 710SV',
-        'Łódź',
-        'Opcje',
-    ),
-    createData(
-        4,
-        '15 Mar, 2019',
-        'Renault Master',
-        'DW 3SW69',
-        'Łódź',
-        'Opcje',
-    ),
-];
 
 function preventDefault(event: React.MouseEvent) {
     event.preventDefault();
@@ -69,6 +19,11 @@ function preventDefault(event: React.MouseEvent) {
 
 
 export const VehiclesPage = () => {
+    const [value, setValue] = React.useState(0);
+
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        setValue(newValue);
+    };
 
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -104,35 +59,20 @@ export const VehiclesPage = () => {
 
                 <Grid item xs={12}>
                     <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                        <React.Fragment>
-                            Lista pojazdów
-                            <Table size="small">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Zdjecie</TableCell>
-                                        <TableCell>Marka</TableCell>
-                                        <TableCell>Model</TableCell>
-                                        <TableCell>Oddział</TableCell>
-                                        <TableCell align="right">Opcje</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {rows.map((row) => (
-                                        <TableRow key={row.id}>
-                                            <TableCell><Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                                                <LocalShippingIcon />
-                                            </Avatar></TableCell>
-                                            <TableCell>{row.plateNumber}</TableCell>
-                                            <TableCell>{row.model}</TableCell>
-                                            <TableCell>{row.location}</TableCell>
-                                            <TableCell align="right">{`${row.settings}`}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                            <Button onClick={handleOpen}>Dodaj nowy pojazd</Button>
-                            <VehicleAddContainer open={open} onClose={handleClose} onOpen={handleOpen} setOpen={setOpen}/>
-                        </React.Fragment>
+                        <Box sx={{ width: '100%' }}>
+                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                    <Tab label="Lista pojazdów" {...a11yProps(0)} />
+                                    <Tab label="Dodaj nowy pojazd" {...a11yProps(1)} />
+                                </Tabs>
+                            </Box>
+                            <TabPanel value={value} index={0}>
+                                <VehiclesList/>
+                            </TabPanel>
+                            <TabPanel value={value} index={1}>
+                                <VehicleAddContainer/>
+                            </TabPanel>
+                        </Box>
                     </Paper>
                 </Grid>
             </>

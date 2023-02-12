@@ -1,3 +1,5 @@
+import {GetListOfVehiclesResponse} from 'types'
+
 
 export interface MainCardPropInterface {
     title?: string,
@@ -9,4 +11,15 @@ export interface MainCardPropInterface {
     description?: string,
     chipColor?: string,
     icon?: any,
+}
+
+export interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+}
+
+export interface VehicleListProps {
+    vehicles: GetListOfVehiclesResponse;
+    onVehiclesChange: () => void
 }

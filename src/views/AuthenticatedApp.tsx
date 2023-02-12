@@ -16,7 +16,6 @@ export const AuthenticatedApp = () => {
 
     return(
         <>
-
                 <Routes>
                     <Route path="/dashboard" element={<DashboardPage />} />
                     <Route path="/employees" element={<EmployeesPage />} />
@@ -37,7 +36,6 @@ export const AuthenticatedApp = () => {
                     />
                     <Route path='*' element={<NotFound404/>} />
                 </Routes>
-
         </>
     )
 }

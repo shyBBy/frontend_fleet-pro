@@ -5,9 +5,10 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { CssBaseline } from '@mui/material';
 import {MobileViewProvider} from "./context/MobileViewContext";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Routes} from "react-router-dom";
 import { App } from './App';
 import {AppProviders} from "./providers/AppProviders";
+import {Route} from "@mui/icons-material";
 
 
 const root = ReactDOM.createRoot(
@@ -19,7 +20,7 @@ root.render(
         <>
             <CssBaseline/>
             <MobileViewProvider>
-                <App />
+                <App/>
             </MobileViewProvider>
         </>
     </AppProviders>
