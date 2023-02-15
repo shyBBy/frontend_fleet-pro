@@ -18,6 +18,7 @@ import DepartureBoardIcon from '@mui/icons-material/DepartureBoard';
 import {DashboardLastDriver} from "./DashboardLastDriver/DashboardLastDriver";
 import {Changelog} from "./Changelog/Changelog";
 import {DashboardLastVehicles} from "./DashboardLastVehicles/DashboardLastVehicles";
+import {GetListOfVehiclesResponse} from 'types'
 
 
 
@@ -55,6 +56,29 @@ const status = [
 ];
 
 export const Dashboard = () => {
+  
+  const [vehiclesWithoutInspection, setVehicleWithoutInspection] = useState(0)
+  const [vehiclesList, setVehiclesList] = useState<GetListOfVehiclesResponse>([])
+
+  
+      useEffect(() => {
+        (async () => {
+          const res = await fetch('http://localhost:3002/vehicle/list?page=1', {
+                credentials: 'include',
+            })
+            const data = await res.json()
+            console.log(data)
+
+            setVehiclesList(data.vehicles)
+            
+            const count = checkAllCars(vehicles)
+
+          setVehicleWithoutInspection(count)
+  
+        })();
+      }, []);
+  
+  
     return(
         <>
             
@@ -69,7 +93,7 @@ export const Dashboard = () => {
                     <MainCard title={'Pojazdy'} count={78} description={'Zbliżający się termin badania technicznego.'} chipColor={`rgb(250, 173, 20)`} icon={<DepartureBoardIcon style={{color: 'white'}}/>}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <MainCard title={'Pojazdy'} count={3} description={'Brak badania technicznego.'} chipColor={`rgb(217, 23, 23)`} icon={<CarCrashIcon style={{ color: 'white' }}/>}/>
+                    <MainCard title={'Pojazdy'} count={vehiclesWithoutInspection} description={'Brak badania technicznego.'} chipColor={`rgb(217, 23, 23)`} icon={<CarCrashIcon style={{ color: 'white' }}/>}/>
                 </Grid>
 
                 <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
