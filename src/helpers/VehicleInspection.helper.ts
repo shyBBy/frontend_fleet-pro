@@ -1,8 +1,8 @@
 import {GetListOfVehiclesResponse} from 'types'
 
 export class VehicleInspection {
-  
-  public checkIsValid = (lastDate: string | Date, nextDate: string | Date): boolean => {
+
+    public static checkIsValid = (lastDate: string | Date, nextDate: string | Date): boolean => {
    
     const currentDate: Date = new Date();
     const last: Date = new Date(lastDate);
@@ -10,8 +10,8 @@ export class VehicleInspection {
   
     return currentDate >= last && currentDate <= next;
     }
-  
-  public countDaysToEnd = (nextInspectionDate: string | Date): number => {
+
+    public static countDaysToEnd = (nextInspectionDate: string | Date): number => {
     
     const currentDate: Date = new Date();
  
@@ -29,15 +29,29 @@ export class VehicleInspection {
     return daysToInspection;
   }
   
- public checkAllCars = (vehicles:GetListOfVehiclesResponse ): number => {
+ public static checkAllCars = (vehicles:GetListOfVehiclesResponse ): number => {
     let invalidCount = 0;
     vehicles.forEach((vehicle) => {
-      if (!this.checkIsValid(vehicle.lastDateOfInspection, vehicle.nextDateOfInspection)) {
+      if (!this.checkIsValid(vehicle.lastDateOfVehicleInspection, vehicle.nextDateOfVehicleInspection)) {
         invalidCount++;
       }
     });
     return invalidCount;
   };
+
+
+    public static countVehiclesDueForInspection = (vehicles: GetListOfVehiclesResponse): number => {
+        const currentDate = new Date();
+        let count = 0;
+        vehicles.forEach((vehicle) => {
+            const nextInspectionDate = new Date(vehicle.nextDateOfVehicleInspection);
+            const daysToEnd = Math.floor((nextInspectionDate.getTime() - currentDate.getTime()) / (1000 * 3600 * 24));
+            if (daysToEnd <= 7 && daysToEnd >= 0) {
+                count++;
+            }
+        });
+        return count;
+    };
  
  
 } 

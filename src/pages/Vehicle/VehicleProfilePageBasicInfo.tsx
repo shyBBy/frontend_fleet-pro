@@ -1,7 +1,7 @@
 import React from 'react'
-import {GetOneVehResponse} from 'types'
 
-export const VehicleProfilePageBasicInfo = (props: GetOneVehResponse ) => {
+
+export const VehicleProfilePageBasicInfo = (props: any) => {
   
   const {vehicle} = props;
   

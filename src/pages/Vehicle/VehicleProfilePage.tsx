@@ -2,13 +2,21 @@ import React, {useEffect, useState} from "react";
 import {GetOneVehResponse} from 'types'
 import {useParams} from "react-router-dom";
 import {MainLayout} from "../../layouts/MainLayout";
-
+import {Box, Grid, Paper} from "@mui/material";
+import {a11yProps, TabPanel} from "../../components/TabPanel";
+import {VehicleProfilePageBasicInfo} from "./VehicleProfilePageBasicInfo";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 interface RouteParams {
     id: string;
 }
 
 export const VehicleProfilePage = () => {
+    const [value, setValue] = React.useState(0);
+    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+        setValue(newValue);
+    };
 
     const [vehicle, setVehicle] = useState<GetOneVehResponse | null>(null);
 
