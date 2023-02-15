@@ -1,3 +1,5 @@
+import {GetListOfVehiclesResponse} from 'types'
+
 export class VehicleInspection {
   
   public checkIsValid = (lastDate: string | Date, nextDate: string | Date): boolean => {
@@ -26,5 +28,16 @@ export class VehicleInspection {
     
     return daysToInspection;
   }
+  
+ public checkAllCars = (vehicles:GetListOfVehiclesResponse ): number => {
+    let invalidCount = 0;
+    vehicles.forEach((vehicle) => {
+      if (!this.checkIsValid(vehicle.lastDateOfInspection, vehicle.nextDateOfInspection)) {
+        invalidCount++;
+      }
+    });
+    return invalidCount;
+  };
+ 
  
 } 
