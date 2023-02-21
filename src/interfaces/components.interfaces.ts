@@ -13,6 +13,12 @@ export interface MainCardPropInterface {
     icon?: any,
 }
 
+export interface BasicInfoStackInterface {
+    title?: string,
+    description?: string | number,
+    icon?: any,
+}
+
 export interface TabPanelProps {
     children?: React.ReactNode;
     index: number;

@@ -33,27 +33,16 @@ export const MainCard = (props: MainCardPropInterface) => {
                             </Grid>
                             <Grid item>
                                 <Box color={'white'}>
-                                    <Chip
-                                        variant="filled"
-                                        icon={icon}
-                                        sx={{ ml: 1.25, pl: 1, backgroundColor: `${chipColor}`, borderRadius: '4px', }}
-                                        size="small"
-                                    />
+                                    {icon ? <Chip variant="filled" icon={icon} sx={{ ml: 1.25, pl: 1, backgroundColor: `${chipColor}`, borderRadius: '4px', }} size="small"/> : null }
                                 </Box>
-                                {/* <Chip variant="combined"
-                                color='blue'
-                                label='d'
-                                sx={{ ml: 1.25, pl: 1 }}
-                                size="small"
-                                /> */}
                             </Grid>
                         </Grid>
-        </Stack>
-        <Box width='auto'>
-            <Typography variant="subtitle2" color="textSecondary">
-                {description}
-            </Typography>
-        </Box>
+                    </Stack>
+                    <Box width='auto'>
+                        <Typography variant="subtitle2" color="textSecondary">
+                            {description}
+                        </Typography>
+                    </Box>
                 </CardContent>
             </Paper>
         </>
