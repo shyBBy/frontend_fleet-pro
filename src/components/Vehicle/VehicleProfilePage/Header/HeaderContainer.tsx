@@ -37,11 +37,11 @@ export const HeaderContainer = (props: any) => {
                                 padding: "5px",
                             }}
                         >
-                            <Avatar
-                                src={vehicle.photo}
-                                sx={{ width: 100, height: 100, border: `solid 4px`, borderColor: `rgb(111, 255, 255)` }}
-                                variant="rounded"
-                            />
+                            {/*<Avatar*/}
+                            {/*    src={vehicle.photo}*/}
+                            {/*    sx={{ width: 100, height: 100, border: `solid 4px`, borderColor: `rgb(111, 255, 255)` }}*/}
+                            {/*    variant="rounded"*/}
+                            {/*/>*/}
                         </Box>
                     </Box>
                 </Grid>
@@ -85,8 +85,8 @@ export const HeaderContainer = (props: any) => {
                     </Grid>
                 </Grid>
             </Grid>
-            <Grid item xs={12} lg={12}>
-                <Box sx={{ backgroundColor: `rgb(242, 246, 250)` }}>
+            <Grid item xs={12} lg={12} >
+                <Box sx={{ backgroundColor: theme.palette.background.paper }}>
                     <TabPanelComponent vehicle={vehicle}/>
                 </Box>
             </Grid>

@@ -2,6 +2,15 @@ import {GetListOfVehiclesResponse} from 'types'
 
 export class VehicleInspection {
 
+    public static convertToOnlyDate = (date: string | Date) => {
+        const convertedDate = new Date(date).toLocaleDateString('pl-PL', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+        });
+        return convertedDate;
+    }
+
     public static checkIsValid = (lastDate: string | Date, nextDate: string | Date): boolean => {
    
     const currentDate: Date = new Date();

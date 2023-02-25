@@ -13,7 +13,7 @@ export const TabPanelComponent = (props: any) => {
     };
     return(
         <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Box sx={{ borderBottom: 1, borderColor: 'divider', display: 'flex', justifyContent: 'center', alignItems: 'center' }} pt={2}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                     <Tab label="Główne informacje" {...a11yProps(0)} />
                     <Tab label="Edytuj" {...a11yProps(1)} />

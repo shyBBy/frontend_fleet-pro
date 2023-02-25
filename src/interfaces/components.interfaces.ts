@@ -1,4 +1,5 @@
 import {GetListOfVehiclesResponse} from 'types'
+import React from "react";
 
 
 export interface MainCardPropInterface {
@@ -28,4 +29,11 @@ export interface TabPanelProps {
 export interface VehicleListProps {
     vehicles: GetListOfVehiclesResponse;
     onVehiclesChange: () => void
+}
+
+export interface StackListInformationProps {
+    icon?: string
+    title?: any;
+    description: string | number | boolean;
+    tooltip: string;
 }
