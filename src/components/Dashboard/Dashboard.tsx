@@ -1,15 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import {
-    AvatarGroup, Box,
-    Button,
     Grid,
-    ListItemAvatar, ListItemButton,
-    ListItemSecondaryAction, ListItemText, MenuItem,
     Paper,
-    Stack, TextField,
     Typography
 } from "@mui/material";
-import {MessageOutlined} from "@mui/icons-material";
 import {MainCard} from "../MainCard";
 import CarCrashIcon from '@mui/icons-material/CarCrash';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
@@ -18,6 +12,8 @@ import DepartureBoardIcon from '@mui/icons-material/DepartureBoard';
 import {DashboardLastDriver} from "./DashboardLastDriver/DashboardLastDriver";
 import {Changelog} from "./Changelog/Changelog";
 import {DashboardLastVehicles} from "./DashboardLastVehicles/DashboardLastVehicles";
+import {GetListOfVehiclesResponse} from 'types'
+import {VehicleInspection} from "../../helpers/VehicleInspection.helper";
 
 
 
@@ -38,38 +34,53 @@ const actionSX = {
     transform: 'none'
 };
 
-// sales report status
-const status = [
-    {
-        value: 'today',
-        label: 'Today'
-    },
-    {
-        value: 'month',
-        label: 'This Month'
-    },
-    {
-        value: 'year',
-        label: 'This Year'
-    }
-];
 
 export const Dashboard = () => {
+
+    const [vehiclesWithoutInspection, setVehicleWithoutInspection] = useState(0)
+    const [vehiclesDueForInspection, setVehiclesDueForInspection] = useState(0)
+    const [vehiclesList, setVehiclesList] = useState<GetListOfVehiclesResponse>([])
+
+
+  
+      useEffect(() => {
+        (async () => {
+          const res = await fetch('http://localhost:3002/vehicle/list?page=1', {
+                credentials: 'include',
+            })
+            const data = await res.json()
+            setVehiclesList(data.vehicles)
+        })();
+      }, []);
+
+    useEffect(() => {
+        ( () => {
+            const countVehicleWithoutInspection = VehicleInspection.checkAllCars(vehiclesList)
+            setVehicleWithoutInspection(countVehicleWithoutInspection)
+
+            const countVehiclesDueForInspection = VehicleInspection.countVehiclesDueForInspection(vehiclesList)
+            setVehicleWithoutInspection(countVehiclesDueForInspection)
+
+
+        })();
+    }, [vehiclesList]);
+  
+  
     return(
         <>
             
                 {/* row 1 */}
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <MainCard title={'Pojazdy'} count={134} description={'Wszystkie pojazdy w firmie.'} icon={<DirectionsCarIcon style={{color: 'black'}}/>}/>
+                    <MainCard title={'Pojazdy'} count={vehiclesList.length} description={'Wszystkie pojazdy w firmie.'} icon={<DirectionsCarIcon style={{color: 'black'}}/>}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
                     <MainCard title={'Oddziały'} count={9} description={'Ilość wszystkich aktywnych oddziałów.'} icon={<ApartmentIcon style={{color: 'black'}}/>}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <MainCard title={'Pojazdy'} count={78} description={'Zbliżający się termin badania technicznego.'} chipColor={`rgb(250, 173, 20)`} icon={<DepartureBoardIcon style={{color: 'white'}}/>}/>
+                    <MainCard title={'Pojazdy'} count={vehiclesDueForInspection} description={'Zbliżający się termin badania technicznego.'} chipColor={`rgb(250, 173, 20)`} icon={<DepartureBoardIcon style={{color: 'white'}}/>}/>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <MainCard title={'Pojazdy'} count={3} description={'Brak badania technicznego.'} chipColor={`rgb(217, 23, 23)`} icon={<CarCrashIcon style={{ color: 'white' }}/>}/>
+                    <MainCard title={'Pojazdy'} count={vehiclesWithoutInspection} description={'Brak badania technicznego.'} chipColor={`rgb(217, 23, 23)`} icon={<CarCrashIcon style={{ color: 'white' }}/>}/>
                 </Grid>
 
                 <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />

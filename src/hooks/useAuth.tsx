@@ -2,15 +2,12 @@ import React, {createContext, useContext, useEffect, useState} from "react";
 import {config} from "../config/config";
 import { setIfErrMsg } from "../helpers/setIfErrMsg";
 import { LoggedUserRes, Login } from "../interfaces/auth.interfaces";
-
-
-
+import {toast} from "react-toastify";
 
 
 interface AuthContextType {
     user: LoggedUserRes | null;
     setUser: React.Dispatch<React.SetStateAction<LoggedUserRes | null>>;
-    //@TODO: Ewentualnie do zmiany Promise<typ>
     signIn: (data: Login) => Promise<any> ;
     signOut: () => void;
 }
@@ -34,6 +31,11 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
         } catch (e) {
             setUser(null)
         } finally {
+            toast.success(`Pomyślnie wylogowano.`, {
+                position: "bottom-right",
+                theme: "light",
+                autoClose: 1000,
+            })
             setUser(null)
         }
     };
@@ -55,7 +57,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                     setUser(null);
                 }
             } catch (err) {
-                console.log(`NOTIFICATION: `)
+
             }
         })();
     }, []);
@@ -75,13 +77,22 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 },
             );
             if (!res.ok) {
-                console.log(`NOTIFICATION: Wrong credentials.`)
+                toast.error('Błędny e-mail lub hasło, spróbuj raz jeszcze.', {
+                    position: "bottom-right",
+                    theme: "light",
+                    autoClose: 2000,
+                })
                 setUser(null);
+                return
             }
             const userData = (await res.json()) as LoggedUserRes;
             setUser(userData);
+            toast.success(`Pomyślnie zalogowano, witaj ${userData.name}`, {
+                position: "bottom-right",
+                theme: "light",
+                autoClose: 1500,
+            })
         } catch (error) {
-            console.log(`NOTIFICATION: dalej`)
             setUser(null);
         }
     };
@@ -102,6 +113,5 @@ export const useAuth = () => {
     if(!auth) {
         throw Error('useAuth needs to be used inside AuthContext');
     }
-
     return auth;
 };

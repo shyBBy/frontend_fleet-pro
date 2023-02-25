@@ -17,10 +17,16 @@ import logo from '../../assets/img/logoBlackv2.png'
 import bg from '../../assets/bg/group-trucks-parked-raow.jpg'
 import {Copyright} from "../../layouts/MainLayout";
 import { LoginForm } from "../Forms/LoginForm";
+import {useAuth} from "../../hooks/useAuth";
+import {App} from "../../App";
+import {NotLogin} from "../../views/NotLogin";
 export const Login = () => {
 
+const {user} = useAuth()
 
-
+    if (!user) {
+        
+    }
     return(
         <>
             <Grid container component="main" sx={{ height: '100vh' }}>
