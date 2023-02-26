@@ -86,49 +86,49 @@ export const Dashboard = () => {
                 <Grid item md={8} sx={{ display: { sm: 'none', md: 'block', lg: 'none' } }} />
 
                 {/* row 2 */}
-                <Grid item xs={12} md={7} lg={8}>
-                    <Grid container alignItems="center" justifyContent="space-between">
-                        <Grid item>
-                            <Typography variant="h5">Ostatnie zmiany</Typography>
-                        </Grid>
-                    </Grid>
-                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                        <Changelog/>
-                    </Paper>
-                </Grid>
-                <Grid item xs={12} md={5} lg={4}>
-                    <Grid container alignItems="center" justifyContent="space-between">
-                        <Grid item p={1}>
-                            <Typography variant="body1">Ostatnio dodani kierowcy</Typography>
-                        </Grid>
-                        <Grid item />
-                    </Grid>
-                    <Paper>
-                        <DashboardLastDriver/>
-                    </Paper>
-                </Grid>
+                {/*<Grid item xs={12} md={7} lg={8}>*/}
+                {/*    <Grid container alignItems="center" justifyContent="space-between">*/}
+                {/*        <Grid item>*/}
+                {/*            <Typography variant="h5">Ostatnie zmiany</Typography>*/}
+                {/*        </Grid>*/}
+                {/*    </Grid>*/}
+                {/*    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>*/}
+                {/*        <Changelog/>*/}
+                {/*    </Paper>*/}
+                {/*</Grid>*/}
+                {/*<Grid item xs={12} md={5} lg={4}>*/}
+                {/*    <Grid container alignItems="center" justifyContent="space-between">*/}
+                {/*        <Grid item p={1}>*/}
+                {/*            <Typography variant="body1">Ostatnio dodani kierowcy</Typography>*/}
+                {/*        </Grid>*/}
+                {/*        <Grid item />*/}
+                {/*    </Grid>*/}
+                {/*    <Paper>*/}
+                {/*        <DashboardLastDriver/>*/}
+                {/*    </Paper>*/}
+                {/*</Grid>*/}
 
-                {/* row 3 */}
-                <Grid item xs={12} md={7} lg={8}>
-                    <Grid container alignItems="center" justifyContent="space-between">
-                        <Grid item>
-                            <Typography variant="h5">TYTUL CZEGOS/SEKCJI</Typography>
-                        </Grid>
-                        <Grid item />
-                    </Grid>
-                   
-                </Grid>
-                <Grid item xs={12} md={5} lg={4}>
-                    <Grid container alignItems="center" justifyContent="space-between">
-                        <Grid item>
-                            <Typography variant="body1">Ostatnio dodane pojazdy</Typography>
-                        </Grid>
-                        <Grid item />
-                    </Grid>
-                    <Paper>
-                        <DashboardLastVehicles/>
-                    </Paper>
-                </Grid>
+                {/*/!* row 3 *!/*/}
+                {/*<Grid item xs={12} md={7} lg={8}>*/}
+                {/*    <Grid container alignItems="center" justifyContent="space-between">*/}
+                {/*        <Grid item>*/}
+                {/*            <Typography variant="h5">TYTUL CZEGOS/SEKCJI</Typography>*/}
+                {/*        </Grid>*/}
+                {/*        <Grid item />*/}
+                {/*    </Grid>*/}
+                {/*   */}
+                {/*</Grid>*/}
+                {/*<Grid item xs={12} md={5} lg={4}>*/}
+                {/*    <Grid container alignItems="center" justifyContent="space-between">*/}
+                {/*        <Grid item>*/}
+                {/*            <Typography variant="body1">Ostatnio dodane pojazdy</Typography>*/}
+                {/*        </Grid>*/}
+                {/*        <Grid item />*/}
+                {/*    </Grid>*/}
+                {/*    <Paper>*/}
+                {/*        <DashboardLastVehicles/>*/}
+                {/*    </Paper>*/}
+                {/*</Grid>*/}
 
             
         </>
