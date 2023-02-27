@@ -12,7 +12,7 @@ import {
     FormControl,
     IconButton,
     InputLabel,
-    MenuItem, Pagination,
+    MenuItem,
     Select,
     SelectChangeEvent,
     TablePagination,
@@ -30,11 +30,12 @@ export const VehicleTable = () => {
     const [page, setPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(2);
     const [maxPage, setMaxPage] = useState(0)
+    const {search} = useContext(SearchContext);
 
     useEffect(() => {
         (async () => {
 
-            const res = await fetch(`http://localhost:3002/vehicle/list?page=${page}&count=${rowsPerPage}&order=${order}&${sort}=${sortValue}`, {
+            const res = await fetch(`http://localhost:3002/vehicle/list?page=${page}&count=${rowsPerPage}&order=${order}&${sort}=${sortValue}&search=${search}`, {
                 credentials: 'include',
             })
             const data = await res.json()
@@ -43,7 +44,7 @@ export const VehicleTable = () => {
             setVehiclesList(data.vehicles)
 
         })();
-    }, [rowsPerPage, page, sort, sortValue]);
+    }, [rowsPerPage, page, sort, sortValue, search]);
 
     const handleChange = (e: any, p: any) => {
         setPage(p)
@@ -56,9 +57,7 @@ export const VehicleTable = () => {
 
     return(
         <>
-            <Box>
-                <Pagination count={maxPage} onChange={handleChange} />
-            </Box>
+            <VehicleTableOptions count={maxPage} onChange={handleChange} />
             <Table size="small">
                 <TableHead>
                     <TableRow>
