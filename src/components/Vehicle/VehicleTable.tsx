@@ -24,12 +24,17 @@ export const VehicleTable = () => {
     const [count, setCount] = useState(0);
     const [search, setSearch] = useState('')
 
-    const [inputVal, setInputVal] = useState(search);
 
-    const setSearchFromLocalState = (e: SyntheticEvent) => {
-        e.preventDefault();
-        setSearch(inputVal);
-    };
+    const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  setSearch(event.target.value);
+}
+
+const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  if (event.key === 'Backspace' || event.key === 'Delete') {
+    handleValueChange(event);
+  }
+}
+
 
     useEffect(() => {
         (async () => {
@@ -59,7 +64,7 @@ export const VehicleTable = () => {
         <>
                 search: {search}
             <form className="search" onSubmit={setSearchFromLocalState}>
-                <TextField id="outlined-search" label="Szukaj" type="search" value={inputVal} onChange={e => setInputVal(e.target.value)}/>
+                <TextField id="outlined-search" label="Szukaj" type="search" value={search} onChange={handleValueChange} onKeyDown={handleKeyDown}/>
             </form>
             <VehicleTableOptions maxPage={maxPage} handleChangePage={handleChange} />
             <Table size="small">
