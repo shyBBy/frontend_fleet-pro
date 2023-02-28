@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {MainLayout} from "../../layouts/MainLayout";
 import {
     Box,
@@ -21,6 +21,7 @@ function preventDefault(event: React.MouseEvent) {
 export const VehiclesPage = () => {
     const [value, setValue] = React.useState(0);
 
+
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
@@ -30,52 +31,52 @@ export const VehiclesPage = () => {
     const handleClose = () => setOpen(false);
 
     return(
-        <MainLayout>
-            <>
-                <Grid item xs={12} md={8} lg={9}>
-                    <Paper
-                        sx={{
-                            p: 2,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            height: 240,
-                        }}
-                    >
-                    </Paper>
-                </Grid>
+            <MainLayout>
+                <>
+                    <Grid item xs={12} md={8} lg={9}>
+                        <Paper
+                            sx={{
+                                p: 2,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                height: 240,
+                            }}
+                        >
+                        </Paper>
+                    </Grid>
 
-                <Grid item xs={12} md={4} lg={3}>
-                    <Paper
-                        sx={{
-                            p: 2,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            height: 240,
-                        }}
-                    >
-                        <p>KARTA JAKAS TAM 2 </p>
-                    </Paper>
-                </Grid>
+                    <Grid item xs={12} md={4} lg={3}>
+                        <Paper
+                            sx={{
+                                p: 2,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                height: 240,
+                            }}
+                        >
+                            <p>KARTA JAKAS TAM 2 </p>
+                        </Paper>
+                    </Grid>
 
-                <Grid item xs={12}>
-                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                        <Box sx={{ width: '100%' }}>
-                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                                    <Tab label="Lista pojazdów" {...a11yProps(0)} />
-                                    <Tab label="Dodaj nowy pojazd" {...a11yProps(1)} />
-                                </Tabs>
+                    <Grid item xs={12}>
+                        <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                            <Box sx={{ width: '100%' }}>
+                                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                    <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                        <Tab label="Lista pojazdów" {...a11yProps(0)} />
+                                        <Tab label="Dodaj nowy pojazd" {...a11yProps(1)} />
+                                    </Tabs>
+                                </Box>
+                                <TabPanel value={value} index={0}>
+                                    <VehiclesList/>
+                                </TabPanel>
+                                <TabPanel value={value} index={1}>
+                                    <VehicleAddContainer/>
+                                </TabPanel>
                             </Box>
-                            <TabPanel value={value} index={0}>
-                                <VehiclesList/>
-                            </TabPanel>
-                            <TabPanel value={value} index={1}>
-                                <VehicleAddContainer/>
-                            </TabPanel>
-                        </Box>
-                    </Paper>
-                </Grid>
-            </>
-        </MainLayout>
+                        </Paper>
+                    </Grid>
+                </>
+            </MainLayout>
     )
 }

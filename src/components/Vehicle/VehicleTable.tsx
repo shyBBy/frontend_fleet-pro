@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useContext, SyntheticEvent} from "react";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
@@ -7,17 +7,8 @@ import Table from "@mui/material/Table";
 import { useTheme } from '@mui/material/styles';
 import {GetListOfVehiclesResponse} from 'types'
 import {VehicleSingleItem} from "./VehicleSingleItem";
-import {
-    Box,
-    FormControl,
-    IconButton,
-    InputLabel,
-    MenuItem,
-    Select,
-    SelectChangeEvent,
-    TablePagination,
-    TextField
-} from "@mui/material";
+import {TextField} from "@mui/material";
+import {VehicleTableOptions} from "./VehicleTableOptions";
 
 
 
@@ -30,7 +21,15 @@ export const VehicleTable = () => {
     const [page, setPage] = useState(1);
     const [rowsPerPage, setRowsPerPage] = useState(2);
     const [maxPage, setMaxPage] = useState(0)
-    const {search} = useContext(SearchContext);
+    const [count, setCount] = useState(0);
+    const [search, setSearch] = useState('')
+
+    const [inputVal, setInputVal] = useState(search);
+
+    const setSearchFromLocalState = (e: SyntheticEvent) => {
+        e.preventDefault();
+        setSearch(inputVal);
+    };
 
     useEffect(() => {
         (async () => {
@@ -42,6 +41,7 @@ export const VehicleTable = () => {
             console.log(data)
             setMaxPage(data.pagesCount)
             setVehiclesList(data.vehicles)
+            setCount(data.resultsCount)
 
         })();
     }, [rowsPerPage, page, sort, sortValue, search]);
@@ -57,7 +57,11 @@ export const VehicleTable = () => {
 
     return(
         <>
-            <VehicleTableOptions count={maxPage} onChange={handleChange} />
+                search: {search}
+            <form className="search" onSubmit={setSearchFromLocalState}>
+                <TextField id="outlined-search" label="Szukaj" type="search" value={inputVal} onChange={e => setInputVal(e.target.value)}/>
+            </form>
+            <VehicleTableOptions maxPage={maxPage} handleChangePage={handleChange} />
             <Table size="small">
                 <TableHead>
                     <TableRow>
