@@ -18,5 +18,6 @@ export const createVehicleSchema = yup.object().shape({
     vinNumber: yup.string().min(16, `Vin jest zbyt krótki.`).required('Numer VIN jest wymagany.'),
     yearOfProduction: yup.string().required('Rok produkcji jest wymagany.'),
     firstRegistrationDate: yup.string().required('Data pierwszej rejestracji jest wymagana.'),
-    policyNumber: yup.string().required('Numer polisy jest wymagany.')
+    policyNumber: yup.string().required('Numer polisy jest wymagany.'),
+    placeName: yup.string().oneOf(['Łódź', 'Warszawa', 'Lipno', 'Leszno', 'Lębork', 'Lublin', 'Kielce', 'Zabrze', 'Tarnów'], 'Niepoprawna nazwa oddziału firmy.').required('Nazwa oddziału jest wymagana.')
 })

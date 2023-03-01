@@ -22,7 +22,7 @@ export const VehicleSingleItem = (props: any) => {
                     <TableCell>{vehicle.name}</TableCell>
                     <TableCell>{vehicle.model}</TableCell>
                     <TableCell>{vehicle.vehicleType}</TableCell>
-                    <TableCell>Lokalizacja oddziału</TableCell>
+                    <TableCell>{vehicle.placeName}</TableCell>
                     <TableCell>{vehicle.vinNumber}</TableCell>
                     <TableCell>{isValidInspection ? 'Aktualny' : 'Nieaktualny'}</TableCell>
                     <TableCell align="right">

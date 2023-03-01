@@ -24,6 +24,7 @@ const defaultValues = {
     yearOfProduction: '',
     firstRegistrationDate: '',
     policyNumber: '',
+    placeName: '',
 }
 
 export const CreateVehicleForm = () => {
@@ -67,6 +68,7 @@ export const CreateVehicleForm = () => {
         }
     }, [isSubmitSuccessful, reset]);
 
+//@TODO: dodać selecta dot. wyboru oddziału 
     // @ts-ignore
     return (
         <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>

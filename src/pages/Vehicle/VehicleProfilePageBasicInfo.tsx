@@ -62,6 +62,7 @@ export const VehicleProfilePageBasicInfo = (props: any) => {
               <StackListInformation description={vehicle.name} icon={BrandIcon} tooltip={'Marka pojazdu'}/>
               <StackListInformation description={vehicle.model} icon={ModelIcon} tooltip={'Model pojazdu'}/>
               <StackListInformation description={vehicle.registerNumber} icon={PlateNumberIcon} tooltip={'Numer rejestracyjny'}/>
+               <StackListInformation description={vehicle.placeName} icon={PlateNumberIcon} tooltip={'Oddzial'}/>
               <StackListInformation description={isValidInspection ? 'Przegląd aktualny' : 'Brak przeglądu'} icon={isValidInspection ? InspectionOkIcon : InspectionValidIcon } tooltip={'Ważność przeglądu technicznego'}/>
               <StackListInformation description={VehicleInspection.convertToOnlyDate(vehicle.lastDateOfVehicleInspection)} icon={LastDateInspectionIcon} tooltip={'Ostatnia data przeglądu'}/>
               <StackListInformation description={VehicleInspection.convertToOnlyDate(vehicle.nextDateOfVehicleInspection)} icon={NextDateInspectionIcon} tooltip={'Następna data przeglądu'}/>
