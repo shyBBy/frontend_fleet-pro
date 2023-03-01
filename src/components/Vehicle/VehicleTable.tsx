@@ -17,7 +17,7 @@ import {
     SelectChangeEvent,
     TablePagination,
     TextField,
-    Menu, Typography, Grid, Popover
+    Menu, Typography, Grid, Popover, Toolbar
 } from "@mui/material";
 
 import {VehicleTableOptions} from "./VehicleTableOptions";
@@ -31,7 +31,7 @@ export const VehicleTable = () => {
     const [sort, setSort] = useState('')
     const [sortValue, setSortValue] = useState('')
     const [page, setPage] = useState(1);
-    const [rowsPerPage, setRowsPerPage] = useState(2);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
     const [maxPage, setMaxPage] = useState(0)
     const [count, setCount] = useState(0);
     const [search, setSearch] = useState('')
@@ -44,23 +44,10 @@ export const VehicleTable = () => {
         setSearch(inputVal);
     };
 
-    const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
-
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
-
     useEffect(() => {
         (async () => {
 
-            const res = await fetch(`http://localhost:3002/vehicle/list?page=${page}&count=${rowsPerPage}&order=${order}&${sort}=${sortValue}&searchType=${searchType}&searchValue=${search}`, {
+            const res = await fetch(`http://localhost:3002/vehicle/list?page=${page}&count=${rowsPerPage}&order=${order}&sort=${sort}&sortValue=${sortValue}&searchType=${searchType}&searchValue=${search}`, {
                 credentials: 'include',
             })
             const data = await res.json()
@@ -75,38 +62,61 @@ export const VehicleTable = () => {
     const handleChange = (e: any, p: any) => {
         setPage(p)
     }
+    
+    const handleChangeRows = (e: any, count: any) => {
+      
+      setRowsPerPage(count)
+    }
+    const handleRowsPerPageChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+    setRowsPerPage(event.target.value as number);
+  };
+  
 
     if (vehiclesList === null) {
         return <p>Wczytywanie...</p>
     }
 
-
     return (
         <>
-
-                    <Box>
-                        <IconButton
-                            onClick={handleClick}>
-                            <SearchIcon/>
-                        </IconButton>
-                        <Popover
-                            id={id}
-                            open={open}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                        >
-                            <Grid container p={2}>
-                                <Grid item lg={12}>
-                                    <Typography variant={'overline'}>Wyszukiwanie</Typography>
-                                    <Typography variant={'body2'}>Wybierz typ wyszukiwania, a następnie w polu obok podaj interesującą Cię frazę.</Typography>
-                                </Grid>
-                                <form className="search" onSubmit={setSearchFromLocalState}>
-                                    <Grid item lg={12} p={1}>
-                                        <FormControl sx={{ m: 1, minWidth: 180 }} size="small">
+      <Toolbar
+      sx={{
+        pl: { sm: 2 },
+        pr: { xs: 1, sm: 1 }
+      }}
+    >
+        <Typography
+          sx={{ flex: '1 1 100%' }}
+          variant="h6"
+          id="tableTitle"
+          component="div"
+        >
+          Table title
+        </Typography>
+        
+        <FormControl>
+      <InputLabel id="rows-per-page-label">Rows per page</InputLabel>
+      <Select
+        labelId="rows-per-page-label"
+        id="rows-per-page"
+        value={rowsPerPage}
+        onChange={handleRowsPerPageChange}
+      >
+        <MenuItem value={10}>10</MenuItem>
+        <MenuItem value={20}>20</MenuItem>
+        <MenuItem value={30}>30</MenuItem>
+      </Select>
+    </FormControl>
+        
+        <VehicleTableOptions maxPage={maxPage} handleChangePage={handleChange}/>
+        
+        <Tooltip title="Filter list">
+          <IconButton>
+            <FilterListIcon />
+          </IconButton>
+        </Tooltip>
+    </Toolbar>  
+                    
+    <form className="search" onSubmit={setSearchFromLocalState}>              <FormControl sx={{ m: 1, minWidth: 180 }} size="small">
                                             <InputLabel id="search-type-label">Typ wyszukiwania</InputLabel>
                                             <Select
                                                 labelId="search-type-label"
@@ -125,15 +135,9 @@ export const VehicleTable = () => {
                                         </FormControl>
                                         <TextField id="outlined-search" label="Szukaj" type="search" size="small" value={inputVal}
                                                    onChange={e => setInputVal(e.target.value)}/>
-                                    </Grid>
+                                  
                                 </form>
-                            </Grid>
-                        </Popover>
-                    </Box>
-
-
-                    <VehicleTableOptions maxPage={maxPage} handleChangePage={handleChange}/>
-
+          <TableContainer>
             <Table size="small">
                 <TableHead>
                     <TableRow>
@@ -143,6 +147,8 @@ export const VehicleTable = () => {
                         <TableCell>Model</TableCell>
                         <TableCell>Typ</TableCell>
                         <TableCell>Oddział</TableCell>
+                        <TableCell>Numer VIN</TableCell>
+                        <TableCell>Przegląd pojazdu</TableCell>
                         <TableCell align="right"></TableCell>
                     </TableRow>
                 </TableHead>
@@ -154,6 +160,8 @@ export const VehicleTable = () => {
                     }
                 </TableBody>
             </Table>
+            </TableContainer>
         </>
     )
 }
+

@@ -8,6 +8,8 @@ import BusAlertIcon from '@mui/icons-material/BusAlert';
 import {Link} from "react-router-dom";
 
 export const VehicleSingleItem = (props: any) => {
+  
+  const isValidInspection = VehicleInspection.checkIsValid(vehicle.lastDateOfVehicleInspection, vehicle.nextDateOfVehicleInspection)
 
     const {vehicle} = props
     return(
@@ -21,6 +23,8 @@ export const VehicleSingleItem = (props: any) => {
                     <TableCell>{vehicle.model}</TableCell>
                     <TableCell>{vehicle.vehicleType}</TableCell>
                     <TableCell>Lokalizacja oddziału</TableCell>
+                    <TableCell>{vehicle.vinNumber}</TableCell>
+                    <TableCell>{isValidInspection ? 'Aktualny' : 'Nieaktualny'}</TableCell>
                     <TableCell align="right">
                         <Tooltip title="Usuń pojazd">
                             <IconButton>
