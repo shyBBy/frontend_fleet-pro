@@ -6,12 +6,14 @@ import {Avatar, IconButton, Tooltip} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import BusAlertIcon from '@mui/icons-material/BusAlert';
 import {Link} from "react-router-dom";
+import {VehicleInspection} from "../../helpers/VehicleInspection.helper";
 
 export const VehicleSingleItem = (props: any) => {
-  
-  const isValidInspection = VehicleInspection.checkIsValid(vehicle.lastDateOfVehicleInspection, vehicle.nextDateOfVehicleInspection)
 
     const {vehicle} = props
+
+    const isValidInspection = VehicleInspection.checkIsValid(vehicle.lastDateOfVehicleInspection, vehicle.nextDateOfVehicleInspection)
+
     return(
         <>
                 <TableRow>
