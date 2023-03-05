@@ -23,6 +23,7 @@ import {
 import {VehicleTableOptions} from "./VehicleTableOptions";
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
+import {RemoveVehicleContext} from "../../context/RemoveVehicleContext";
 
 
 export const VehicleTable = () => {
@@ -38,6 +39,8 @@ export const VehicleTable = () => {
     const [search, setSearch] = useState('')
 
     const [inputVal, setInputVal] = useState(search);
+
+    const {isDeleting} = useContext(RemoveVehicleContext)
 
     const setSearchFromLocalState = (e: SyntheticEvent) => {
         e.preventDefault();
@@ -57,7 +60,7 @@ export const VehicleTable = () => {
             setCount(data.resultsCount)
 
         })();
-    }, [rowsPerPage, page, search]);
+    }, [rowsPerPage, page, search, isDeleting]);
 
     const handleChange = (e: any, p: any) => {
         setPage(p)
@@ -78,6 +81,7 @@ export const VehicleTable = () => {
 
     return (
         <>
+            is Deleting: {isDeleting}
             <Toolbar
                 sx={{
                     pl: {sm: 2},

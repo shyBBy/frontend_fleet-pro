@@ -3,10 +3,6 @@ import {GetOneVehResponse} from 'types'
 import {useParams} from "react-router-dom";
 import {MainLayout} from "../../layouts/MainLayout";
 import {Box, Grid, Paper} from "@mui/material";
-import {a11yProps, TabPanel} from "../../components/TabPanel";
-import {VehicleProfilePageBasicInfo} from "./VehicleProfilePageBasicInfo";
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import {HeaderContainer} from "../../components/Vehicle/VehicleProfilePage/Header/HeaderContainer";
 
 interface RouteParams {
@@ -27,7 +23,7 @@ export const VehicleProfilePage = () => {
             .then(response => response.json())
             .then(data => setVehicle(data))
             .catch(error => console.error(error));
-    }, [id]);
+    }, []);
 
     if (!vehicle) {
         return <div>Ładowanie...</div>;
