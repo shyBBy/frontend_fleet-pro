@@ -40,7 +40,7 @@ export const VehicleTable = () => {
 
     const [inputVal, setInputVal] = useState(search);
 
-    const {isDeleting} = useContext(RemoveVehicleContext)
+    const {isDeleting, setIsDeleting} = useContext(RemoveVehicleContext)
 
     const setSearchFromLocalState = (e: SyntheticEvent) => {
         e.preventDefault();
@@ -122,7 +122,9 @@ export const VehicleTable = () => {
                     <TableBody>
                         {
                             vehiclesList.map(vehicle => (
-                                <VehicleSingleItem vehicle={vehicle} key={vehicle.id}/>
+                               
+                        <RemoveVehicleContext.Provider value={{isDeleting, setIsDeleting}}>                 <VehicleSingleItem vehicle={vehicle} key={vehicle.id}/>
+                        </RemoveVehicleContext.Provider>
                             ))
                         }
                     </TableBody>

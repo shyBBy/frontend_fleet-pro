@@ -17,11 +17,12 @@ export const VehicleSingleItem = (props: any) => {
 
     // const [isDeleting, setIsDeleting] = useState(false);
 
-    const {isDeleting, setIsDeleting} = useContext(RemoveVehicleContext)
+    const {setIsDeleting} = useContext(RemoveVehicleContext)
 
     const handleDelete = async () => {
         try {
             setIsDeleting(true);
+            setIsUpdated((prevState) => !prevState);
             const response = await fetch(`http://localhost:3002/vehicle/${vehicle.id}`, {
                 method: "DELETE",
                 credentials: 'include'
