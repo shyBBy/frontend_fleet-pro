@@ -22,7 +22,7 @@ export const VehicleSingleItem = (props: any) => {
     const handleDelete = async () => {
         try {
             setIsDeleting(true);
-            setIsUpdated((prevState) => !prevState);
+            // setIsUpdated((prevState) => !prevState);
             const response = await fetch(`http://localhost:3002/vehicle/${vehicle.id}`, {
                 method: "DELETE",
                 credentials: 'include'
@@ -90,7 +90,7 @@ export const VehicleSingleItem = (props: any) => {
                     <TableCell>{isValidInspection ? 'Aktualny' : 'Nieaktualny'}</TableCell>
                     <TableCell align="right">
                             <Tooltip title="Usuń pojazd">
-                                <IconButton onClick={handleDelete} disabled={isDeleting}>
+                                <IconButton onClick={handleDelete} >
                                     <DeleteIcon />
                                 </IconButton>
                             </Tooltip>

@@ -37,10 +37,9 @@ export const VehicleTable = () => {
     const [maxPage, setMaxPage] = useState(0)
     const [count, setCount] = useState(0);
     const [search, setSearch] = useState('')
-
     const [inputVal, setInputVal] = useState(search);
+    const {isDeleting} = useContext(RemoveVehicleContext)
 
-    const {isDeleting, setIsDeleting} = useContext(RemoveVehicleContext)
 
     const setSearchFromLocalState = (e: SyntheticEvent) => {
         e.preventDefault();
@@ -54,7 +53,6 @@ export const VehicleTable = () => {
                 credentials: 'include',
             })
             const data = await res.json()
-            console.log(data)
             setMaxPage(data.pagesCount)
             setVehiclesList(data.vehicles)
             setCount(data.resultsCount)
@@ -81,7 +79,6 @@ export const VehicleTable = () => {
 
     return (
         <>
-            is Deleting: {isDeleting}
             <Toolbar
                 sx={{
                     pl: {sm: 2},
@@ -122,9 +119,7 @@ export const VehicleTable = () => {
                     <TableBody>
                         {
                             vehiclesList.map(vehicle => (
-                               
-                        <RemoveVehicleContext.Provider value={{isDeleting, setIsDeleting}}>                 <VehicleSingleItem vehicle={vehicle} key={vehicle.id}/>
-                        </RemoveVehicleContext.Provider>
+                            <VehicleSingleItem vehicle={vehicle} key={vehicle.id}/>
                             ))
                         }
                     </TableBody>
