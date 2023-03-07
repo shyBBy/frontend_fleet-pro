@@ -36,7 +36,7 @@ export const AppBarMobileViewNavigationList = () => {
             </ListItemButton>
 
             <ListItemButton>
-                <Link key='employees'
+                <Link key='Employees'
                       to='/employees'
                 >
                     <ListItemIcon>
@@ -56,7 +56,7 @@ export const AppBarMobileViewNavigationList = () => {
             </ListItemButton>
 
             <ListItemButton>
-                <Link key='vehicles'
+                <Link key='Vehicles'
                       to='/vehicles'
                 >
                     <ListItemIcon>
@@ -76,7 +76,7 @@ export const AppBarMobileViewNavigationList = () => {
             </ListItemButton>
 
             <ListItemButton>
-                <Link key='places'
+                <Link key='Places'
                       to='/places'
                 >
                     <ListItemIcon>
@@ -96,7 +96,7 @@ export const AppBarMobileViewNavigationList = () => {
             </ListItemButton>
 
             <ListItemButton>
-                <Link key='settings'
+                <Link key='Settings'
                       to='/settings'
                 >
                     <ListItemIcon>
