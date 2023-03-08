@@ -24,7 +24,7 @@ import {VehicleTableOptions} from "./VehicleTableOptions";
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import {RemoveVehicleContext} from "../../context/RemoveVehicleContext";
-
+import { config } from "src/config/config";
 
 export const VehicleTable = () => {
     const [vehiclesList, setVehiclesList] = useState<GetListOfVehiclesResponse>([])
@@ -49,7 +49,7 @@ export const VehicleTable = () => {
     useEffect(() => {
         (async () => {
 
-            const res = await fetch(`http://localhost:3002/vehicle/list?page=${page}&count=${rowsPerPage}&order=${order}&search=${search}`, {
+            const res = await fetch(`${config.API_URL}/vehicle/list?page=${page}&count=${rowsPerPage}&order=${order}&search=${search}`, {
                 credentials: 'include',
             })
             const data = await res.json()

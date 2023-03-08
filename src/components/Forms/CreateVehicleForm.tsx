@@ -12,6 +12,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {createVehicleSchema} from "../../schemas/schema";
 import {VEHICLE_TYPE, VEHICLE_BRAND, VEHICLE_MODEL, DEPARTMENT_LOCATION} from 'types'
 import {toast} from "react-toastify";
+import {config} from '../../config/config'
 
 const defaultValues = {
     vehicleType: "",
@@ -48,7 +49,7 @@ export const CreateVehicleForm = () => {
 
     const onSubmit = async (data: any) => {
         try {
-            const res = await fetch("http://localhost:3002/vehicle/create", {
+            const res = await fetch(`${config.API_URL}/vehicle/create`, {
                 method: "POST",
                 credentials: 'include',
                 headers: {

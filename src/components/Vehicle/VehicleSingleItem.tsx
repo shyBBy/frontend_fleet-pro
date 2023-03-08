@@ -9,6 +9,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {VehicleInspection} from "../../helpers/VehicleInspection.helper";
 import {toast} from "react-toastify";
 import {RemoveVehicleContext} from "../../context/RemoveVehicleContext";
+import { config } from "src/config/config";
 
 
 
@@ -23,7 +24,7 @@ export const VehicleSingleItem = (props: any) => {
         try {
             setIsDeleting(true);
             // setIsUpdated((prevState) => !prevState);
-            const response = await fetch(`http://localhost:3002/vehicle/${vehicle.id}`, {
+            const response = await fetch(`${config.API_URL}/${vehicle.id}`, {
                 method: "DELETE",
                 credentials: 'include'
             });

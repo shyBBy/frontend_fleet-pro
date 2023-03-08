@@ -19,7 +19,7 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
 
     const signOut = async () => {
         try {
-            const res = await fetch(`http://localhost:3002/api/auth/logout`,
+            const res = await fetch(`${config.API_URL}/api/auth/logout`,
                 {
                     method: 'POST',
                     credentials: 'include',

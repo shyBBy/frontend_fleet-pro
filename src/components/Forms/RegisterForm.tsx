@@ -3,6 +3,7 @@ import { useForm , Controller} from 'react-hook-form';
 import {TextField, Button, Box, Grid, Link, FormControlLabel, FormGroup, FormHelperText} from '@mui/material'
 import {yupResolver} from "@hookform/resolvers/yup";
 import {loginSchema} from "../../schemas/schema";
+import {config} from '../../config/config'
 
 export const RegisterForm = () => {
   
@@ -26,7 +27,7 @@ export const RegisterForm = () => {
       const onSubmit = async (data: any) => {
         console.log(data);
         try {
-          const res = await fetch("http://localhost:3002/user/create", {
+          const res = await fetch(`${config.API_URL}/user/create`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

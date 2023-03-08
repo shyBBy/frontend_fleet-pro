@@ -14,7 +14,7 @@ import {Changelog} from "./Changelog/Changelog";
 import {DashboardLastVehicles} from "./DashboardLastVehicles/DashboardLastVehicles";
 import {GetListOfVehiclesResponse} from 'types'
 import {VehicleInspection} from "../../helpers/VehicleInspection.helper";
-
+import { config } from "src/config/config";
 
 
 // avatar style
@@ -45,7 +45,7 @@ export const Dashboard = () => {
   
       useEffect(() => {
         (async () => {
-          const res = await fetch('http://localhost:3002/vehicle/list?page=1', {
+          const res = await fetch(`${config.API_URL}vehicle/list?page=1`, {
                 credentials: 'include',
             })
             const data = await res.json()
