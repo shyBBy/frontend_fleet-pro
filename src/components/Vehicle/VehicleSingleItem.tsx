@@ -9,7 +9,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {VehicleInspection} from "../../helpers/VehicleInspection.helper";
 import {toast} from "react-toastify";
 import {RemoveVehicleContext} from "../../context/RemoveVehicleContext";
-import { config } from "src/config/config";
+import { config } from "../../config/config";
 
 
 

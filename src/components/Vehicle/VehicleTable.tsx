@@ -24,7 +24,7 @@ import {VehicleTableOptions} from "./VehicleTableOptions";
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import {RemoveVehicleContext} from "../../context/RemoveVehicleContext";
-import { config } from "src/config/config";
+import { config } from "../../config/config";
 
 export const VehicleTable = () => {
     const [vehiclesList, setVehiclesList] = useState<GetListOfVehiclesResponse>([])
