@@ -4,10 +4,10 @@ import {TextField, Button, Box, Grid, Link, FormControlLabel, FormGroup, FormHel
 import {yupResolver} from "@hookform/resolvers/yup";
 import {loginSchema} from "../../schemas/schema";
 import {config} from '../../config/config'
+import {toast} from "react-toastify";
 
 export const RegisterForm = () => {
-  
-  const [message, setMessage] = useState('');
+
   
     const {
         control,
@@ -34,13 +34,31 @@ export const RegisterForm = () => {
             },
             body: JSON.stringify(data),
           });
+
+            if (!res.ok) {
+                toast.error(`${data.message}`, {
+                    position: "bottom-right",
+                    theme: "light",
+                    autoClose: 2000,
+                })
+                return
+            }
           return res.json().then((data) => {
-            console.log(data.message); 
-            setMessage(data.message);
+              toast.success(`Pomyślnie utworzono konto.`, {
+                  position: "bottom-right",
+                  theme: "light",
+                  autoClose: 1500,
+              })
             return data; 
           });
         } catch (error) {
-          console.log(error);
+            toast.error('Coś poszło nie tak, spróbuj raz jeszcze.', {
+                position: 'bottom-right',
+                theme: 'light',
+                autoClose: 1500,
+            })
+            return
+
         }
       };
     
@@ -104,7 +122,6 @@ export const RegisterForm = () => {
       <Button type="submit" variant="contained" color="primary">
             Zarejestruj się
         </Button>
-        <p>{message}</p>
         <Grid container justifyContent="flex-end">
               <Grid item>
                 <Link href="/login" variant="body2">

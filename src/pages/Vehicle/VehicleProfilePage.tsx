@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import {MainLayout} from "../../layouts/MainLayout";
 import {Box, Grid, Paper} from "@mui/material";
 import {HeaderContainer} from "../../components/Vehicle/VehicleProfilePage/Header/HeaderContainer";
+import {config} from "../../config/config";
 
 interface RouteParams {
     id: string;
@@ -17,7 +18,7 @@ export const VehicleProfilePage = () => {
     console.log(id)
 
     useEffect(() => {
-        fetch(`http://localhost:3002/vehicle/${id}`, {
+        fetch(`${config.API_URL}/vehicle/${id}`, {
             credentials: 'include',
         })
             .then(response => response.json())

@@ -45,7 +45,7 @@ export const Dashboard = () => {
   
       useEffect(() => {
         (async () => {
-          const res = await fetch(`${config.API_URL}vehicle/list?page=1`, {
+          const res = await fetch(`${config.API_URL}/vehicle/list?page=1`, {
                 credentials: 'include',
             })
             const data = await res.json()
