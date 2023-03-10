@@ -25,6 +25,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import {RemoveVehicleContext} from "../../context/RemoveVehicleContext";
 import { config } from "../../config/config";
+import {useNavigate} from "react-router-dom";
 
 export const VehicleTable = () => {
     const [vehiclesList, setVehiclesList] = useState<GetListOfVehiclesResponse>([])
@@ -40,12 +41,14 @@ export const VehicleTable = () => {
     const [inputVal, setInputVal] = useState(search);
     const {isDeleting} = useContext(RemoveVehicleContext)
 
+    const navigate = useNavigate()
 
     const setSearchFromLocalState = (e: SyntheticEvent) => {
         e.preventDefault();
         setSearch(inputVal);
     };
 
+    //@TODO: Zrobić reagowanie na kazda zmiane stanu w 'search'
     useEffect(() => {
         (async () => {
 
@@ -86,8 +89,10 @@ export const VehicleTable = () => {
                 }}
             >
                 <Box>
-                    <form className="search" onSubmit={setSearchFromLocalState}>
-                        <TextField id="outlined-search" label={<SearchIcon/>} type="search" size="small" value={inputVal} onChange={e => setInputVal(e.target.value)}/>
+                    <form className="search" onSubmit={e => e.preventDefault()}>
+                        <TextField id="outlined-search" label={<SearchIcon/>} type="search" size="small" value={search} onChange={(e) => {
+                            setSearch(e.target.value)
+                        }}/>
                     </form>
                 </Box>
                 <Box>
