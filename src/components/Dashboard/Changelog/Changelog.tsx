@@ -45,9 +45,6 @@ export const Changelog = () => {
                         ))}
                     </TableBody>
                 </Table>
-                <Link color="primary" href="src/components/Dashboard/Changelog/Changelog#" onClick={preventDefault} sx={{ mt: 3 }}>
-                    Zobacz większą historię.
-                </Link>
             </React.Fragment>
         </>
     )

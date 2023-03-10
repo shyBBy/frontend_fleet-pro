@@ -47,15 +47,7 @@ export const HeaderContainer = (props: any) => {
                 </Grid>
             </Grid>
             <Grid container sx={{ backgroundColor: theme.palette.background.paper }} alignItems="center" justifyContent="center">
-                <Grid item xs={12} sx={{display: {xs: 'flex', md: 'none', lg: 'none', xl: 'none'}, justifyContent: 'center', alignItems: 'center'}}>
-                    <Box sx={{border: `solid 4px ${deepOrange[500]}`, borderRadius: '50%', margin: '2%'}}>
-                        <Avatar
-                            src={vehicle.photo}
-                            sx={{ width: 150, height: 150, border: `solid 4px`, borderColor: `rgb(255, 255, 255)` }}
-                        />
-                    </Box>
-                </Grid>
-                <Grid item xs={12} lg={6}>
+                <Grid item xs={11} lg={6}>
                     <Grid container >
                         <Grid item xs={4} lg={3} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <BasicInfoStack title={'Numer rejestracyjny'} description={vehicle.registerNumber}/>

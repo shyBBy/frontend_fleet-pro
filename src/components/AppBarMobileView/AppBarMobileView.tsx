@@ -1,8 +1,17 @@
 import {
-    Badge, Divider, IconButton, List,
-    Toolbar, Typography, Button, Tooltip, Avatar, Box, MenuItem, Menu
+    Avatar,
+    Badge,
+    Box,
+    Button,
+    Divider,
+    IconButton,
+    List,
+    Menu,
+    MenuItem,
+    Toolbar, Tooltip,
+    Typography
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, {useContext} from "react";
 import {AppBar, Drawer, MobileViewContext} from "../../context/MobileViewContext";
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -10,9 +19,10 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import Logo from '../../assets/img/logoLetter.png'
 import './AppBarMobileView.css'
 import {AppBarMobileViewNavigationList} from "./AppBarMobileViewNavigationList";
-import { useAuth } from "../../hooks/useAuth";
+import {useAuth} from "../../hooks/useAuth";
 import avatar from '../../assets/img/1.jpg';
 
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 
 
 export const AppBarMobileView = () => {
@@ -87,7 +97,9 @@ export const AppBarMobileView = () => {
                         variant="subtitle2"
                         >
                         </Typography>
-                        <Button onClick={signOut}>Wyloguj</Button>
+                        <Tooltip title={'Wyloguj'}>
+                            <Button onClick={signOut}><PowerSettingsNewIcon/></Button>
+                        </Tooltip>
                                 <Avatar alt={user?.name} src={avatar} />
                                 <Menu open={isMenuOpen} onClose={handleMenuClose}>
                                     <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
@@ -98,6 +110,7 @@ export const AppBarMobileView = () => {
                             </Badge>
                         </IconButton>
                     </Box>
+
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={mobileOpenSideBar}>

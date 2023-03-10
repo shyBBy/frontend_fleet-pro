@@ -13,6 +13,7 @@ import {createVehicleSchema} from "../../schemas/schema";
 import {VEHICLE_TYPE, VEHICLE_BRAND, VEHICLE_MODEL, DEPARTMENT_LOCATION} from 'types'
 import {toast} from "react-toastify";
 import {config} from '../../config/config'
+import {useNavigate} from "react-router-dom";
 
 const defaultValues = {
     vehicleType: "",
@@ -34,6 +35,8 @@ const defaultValues = {
 export const CreateVehicleForm = () => {
 
     const [message, setMessage] = useState('');
+
+    const navigate = useNavigate();
 
     const {
         control,
@@ -74,6 +77,7 @@ export const CreateVehicleForm = () => {
                     theme: "light",
                     autoClose: 1500,
                 })
+                navigate('/vehicles')
                 return data;
             });
         } catch (error) {

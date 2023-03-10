@@ -15,9 +15,9 @@ export const createVehicleSchema = yup.object().shape({
     lastDateOfVehicleInspection: yup.date().required('Data ostatniego badania technicznego jest wymagana.'),
     nextDateOfVehicleInspection: yup.date().required('Data następnego badania technicznego jest wymagana.'),
     photo: yup.string(),
-    vinNumber: yup.string().min(16, `Vin jest zbyt krótki.`).required('Numer VIN jest wymagany.'),
-    yearOfProduction: yup.string().required('Rok produkcji jest wymagany.'),
-    firstRegistrationDate: yup.string().required('Data pierwszej rejestracji jest wymagana.'),
+    vinNumber: yup.string().min(16, `Vin jest zbyt krótki.`).max(18, 'Vin jest zbyt długi.').required('Numer VIN jest wymagany.'),
+    yearOfProduction: yup.string().min(3, 'Rok jest niepoprawny.').max(5, 'Rok jest zbyt długi.').required('Rok produkcji jest wymagany.'),
+    firstRegistrationDate: yup.string().min(3, 'Rok jest niepoprawny.').max(5, 'Rok jest zbyt długi.').required('Data pierwszej rejestracji jest wymagana.'),
     policyNumber: yup.string().required('Numer polisy jest wymagany.'),
     placeName: yup.string().oneOf(['Łódź', 'Warszawa', 'Lipno', 'Leszno', 'Lębork', 'Lublin', 'Kielce', 'Zabrze', 'Tarnów'], 'Niepoprawna nazwa oddziału firmy.').required('Nazwa oddziału jest wymagana.')
 })

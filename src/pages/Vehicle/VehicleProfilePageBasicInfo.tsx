@@ -77,7 +77,7 @@ export const VehicleProfilePageBasicInfo = (props: any) => {
         <Grid item xs={12} md={5} lg={8}>
           <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', marginBottom: '3%' }}>
             <Typography variant="body1">Tytuł sekcji</Typography>
-            dupa
+            Coś tu będzie....
           </Paper>
           <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
             <Typography variant="body1">Galeria</Typography>

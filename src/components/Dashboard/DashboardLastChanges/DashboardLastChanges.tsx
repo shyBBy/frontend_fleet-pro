@@ -1,5 +1,4 @@
 import {
-    Avatar,
     List,
     ListItemAvatar,
     ListItemButton,
@@ -9,9 +8,8 @@ import {
     Typography
 } from "@mui/material";
 import React from "react";
-import { GiftOutlined} from '@ant-design/icons';
-import {data} from "../../../assets/data/lastAddedDrivers_data";
-
+import {data} from "../../../assets/data/lastChanges_data";
+import FiberNewIcon from '@mui/icons-material/FiberNew';
 
 // avatar style
 const avatarSX = {
@@ -30,8 +28,8 @@ const actionSX = {
     transform: 'none'
 };
 
-export const DashboardLastDriver = () => {
-    return(
+export const DashboardLastChanges = () => {
+    return (
         <>
             <List
                 component="nav"
@@ -41,27 +39,21 @@ export const DashboardLastDriver = () => {
                     '& .MuiListItemButton-root': {
                         py: 1.5,
                         '& .MuiAvatar-root': avatarSX,
-                        '& .MuiListItemSecondaryAction-root': { ...actionSX, position: 'relative' }
+                        '& .MuiListItemSecondaryAction-root': {...actionSX, position: 'relative'}
                     }
                 }}
             >
                 {data.map((item) => (
-                    <ListItemButton divider>
+                    <ListItemButton divider key={item.id}>
                         <ListItemAvatar>
-                            <Avatar
-                                sx={{
-                                    color: 'success.main',
-                                    bgcolor: 'success.lighter'
-                                }}
-                            >
-                                <GiftOutlined />
-                            </Avatar>
+                            <FiberNewIcon sx={{fontSize: 40, color: `grey`}}/>
                         </ListItemAvatar>
-                        <ListItemText primary={<Typography variant="subtitle1">{item.driverFullName}</Typography>} secondary={item.assignedToPlace} />
+                        <ListItemText primary={<Typography variant="overline">{item.title}</Typography>}
+                                      secondary={item.description}/>
                         <ListItemSecondaryAction>
                             <Stack alignItems="flex-end">
-                                <Typography variant="subtitle1" noWrap>
-                                    Dodany:
+                                <Typography variant="overline" noWrap>
+                                    Data:
                                 </Typography>
                                 <Typography variant="h6" color="secondary" noWrap>
                                     {item.date}

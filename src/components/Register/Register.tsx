@@ -23,7 +23,7 @@ export const Register = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            Rejestracja
           </Typography>
           <RegisterForm/>
         </Box>
