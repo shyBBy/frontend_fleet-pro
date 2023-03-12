@@ -5,6 +5,7 @@ import {MainLayout} from "../layouts/MainLayout";
 import {LoginPage} from "../pages/LoginPage";
 import {RegisterPage} from "../pages/RegisterPage";
 import {NotLogin} from "./NotLogin";
+import {ActivationPage} from "../pages/ActivationPage";
 
 export const UnAuthenticatedApp = () => {
 
@@ -15,6 +16,7 @@ export const UnAuthenticatedApp = () => {
                 <Routes>
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/activation" element={<ActivationPage/>}/>
                     <Route path='*' element={<NotLogin/>} />
                     <Route
                         path="*"

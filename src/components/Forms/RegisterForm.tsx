@@ -27,7 +27,6 @@ export const RegisterForm = () => {
     });
 
     const onSubmit = async (data: any) => {
-        console.log(data);
         try {
             const res = await fetch(`${config.API_URL}/user/create`, {
                 method: "POST",

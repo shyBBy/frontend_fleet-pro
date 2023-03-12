@@ -6,6 +6,11 @@ export const loginSchema = yup.object().shape({
     password: yup.string().min(8, `Hasło musi być dłuższe niż '8' znaków.`).required('Hasło jest wymagane.')
 })
 
+export const activationSchema = yup.object().shape({
+    email: yup.string().email(`E-mail musi zawierać w nazwie '@'`).required('E-mail jest wymagany.'),
+    activationCode: yup.string().min(6, 'Kod aktywacyjny jest zbyt krótki').max(8, 'Kod aktywacyjny jest zbyt długi').required('Kod aktywacyjny jest wymagany')
+})
+
 
 export const createVehicleSchema = yup.object().shape({
     vehicleType: yup.string().oneOf(['Osobowy', 'Dostawczy', 'inny'], 'Niepoprawny typ pojazdu.').required('Typ pojazdu jest wymagany.'),
