@@ -78,7 +78,6 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
             );
             if (!res.ok) {
                 const errorData = await res.json()
-                console.log(errorData)
                 toast.error(`${errorData.message}`, {
                     position: "bottom-right",
                     theme: "light",
@@ -95,7 +94,6 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 autoClose: 1500,
             })
         } catch(error) {
-            console.log(error)
             toast.error(`Coś poszło nie tak, spróbuj raz jeszcze.`, {
                 position: "bottom-right",
                 theme: "light",
