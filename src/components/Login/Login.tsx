@@ -1,36 +1,22 @@
 import React from "react";
-import {
-    Avatar,
-    Box,
-    Button,
-    Checkbox,
-    CssBaseline,
-    FormControlLabel,
-    Grid,
-    Link,
-    Paper,
-    TextField,
-    Typography
-} from "@mui/material";
+import {Box, CssBaseline, Grid, Paper} from "@mui/material";
 
 import logo from '../../assets/img/logoBlackv2.png'
 import bg from '../../assets/bg/group-trucks-parked-raow.jpg'
-import {Copyright} from "../../layouts/MainLayout";
-import { LoginForm } from "../Forms/LoginForm";
+import {LoginForm} from "../Forms/LoginForm";
 import {useAuth} from "../../hooks/useAuth";
-import {App} from "../../App";
-import {NotLogin} from "../../views/NotLogin";
+
 export const Login = () => {
 
-const {user} = useAuth()
+    const {user} = useAuth()
 
     if (!user) {
-        
+
     }
-    return(
+    return (
         <>
-            <Grid container component="main" sx={{ height: '100vh' }}>
-                <CssBaseline />
+            <Grid container component="main" sx={{height: '100vh'}}>
+                <CssBaseline/>
                 <Grid
                     item
                     xs={false}

@@ -45,12 +45,12 @@ export const RegisterForm = () => {
                 return
             }
             return res.json().then((data) => {
-                toast.success(`Pomyślnie utworzono konto.`, {
+                toast.success(`Pomyślnie utworzono konto, sprawdź pocztę e-mail.`, {
                     position: "bottom-right",
                     theme: "light",
                     autoClose: 1500,
                 })
-                navigate('/login');
+                navigate('/activation');
                 return data;
             });
         } catch (error) {

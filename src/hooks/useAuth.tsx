@@ -77,7 +77,9 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 },
             );
             if (!res.ok) {
-                toast.error('Błędny e-mail lub hasło, spróbuj raz jeszcze.', {
+                const errorData = await res.json()
+                console.log(errorData)
+                toast.error(`${errorData.message}`, {
                     position: "bottom-right",
                     theme: "light",
                     autoClose: 2000,
@@ -92,7 +94,13 @@ export const AuthProvider = ({children}: {children: JSX.Element}) => {
                 theme: "light",
                 autoClose: 1500,
             })
-        } catch (error) {
+        } catch(error) {
+            console.log(error)
+            toast.error(`Coś poszło nie tak, spróbuj raz jeszcze.`, {
+                position: "bottom-right",
+                theme: "light",
+                autoClose: 2000,
+            })
             setUser(null);
         }
     };
