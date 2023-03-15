@@ -4,7 +4,7 @@ import React from "react";
 
 export interface MainCardPropInterface {
     title?: string,
-    count?: number,
+    count?: number | string | boolean
     color?: string,
     direction?: string,
     spacing?: string | number,
@@ -15,9 +15,10 @@ export interface MainCardPropInterface {
 }
 
 export interface BasicInfoStackInterface {
-    title?: string,
-    description?: string | number,
+    model?: string,
+    name?: string,
     icon?: any,
+    registerNumber?: string,
 }
 
 export interface TabPanelProps {

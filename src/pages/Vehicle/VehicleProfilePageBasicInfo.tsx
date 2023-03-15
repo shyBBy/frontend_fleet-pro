@@ -1,6 +1,6 @@
 import React from 'react'
 import {Avatar, Box, Grid, Paper, Tooltip, Typography} from "@mui/material";
-import {StackListInformation} from "../../components/Vehicle/VehicleProfilePage/Main/StackListInformation";
+import {StackListInformation} from "../../components/Vehicle/VehicleProfilePage/StackListInformation/StackListInformation";
 
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';

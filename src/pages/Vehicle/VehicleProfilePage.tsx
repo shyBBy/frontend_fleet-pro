@@ -5,6 +5,7 @@ import {MainLayout} from "../../layouts/MainLayout";
 import {Box, Grid, Paper} from "@mui/material";
 import {HeaderContainer} from "../../components/Vehicle/VehicleProfilePage/Header/HeaderContainer";
 import {config} from "../../config/config";
+import {MainContent} from "../../components/Vehicle/VehicleProfilePage/MainContent/MainContent";
 
 interface RouteParams {
     id: string;
@@ -14,7 +15,7 @@ export const VehicleProfilePage = () => {
 
     const [vehicle, setVehicle] = useState<GetOneVehResponse | null>(null);
 
-    const { id } = useParams<{ id?: string }>()
+    const {id} = useParams<{ id?: string }>()
     console.log(id)
 
     useEffect(() => {
@@ -33,11 +34,8 @@ export const VehicleProfilePage = () => {
         <>
             <MainLayout>
                 <>
-                    <Grid item xs={12}>
-                        <HeaderContainer vehicle={vehicle}/>
-                    </Grid>
-                    <Grid item xs={12}>
-                    </Grid>
+                    <HeaderContainer vehicle={vehicle}/>
+                    <MainContent/>
                 </>
             </MainLayout>
         </>
