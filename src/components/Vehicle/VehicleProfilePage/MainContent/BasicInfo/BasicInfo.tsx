@@ -11,6 +11,7 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import DeviceUnknownIcon from '@mui/icons-material/DeviceUnknown';
 import ShieldIcon from '@mui/icons-material/Shield';
 import AddRoadIcon from '@mui/icons-material/AddRoad';
+import {brown, cyan, deepOrange, indigo, lightBlue, lightGreen, lime, purple, teal, yellow} from "@mui/material/colors";
 
 export const BasicInfo = (props: any) => {
     const {vehicle} = props
@@ -19,8 +20,8 @@ export const BasicInfo = (props: any) => {
             <Grid container spacing={3}>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
-                            <Icon><DirectionsCarIcon/></Icon>
+                        <Avatar sx={{bgcolor: lightGreen[500]}}>
+                            <Icon><DirectionsCarIcon /></Icon>
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Marka</Typography>
@@ -30,7 +31,7 @@ export const BasicInfo = (props: any) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
+                        <Avatar sx={{bgcolor: cyan[500]}}>
                             <Icon><DirectionsCarIcon/></Icon>
                         </Avatar>
                         <Stack>
@@ -41,7 +42,7 @@ export const BasicInfo = (props: any) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
+                        <Avatar sx={{bgcolor: teal[500]}}>
                             <Icon><PinIcon/></Icon>
                         </Avatar>
                         <Stack>
@@ -52,7 +53,7 @@ export const BasicInfo = (props: any) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
+                        <Avatar sx={{bgcolor: purple[500]}}>
                             <Icon><CalendarMonthIcon/></Icon>
                         </Avatar>
                         <Stack>
@@ -63,7 +64,7 @@ export const BasicInfo = (props: any) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
+                        <Avatar sx={{bgcolor: indigo[500]}}>
                             <Icon><CalendarMonthIcon/></Icon>
                         </Avatar>
                         <Stack>
@@ -74,7 +75,7 @@ export const BasicInfo = (props: any) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
+                        <Avatar sx={{bgcolor: lime[500]}}>
                             <Icon><DeviceUnknownIcon/></Icon>
                         </Avatar>
                         <Stack>
@@ -85,7 +86,7 @@ export const BasicInfo = (props: any) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
+                        <Avatar sx={{bgcolor: brown[500]}}>
                             <Icon><PinIcon/></Icon>
                         </Avatar>
                         <Stack>
@@ -96,7 +97,7 @@ export const BasicInfo = (props: any) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
+                        <Avatar sx={{bgcolor: deepOrange[500]}}>
                             <Icon><ShieldIcon/></Icon>
                         </Avatar>
                         <Stack>
@@ -107,7 +108,7 @@ export const BasicInfo = (props: any) => {
                 </Grid>
                 <Grid item xs={12} md={7} lg={4}>
                     <Stack direction="row" spacing={2} alignItems="center">
-                        <Avatar>
+                        <Avatar sx={{bgcolor: lightBlue[500]}}>
                             <Icon><AddRoadIcon/></Icon>
                         </Avatar>
                         <Stack>

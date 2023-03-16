@@ -1,30 +1,18 @@
-import React, {useEffect, useState, useContext, SyntheticEvent} from "react";
+import React, {SyntheticEvent, useContext, useEffect, useState} from "react";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import Table from "@mui/material/Table";
-import {useTheme} from '@mui/material/styles';
 import {GetListOfVehiclesResponse} from 'types'
 import {VehicleSingleItem} from "./VehicleSingleItem";
-import {
-    Box,
-    FormControl,
-    IconButton,
-    InputLabel,
-    MenuItem,
-    Select,
-    SelectChangeEvent,
-    TablePagination,
-    TextField,
-    Menu, Typography, Grid, Popover, Toolbar, Tooltip, TableContainer
-} from "@mui/material";
+import {Box, IconButton, TableContainer, TextField, Toolbar, Tooltip} from "@mui/material";
 
 import {VehicleTableOptions} from "./VehicleTableOptions";
 import SearchIcon from '@mui/icons-material/Search';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import {RemoveVehicleContext} from "../../context/RemoveVehicleContext";
-import { config } from "../../config/config";
+import {config} from "../../config/config";
 import {useNavigate} from "react-router-dom";
 
 export const VehicleTable = () => {
@@ -90,9 +78,10 @@ export const VehicleTable = () => {
             >
                 <Box>
                     <form className="search" onSubmit={e => e.preventDefault()}>
-                        <TextField id="outlined-search" label={<SearchIcon/>} type="search" size="small" value={search} onChange={(e) => {
-                            setSearch(e.target.value)
-                        }}/>
+                        <TextField id="outlined-search" label={<SearchIcon/>} type="search" size="small" value={search}
+                                   onChange={(e) => {
+                                       setSearch(e.target.value)
+                                   }}/>
                     </form>
                 </Box>
                 <Box>
@@ -101,7 +90,7 @@ export const VehicleTable = () => {
                 <Box>
                     <Tooltip title="Filtry">
                         <IconButton>
-                            <FilterListIcon />
+                            <FilterListIcon/>
                         </IconButton>
                     </Tooltip>
                 </Box>
@@ -124,7 +113,7 @@ export const VehicleTable = () => {
                     <TableBody>
                         {
                             vehiclesList.map(vehicle => (
-                            <VehicleSingleItem vehicle={vehicle} key={vehicle.id}/>
+                                <VehicleSingleItem vehicle={vehicle} key={vehicle.id}/>
                             ))
                         }
                     </TableBody>
