@@ -35,7 +35,7 @@ export const VehicleProfilePage = () => {
             <MainLayout>
                 <>
                     <HeaderContainer vehicle={vehicle}/>
-                    <MainContent/>
+                    <MainContent vehicle={vehicle} />
                 </>
             </MainLayout>
         </>

@@ -2,7 +2,8 @@ import React from "react";
 import {IconButton, ListItem, ListItemText} from "@mui/material";
 import {List} from "@mui/icons-material";
 
-export const TechnicalData = () => {
+export const TechnicalData = (props: any) => {
+    const {vehicle} = props
     return(
         <>
             <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
