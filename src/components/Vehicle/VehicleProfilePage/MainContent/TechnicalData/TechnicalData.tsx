@@ -36,6 +36,11 @@ export const TechnicalData = (props: PropsInterface) => {
     const {data} = props
 
     const technicalData = data[0]
+    
+    
+    if(data.length === 0) {
+      return   <Typography variant="subtitle2" color="textSecondary">Brak technicznych danych pojazdu, proszę uzupełnij je.</Typography>
+    }
 
 
     return (
