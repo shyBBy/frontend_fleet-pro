@@ -55,14 +55,6 @@ export const VehicleTable = () => {
         setPage(p)
     }
 
-    // const handleChangeRows = (e: any, count: any) => {
-    //
-    //     setRowsPerPage(count)
-    // }
-    // const handleRowsPerPageChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    //     setRowsPerPage(event.target.value as number);
-    // };
-
 
     if (vehiclesList === null) {
         return <p>Wczytywanie...</p>

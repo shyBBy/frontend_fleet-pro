@@ -6,7 +6,6 @@ import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
 import {Avatar, TableContainer} from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import Link from "@mui/material/Link";
 import {data} from "../../../assets/data/changelog_data";
 
 
@@ -18,7 +17,7 @@ function preventDefault(event: React.MouseEvent) {
 export const Changelog = () => {
 
 
-    return(
+    return (
         <>
             <TableContainer>
                 <Table size="small">
@@ -34,8 +33,8 @@ export const Changelog = () => {
                     <TableBody>
                         {data.map((row) => (
                             <TableRow key={row.id}>
-                                <TableCell><Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                                    <LocalShippingIcon />
+                                <TableCell><Avatar sx={{m: 1, bgcolor: 'secondary.main'}}>
+                                    <LocalShippingIcon/>
                                 </Avatar></TableCell>
                                 <TableCell>{row.title}</TableCell>
                                 <TableCell>{row.reason}</TableCell>

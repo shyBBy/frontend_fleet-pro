@@ -6,10 +6,17 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import TimeToLeaveIcon from "@mui/icons-material/TimeToLeave";
 import BusinessIcon from "@mui/icons-material/Business";
 import SettingsIcon from "@mui/icons-material/Settings";
+import {useAuth} from "../../hooks/useAuth";
+import {isAdmin} from "../../helpers/isAdmin.helper";
+import {AdminNavigationList} from "./AdminNavigationList";
 
 
 
 export const AppBarMobileViewNavigationList = () => {
+
+    const {user} = useAuth()
+
+
 
     const location = useLocation()
     const navigation = useNavigate()
@@ -35,25 +42,25 @@ export const AppBarMobileViewNavigationList = () => {
                 </Link>
             </ListItemButton>
 
-            <ListItemButton>
-                <Link key='Employees'
-                      to='/employees'
-                >
-                    <ListItemIcon>
-                        <PeopleAltIcon className={
-                            location.pathname.includes('/employees') ? "active" : "inactive"
-                        } />
-                    </ListItemIcon>
-                </Link>
-                <Link key='employees'
-                      to='/employees'
-                      style={{textDecoration: 'none'}}
-                      className={
-                          location.pathname.includes('/employees') ? "active" : "inactive"
-                      }>
-                    <ListItemText primary="Pracownicy" />
-                </Link>
-            </ListItemButton>
+            {/*<ListItemButton>*/}
+            {/*    <Link key='Employees'*/}
+            {/*          to='/employees'*/}
+            {/*    >*/}
+            {/*        <ListItemIcon>*/}
+            {/*            <PeopleAltIcon className={*/}
+            {/*                location.pathname.includes('/employees') ? "active" : "inactive"*/}
+            {/*            } />*/}
+            {/*        </ListItemIcon>*/}
+            {/*    </Link>*/}
+            {/*    <Link key='employees'*/}
+            {/*          to='/employees'*/}
+            {/*          style={{textDecoration: 'none'}}*/}
+            {/*          className={*/}
+            {/*              location.pathname.includes('/employees') ? "active" : "inactive"*/}
+            {/*          }>*/}
+            {/*        <ListItemText primary="Pracownicy" />*/}
+            {/*    </Link>*/}
+            {/*</ListItemButton>*/}
 
             <ListItemButton>
                 <Link key='Vehicles'
@@ -75,47 +82,47 @@ export const AppBarMobileViewNavigationList = () => {
                 </Link>
             </ListItemButton>
 
-            <ListItemButton>
-                <Link key='Places'
-                      to='/places'
-                >
-                    <ListItemIcon>
-                        <BusinessIcon className={
-                            location.pathname.includes('/places') ? "active" : "inactive"
-                        } />
-                    </ListItemIcon>
-                </Link>
-                <Link key='places'
-                      to='/places'
-                      style={{textDecoration: 'none'}}
-                      className={
-                          location.pathname.includes('/places') ? "active" : "inactive"
-                      }>
-                    <ListItemText primary="Oddziały" />
-                </Link>
-            </ListItemButton>
+            {/*<ListItemButton>*/}
+            {/*    <Link key='Places'*/}
+            {/*          to='/places'*/}
+            {/*    >*/}
+            {/*        <ListItemIcon>*/}
+            {/*            <BusinessIcon className={*/}
+            {/*                location.pathname.includes('/places') ? "active" : "inactive"*/}
+            {/*            } />*/}
+            {/*        </ListItemIcon>*/}
+            {/*    </Link>*/}
+            {/*    <Link key='places'*/}
+            {/*          to='/places'*/}
+            {/*          style={{textDecoration: 'none'}}*/}
+            {/*          className={*/}
+            {/*              location.pathname.includes('/places') ? "active" : "inactive"*/}
+            {/*          }>*/}
+            {/*        <ListItemText primary="Oddziały" />*/}
+            {/*    </Link>*/}
+            {/*</ListItemButton>*/}
 
-            <ListItemButton>
-                <Link key='Settings'
-                      to='/settings'
-                >
-                    <ListItemIcon>
-                        <SettingsIcon className={
-                            location.pathname.includes('/settings') ? "active" : "inactive"
-                        } />
-                    </ListItemIcon>
-                </Link>
-                <Link key='settings'
-                      to='/settings'
-                      style={{textDecoration: 'none'}}
-                      className={
-                          location.pathname.includes('/settings') ? "active" : "inactive"
-                      }>
-                    <ListItemText primary="Ustawienia" />
-                </Link>
-            </ListItemButton>
+            {/*<ListItemButton>*/}
+            {/*    <Link key='Settings'*/}
+            {/*          to='/settings'*/}
+            {/*    >*/}
+            {/*        <ListItemIcon>*/}
+            {/*            <SettingsIcon className={*/}
+            {/*                location.pathname.includes('/settings') ? "active" : "inactive"*/}
+            {/*            } />*/}
+            {/*        </ListItemIcon>*/}
+            {/*    </Link>*/}
+            {/*    <Link key='settings'*/}
+            {/*          to='/settings'*/}
+            {/*          style={{textDecoration: 'none'}}*/}
+            {/*          className={*/}
+            {/*              location.pathname.includes('/settings') ? "active" : "inactive"*/}
+            {/*          }>*/}
+            {/*        <ListItemText primary="Ustawienia" />*/}
+            {/*    </Link>*/}
+            {/*</ListItemButton>*/}
             <Divider sx={{ my: 1 }} />
-            {/*<p>ADMIN LIST MENU?</p>*/}
+            {isAdmin(user?.role)? <AdminNavigationList/> : null}
         </React.Fragment>
     )
 }

@@ -26,3 +26,9 @@ export const createVehicleSchema = yup.object().shape({
     policyNumber: yup.string().required('Numer polisy jest wymagany.'),
     placeName: yup.string().oneOf(['Łódź', 'Warszawa', 'Lipno', 'Leszno', 'Lębork', 'Lublin', 'Kielce', 'Zabrze', 'Tarnów'], 'Niepoprawna nazwa oddziału firmy.').required('Nazwa oddziału jest wymagana.')
 })
+
+
+export const addLastChangesSchema = yup.object().shape({
+    title: yup.string().required('Tytuł jest wymagany'),
+    description: yup.string().required('Opis wymagany')
+})
