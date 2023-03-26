@@ -14,8 +14,8 @@ import VehicleEngineIcon from "../../../../../assets/icons/vehicleProfile/icons8
 import VehicleCapacityIcon from '../../../../../assets/icons/vehicleProfile/icons8-truck-weight-max-loading-50.png'
 import VehicleAxelIcon from '../../../../../assets/icons/vehicleProfile/icons8-4wd-50.png'
 
-//@TODO: docimportu ponizsza ikona, zmiana nazwy pliku
-import VehicleWeightIcon from '../../../../../assets/icons/vehicleProfile/icons8-engine-50.png'
+
+import VehicleWeightIcon from '../../../../../assets/icons/vehicleProfile/icons8-weight-kg-50.png'
 
 
 import VehicleTrailerIcon from '../../../../../assets/icons/vehicleProfile/icons8-trailer-50.png'

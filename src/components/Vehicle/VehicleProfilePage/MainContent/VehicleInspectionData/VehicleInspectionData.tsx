@@ -5,7 +5,8 @@ import {deepOrange, lightGreen, red} from "@mui/material/colors";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import {VehicleInspection} from "../../../../../helpers/VehicleInspection.helper";
 
-import VehicleInspectionIcon from '@mui/icons-material/Assignment';
+
+import VehicleInspectionIcon from "../../../../../assets/icons/vehicleProfile/icons8-driving-guidelines-50.png";
 
 export const VehicleInspectionData = (props: any) => {
 
@@ -43,7 +44,7 @@ export const VehicleInspectionData = (props: any) => {
                             <Icon><img style={{width: '100%'}} src={VehicleInspectionIcon}/></Icon>
                         </Avatar>
                         <Stack>
-                            <Typography variant="subtitle2" color="textSecondary">Ważność przeglądu</Typography>
+                            <Typography variant="subtitle2" color="textSecondary">Przegląd</Typography>
                             <Typography>{validInspection? 'Aktualny' : 'Brak przeglądu'}</Typography>
                         </Stack>
                     </Stack>
