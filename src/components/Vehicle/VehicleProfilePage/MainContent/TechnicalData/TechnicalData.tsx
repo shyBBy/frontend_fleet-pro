@@ -13,7 +13,11 @@ import Co2Icon from '@mui/icons-material/Co2';
 import VehicleEngineIcon from "../../../../../assets/icons/vehicleProfile/icons8-engine-50.png";
 import VehicleCapacityIcon from '../../../../../assets/icons/vehicleProfile/icons8-truck-weight-max-loading-50.png'
 import VehicleAxelIcon from '../../../../../assets/icons/vehicleProfile/icons8-4wd-50.png'
-import VehicleWeightIcon from '../../../../../assets/icons/vehicleProfile/icons8-weight-kg-50.png'
+
+//@TODO: docimportu ponizsza ikona, zmiana nazwy pliku
+import VehicleWeightIcon from '../../../../../assets/icons/vehicleProfile/icons8-engine-50.png'
+
+
 import VehicleTrailerIcon from '../../../../../assets/icons/vehicleProfile/icons8-trailer-50.png'
 import VehicleTruckWidthIcon from '../../../../../assets/icons/vehicleProfile/icons8-truck-width-50.png'
 import VehicleFuelUsageIcon from '../../../../../assets/icons/vehicleProfile/icons8-full-tank-50.png'
