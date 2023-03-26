@@ -5,8 +5,7 @@ import {deepOrange, lightGreen, red} from "@mui/material/colors";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
 import {VehicleInspection} from "../../../../../helpers/VehicleInspection.helper";
 
-
-import VehicleInspectionIcon from "../../../../../assets/icons/vehicleProfile/icons8-driving-guidelines-50.png";
+import VehicleInspectionIcon from '@mui/icons-material/Assignment';
 
 export const VehicleInspectionData = (props: any) => {
 
