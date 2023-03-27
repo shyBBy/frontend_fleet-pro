@@ -89,7 +89,7 @@ export const DashboardLastChanges = () => {
                                 <Typography variant="overline" noWrap>
                                     Data:
                                 </Typography>
-                                <Typography variant="overline " color="secondary" noWrap>
+                                <Typography variant="overline" color="secondary" noWrap>
                                     {item.addedDate}
                                 </Typography>
                                 <Typography variant="overline" noWrap>
