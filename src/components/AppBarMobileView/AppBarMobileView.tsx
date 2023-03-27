@@ -23,6 +23,7 @@ import {useAuth} from "../../hooks/useAuth";
 import avatar from '../../assets/img/1.jpg';
 
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { Link } from "react-router-dom";
 
 
 export const AppBarMobileView = () => {
@@ -100,7 +101,11 @@ export const AppBarMobileView = () => {
                         <Tooltip title={'Wyloguj'}>
                             <Button onClick={signOut}><PowerSettingsNewIcon/></Button>
                         </Tooltip>
-                                <Avatar alt={user?.name} src={avatar} />
+                        <Tooltip title={'Profil użytkownika'}>
+                                <Link to={`/user/${user?.id}`}>
+                                    <Avatar alt={user?.name} src={avatar} />
+                                </Link>
+                        </Tooltip>
                                 <Menu open={isMenuOpen} onClose={handleMenuClose}>
                                     <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
                                 </Menu>

@@ -10,6 +10,7 @@ import {VehiclesPage} from "../pages/Vehicle/VehiclesPage";
 import {PlacesPage} from "../pages/Place/PlacesPage";
 import {SettingsPage} from "../pages/SettingsPage";
 import {VehicleProfilePage} from "../pages/Vehicle/VehicleProfilePage";
+import {UserProfilePage} from "../pages/User/UserProfilePage";
 import {AdminPage} from "../pages/AdminPage";
 
 export const AuthenticatedApp = () => {
@@ -23,6 +24,7 @@ export const AuthenticatedApp = () => {
                     {/*<Route path="/employees" element={<EmployeesPage />} />*/}
                     <Route path="/vehicles" element={<VehiclesPage />} />
                     <Route path="/vehicle/:id" element={<VehicleProfilePage/>} />
+                    <Route path="/user/:id" element={<UserProfilePage/>} />
                     {/*<Route path="/places" element={<PlacesPage />} />*/}
                     {/*<Route path="/settings" element={<SettingsPage />} />*/}
                     <Route path='/admin' element={<AdminPage/>}/>

@@ -16,7 +16,7 @@ export const VehicleProfilePage = () => {
     const [vehicle, setVehicle] = useState<GetOneVehResponse | null>(null);
 
     const {id} = useParams<{ id?: string }>()
-    console.log(id)
+
 
     useEffect(() => {
         fetch(`${config.API_URL}/vehicle/${id}`, {
