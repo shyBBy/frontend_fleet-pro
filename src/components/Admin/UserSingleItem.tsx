@@ -58,7 +58,7 @@ export const UserSingleItem = (props: any) => {
                             <DeleteIcon/>
                         </IconButton>
                     </Tooltip>
-                    <Link to={`/user/profile/${user.id}`}>
+                    <Link to={`/user/${user.id}`}>
                         <Tooltip title="Profil użytkownika">
                             <IconButton>
                                 <PersonIcon/>

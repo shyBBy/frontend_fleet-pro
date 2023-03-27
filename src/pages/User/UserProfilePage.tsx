@@ -31,6 +31,7 @@ export const UserProfilePage = () => {
             <MainLayout>
                 <>
                     Uzytkownik o id: {user.id}
+                    
                 </>
             </MainLayout>
         </>
