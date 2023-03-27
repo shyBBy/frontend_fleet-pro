@@ -82,14 +82,14 @@ export const DashboardLastChanges = () => {
                         <ListItemAvatar>
                             <FiberNewIcon sx={{fontSize: 40, color: `grey`}}/>
                         </ListItemAvatar>
-                        <ListItemText primary={<Typography variant="overline">{item.title}</Typography>}
+                        <ListItemText sx={{paddingRight: `10%`}} primary={<Typography variant="overline">{item.title}</Typography>}
                                       secondary={item.description}/>
                         <ListItemSecondaryAction>
                             <Stack alignItems="flex-end">
                                 <Typography variant="overline" noWrap>
                                     Data:
                                 </Typography>
-                                <Typography variant="h6" color="secondary" noWrap>
+                                <Typography variant="overline " color="secondary" noWrap>
                                     {item.addedDate}
                                 </Typography>
                                 <Typography variant="overline" noWrap>
