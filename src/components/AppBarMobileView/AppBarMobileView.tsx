@@ -122,12 +122,12 @@ export const AppBarMobileView = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-                 <MenuItem key={profile} onClick={handleCloseUserMenu}>
+                 <MenuItem key='profile' onClick={handleCloseUserMenu}>
                  <Link to={`/user/${user?.id}`}>
                   <Typography textAlign="center">Profil użytkownika</Typography>
                   </Link>
                 </MenuItem>
-                <MenuItem key={logout} onClick={handleCloseUserMenu}>
+                <MenuItem key='logout' onClick={handleCloseUserMenu}>
                   <Typography textAlign="center"><Button onClick={signOut}><PowerSettingsNewIcon/></Button></Typography>
                 </MenuItem>
              
