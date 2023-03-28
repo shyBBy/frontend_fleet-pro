@@ -93,22 +93,38 @@ export const AppBarMobileView = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
-                        <Typography
-                        component="p"
-                        variant="subtitle2"
-                        >
-                        </Typography>
-                        <Tooltip title={'Wyloguj'}>
-                            <Button onClick={signOut}><PowerSettingsNewIcon/></Button>
-                        </Tooltip>
-                        <Tooltip title={'Profil użytkownika'}>
-                                <Link to={`/user/${user?.id}`}>
-                                    <Avatar alt={user?.name} src={avatar} />
-                                </Link>
-                        </Tooltip>
-                                <Menu open={isMenuOpen} onClose={handleMenuClose}>
-                                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                                </Menu>
+                    <Tooltip title="Opcje">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src={avatar} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+                 <MenuItem key={profile} onClick={handleCloseUserMenu}>
+                 <Link to={`/user/${user?.id}`}>
+                  <Typography textAlign="center">Profil użytkownika</Typography>
+                  </Link>
+                </MenuItem>
+                <MenuItem key={logout} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center"><Button onClick={signOut}><PowerSettingsNewIcon/></Button></Typography>
+                </MenuItem>
+             
+            </Menu>
+            
                         <IconButton color="inherit">
                             <Badge badgeContent={4} color="secondary">
                                 <NotificationsIcon />
