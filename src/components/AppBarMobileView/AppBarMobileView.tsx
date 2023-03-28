@@ -23,10 +23,13 @@ import {useAuth} from "../../hooks/useAuth";
 import avatar from '../../assets/img/1.jpg';
 
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { Link } from "react-router-dom";
 
 
 export const AppBarMobileView = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
 
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
@@ -42,6 +45,12 @@ export const AppBarMobileView = () => {
         setAnchorEl(null);
         handleMobileMenuClose();
     };
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
     const {user, signOut} = useAuth()
 
@@ -92,23 +101,33 @@ export const AppBarMobileView = () => {
                     </Typography>
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
-                        <Typography
-                        component="p"
-                        variant="subtitle2"
-                        >
-                        </Typography>
-                        <Tooltip title={'Wyloguj'}>
-                            <Button onClick={signOut}><PowerSettingsNewIcon/></Button>
-                        </Tooltip>
-                                <Avatar alt={user?.name} src={avatar} />
-                                <Menu open={isMenuOpen} onClose={handleMenuClose}>
-                                    <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-                                </Menu>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
+                    <Tooltip title="Opcje">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Remy Sharp" src={avatar} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: '45px' }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+                 <MenuItem key='profile' component={Link} to={`/user/${user?.id}`} onClick={handleCloseUserMenu}> Mój profil
+                </MenuItem>
+                <MenuItem key='logout' onClick={() => {handleCloseUserMenu(); signOut(); }}>Wyloguj
+                </MenuItem>
+             
+            </Menu>
                     </Box>
 
                 </Toolbar>

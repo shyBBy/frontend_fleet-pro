@@ -52,30 +52,6 @@ export const VehicleSingleItem = (props: any) => {
     const isValidInspection = VehicleInspection.checkIsValid(vehicle.lastDateOfVehicleInspection, vehicle.nextDateOfVehicleInspection)
 
 
-    // Funkcja obsługująca kliknięcie w przycisk usuwania
-    // const handleRemoveClick = async (e: React.MouseEvent<HTMLButtonElement>, vehicleId: string, registerNumber: string) => {
-    //     e.preventDefault();
-    //     try {
-    //         await fetch(`http://localhost:3002/vehicle/${vehicleId}`, {
-    //             method: 'DELETE',
-    //             credentials: 'include',
-    //         });
-    //         toast.success(`Pomyślnie usunięto pojazd: ${registerNumber}`, {
-    //             position: "bottom-right",
-    //             theme: "light",
-    //             autoClose: 1500,
-    //         });
-    //     } catch (error) {
-    //         console.error(error);
-    //         toast.error('Wystąpił błąd podczas usuwania pojazdu', {
-    //             position: "bottom-right",
-    //             theme: "light",
-    //             autoClose: 1500,
-    //         });
-    //     }
-    //
-    //     }
-
     return(
         <>
                 <TableRow>
@@ -91,7 +67,7 @@ export const VehicleSingleItem = (props: any) => {
                     <TableCell>{isValidInspection ? 'Aktualny' : 'Nieaktualny'}</TableCell>
                     <TableCell align="right">
                             <Tooltip title="Usuń pojazd">
-                                <IconButton onClick={handleDelete} >
+                                <IconButton onClick={handleDelete}>
                                     <DeleteIcon />
                                 </IconButton>
                             </Tooltip>

@@ -26,3 +26,31 @@ export const createVehicleSchema = yup.object().shape({
     policyNumber: yup.string().required('Numer polisy jest wymagany.'),
     placeName: yup.string().oneOf(['Łódź', 'Warszawa', 'Lipno', 'Leszno', 'Lębork', 'Lublin', 'Kielce', 'Zabrze', 'Tarnów'], 'Niepoprawna nazwa oddziału firmy.').required('Nazwa oddziału jest wymagana.')
 })
+
+
+export const addLastChangesSchema = yup.object().shape({
+    title: yup.string().required('Tytuł jest wymagany'),
+    description: yup.string().required('Opis wymagany')
+})
+
+
+export const AddVehicleTechnicalData = yup.object().shape({
+    engineCapacity: yup.string().required('To pole jest wymagane'),
+    enginePower: yup.string().required('To pole jest wymagane'),
+    fuel: yup.string().required('To pole jest wymagane'),
+    alternativeFuel: yup.string(),
+    CO2Emission: yup.string().required('To pole jest wymagane'),
+    avgFuelConsumption: yup.string().required('To pole jest wymagane'),
+    totalSeats: yup.string().required('To pole jest wymagane'),
+    seatedSeats: yup.string().required('To pole jest wymagane'),
+    vehicleWeight: yup.string().required('To pole jest wymagane'),
+    maxTrailerWeightWithBrakes: yup.string().required('To pole jest wymagane'),
+    maxTrailerWeightWithoutBrakes: yup.string().required('To pole jest wymagane'),
+    payload: yup.string().required('To pole jest wymagane'),
+    grossWeight: yup.string().required('To pole jest wymagane'),
+    numberOfAxles: yup.string().required('To pole jest wymagane'),
+    axleSpacing: yup.string().required('To pole jest wymagane'),
+    wheelSpacing: yup.string().required('To pole jest wymagane'),
+    maxAxleLoad: yup.string().required('To pole jest wymagane'),
+
+})

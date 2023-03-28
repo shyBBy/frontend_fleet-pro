@@ -1,15 +1,12 @@
-import {
-    List,
-    ListItemAvatar,
-    ListItemButton,
-    ListItemSecondaryAction,
-    ListItemText,
-    Stack,
-    Typography
-} from "@mui/material";
-import React from "react";
-import {data} from "../../../assets/data/lastChanges_data";
+import {List, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Stack, Typography} from "@mui/material";
+import React, {useContext, useEffect, useState} from "react";
 import FiberNewIcon from '@mui/icons-material/FiberNew';
+import {RemoveVehicleContext} from "../../../context/RemoveVehicleContext";
+import {useNavigate} from "react-router-dom";
+import {config} from "../../../config/config";
+import {GetListOfLastChangesResponse} from 'types'
+import {isAdmin} from "../../../helpers/isAdmin.helper";
+import {useAuth} from "../../../hooks/useAuth";
 
 // avatar style
 const avatarSX = {
@@ -29,6 +26,43 @@ const actionSX = {
 };
 
 export const DashboardLastChanges = () => {
+
+    const [changelogList, setChangelog] = useState<GetListOfLastChangesResponse>([])
+    //@TODO: Do utworzenia typ dla order
+    const [order, setOrder] = useState<any>('asc');
+    const [sort, setSort] = useState('')
+    const [sortValue, setSortValue] = useState('')
+    const [page, setPage] = useState(1);
+    const [rowsPerPage, setRowsPerPage] = useState(10);
+    const [maxPage, setMaxPage] = useState(0)
+    const [count, setCount] = useState(0);
+    const {isDeleting} = useContext(RemoveVehicleContext)
+
+    const navigate = useNavigate()
+    useEffect(() => {
+        (async () => {
+
+            const res = await fetch(`${config.API_URL}/admin/changelog/list?page=${page}&count=${rowsPerPage}&order=${order}`, {
+                credentials: 'include',
+            })
+            const data = await res.json()
+            console.log(data)
+            setMaxPage(data.pagesCount)
+            setChangelog(data.lastChanges)
+            setCount(data.resultsCount)
+
+        })();
+    }, [rowsPerPage, page, isDeleting]);
+
+    const handleChange = (e: any, p: any) => {
+        setPage(p)
+    }
+
+    const {user} = useAuth()
+
+    if (changelogList === null) {
+        return <p>Wczytywanie...</p>
+    }
     return (
         <>
             <List
@@ -43,25 +77,27 @@ export const DashboardLastChanges = () => {
                     }
                 }}
             >
-                {data.map((item) => (
-                    <ListItemButton divider key={item.id}>
+                {changelogList.map((item) => (
+                    <ListItem divider key={item.id}>
                         <ListItemAvatar>
                             <FiberNewIcon sx={{fontSize: 40, color: `grey`}}/>
                         </ListItemAvatar>
-                        <ListItemText primary={<Typography variant="overline">{item.title}</Typography>}
+                        <ListItemText sx={{paddingRight: `10%`}} primary={<Typography variant="overline">{item.title}</Typography>}
                                       secondary={item.description}/>
                         <ListItemSecondaryAction>
                             <Stack alignItems="flex-end">
                                 <Typography variant="overline" noWrap>
                                     Data:
                                 </Typography>
-                                <Typography variant="h6" color="secondary" noWrap>
-                                    {item.date}
+                                <Typography variant="overline" color="secondary" noWrap>
+                                    {item.addedDate}
+                                </Typography>
+                                <Typography variant="overline" noWrap>
+                                    {isAdmin(user?.role)? 'Usuń' : null}
                                 </Typography>
                             </Stack>
                         </ListItemSecondaryAction>
-                    </ListItemButton>
-
+                    </ListItem>
                 ))}
             </List>
         </>

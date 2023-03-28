@@ -40,7 +40,7 @@ export const MainLayout: FC<Props> = ({ children }) => (
                 >
                     <Toolbar />
                     <Container maxWidth="xl" sx={{ mt: 4, mb: 4 }}>
-                        <Grid container spacing={3}>
+                        <Grid container spacing={2}>
                             {children}
                         </Grid>
                         <Copyright sx={{ pt: 4 }} />

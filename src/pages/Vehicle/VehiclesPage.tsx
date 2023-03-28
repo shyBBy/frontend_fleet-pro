@@ -34,7 +34,7 @@ export const VehiclesPage = () => {
             <MainLayout>
                 <>
                     <Grid item xs={12}>
-                        <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
+                        <Paper sx={{ p: {xs: 0, md: 3, lg: 3, xl: 3}, display: 'flex', flexDirection: 'column' }}>
                             <Box sx={{ width: '100%' }}>
                                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                                     <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">

@@ -4,9 +4,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableCell from "@mui/material/TableCell";
 import TableBody from "@mui/material/TableBody";
-import {Avatar} from "@mui/material";
+import {Avatar, TableContainer} from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import Link from "@mui/material/Link";
 import {data} from "../../../assets/data/changelog_data";
 
 
@@ -18,9 +17,9 @@ function preventDefault(event: React.MouseEvent) {
 export const Changelog = () => {
 
 
-    return(
+    return (
         <>
-            <React.Fragment>
+            <TableContainer>
                 <Table size="small">
                     <TableHead>
                         <TableRow>
@@ -33,19 +32,19 @@ export const Changelog = () => {
                     </TableHead>
                     <TableBody>
                         {data.map((row) => (
-                        <TableRow key={row.id}>
-                            <TableCell><Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                                <LocalShippingIcon />
-                            </Avatar></TableCell>
-                            <TableCell>{row.title}</TableCell>
-                            <TableCell>{row.reason}</TableCell>
-                            <TableCell>{row.editedByUser}</TableCell>
-                            <TableCell align="right">{`${row.editedDate}`}</TableCell>
-                        </TableRow>
+                            <TableRow key={row.id}>
+                                <TableCell><Avatar sx={{m: 1, bgcolor: 'secondary.main'}}>
+                                    <LocalShippingIcon/>
+                                </Avatar></TableCell>
+                                <TableCell>{row.title}</TableCell>
+                                <TableCell>{row.reason}</TableCell>
+                                <TableCell>{row.editedByUser}</TableCell>
+                                <TableCell align="right">{`${row.editedDate}`}</TableCell>
+                            </TableRow>
                         ))}
                     </TableBody>
                 </Table>
-            </React.Fragment>
+            </TableContainer>
         </>
     )
 }

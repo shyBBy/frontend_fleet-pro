@@ -10,6 +10,8 @@ import {VehiclesPage} from "../pages/Vehicle/VehiclesPage";
 import {PlacesPage} from "../pages/Place/PlacesPage";
 import {SettingsPage} from "../pages/SettingsPage";
 import {VehicleProfilePage} from "../pages/Vehicle/VehicleProfilePage";
+import {UserProfilePage} from "../pages/User/UserProfilePage";
+import {AdminPage} from "../pages/AdminPage";
 
 export const AuthenticatedApp = () => {
 
@@ -19,11 +21,13 @@ export const AuthenticatedApp = () => {
         <>
                 <Routes>
                     <Route path="/dashboard" element={<DashboardPage />} />
-                    <Route path="/employees" element={<EmployeesPage />} />
+                    {/*<Route path="/employees" element={<EmployeesPage />} />*/}
                     <Route path="/vehicles" element={<VehiclesPage />} />
                     <Route path="/vehicle/:id" element={<VehicleProfilePage/>} />
-                    <Route path="/places" element={<PlacesPage />} />
-                    <Route path="/settings" element={<SettingsPage />} />
+                    <Route path="/user/:id" element={<UserProfilePage/>} />
+                    {/*<Route path="/places" element={<PlacesPage />} />*/}
+                    {/*<Route path="/settings" element={<SettingsPage />} />*/}
+                    <Route path='/admin' element={<AdminPage/>}/>
                     <Route
                         path="/"
                         element={user? <Navigate to="/dashboard" replace /> : <Navigate to="/dashboard" replace />}
