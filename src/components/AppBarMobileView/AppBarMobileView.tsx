@@ -28,6 +28,8 @@ import { Link } from "react-router-dom";
 
 export const AppBarMobileView = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+
 
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
         React.useState<null | HTMLElement>(null);
@@ -43,6 +45,12 @@ export const AppBarMobileView = () => {
         setAnchorEl(null);
         handleMobileMenuClose();
     };
+    const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
     const {user, signOut} = useAuth()
 
