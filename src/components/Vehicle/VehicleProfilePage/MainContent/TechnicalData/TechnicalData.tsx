@@ -21,8 +21,6 @@ import VehicleWeightIcon from '../../../../../assets/icons/vehicleProfile/icons8
 import VehicleTrailerIcon from '../../../../../assets/icons/vehicleProfile/icons8-trailer-50.png'
 import VehicleTruckWidthIcon from '../../../../../assets/icons/vehicleProfile/icons8-truck-width-50.png'
 import VehicleFuelUsageIcon from '../../../../../assets/icons/vehicleProfile/icons8-full-tank-50.png'
-import {Box} from "@mui/system";
-import {AddVehicleTechnicalDataForm} from "../../../../Forms/AddVehicleTechnicalDataForm";
 
 
 interface PropsInterface {
@@ -36,10 +34,11 @@ export const TechnicalData = (props: PropsInterface) => {
     const {data} = props
 
     const technicalData = data[0]
-    
-    
-    if(data.length === 0) {
-      return   <Typography variant="subtitle2" color="textSecondary">Brak technicznych danych pojazdu, proszę uzupełnij je.</Typography>
+
+
+    if (data.length === 0) {
+        return <Typography variant="subtitle2" color="textSecondary">Brak technicznych danych pojazdu, proszę uzupełnij
+            je.</Typography>
     }
 
 
