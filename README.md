@@ -1,16 +1,11 @@
 # FleetPRO
 
-aplikacja do zarządzania flotą.
-
 ## OPIS aplikacji
 
 Aplikacja do zarządzania flotą pojazdów to narzędzie, które pozwala na łatwe i skuteczne zarządzanie zasobami transportowymi w firmie. Dostęp do aplikacji jest możliwy tylko po poprawnym zalogowaniu, a dostępne role to administrator i użytkownik z uwzględnieniem nazwy stanowiska w firmie.  
 Aplikacja umożliwia wyświetlanie i sortowanie pojazdów według różnych kryteriów, takich jak marka, model, numer rejestracyjny lub przypisany oddział firmy. Po wybraniu konkretnego pojazdu możliwe jest wyświetlenie szczegółowych informacji o nim, takich jak przebieg, ostatni przegląd czy ubezpieczenie.
 
 Administrator ma możliwość przypisywania pojazdów do konkretnych oddziałów firmy oraz ustawiania przypomnień o konieczności wykonania przeglądu czy innych obowiązków związanych z utrzymaniem pojazdu w dobrym stanie technicznym.
-
-Aplikacja została stworzona w technologii React Typescript, co pozwala na jej szybkie i sprawne działanie oraz łatwe rozszerzanie o nowe funkcjonalności.
-
 
 # Wykorzystane technologie
 
@@ -20,7 +15,13 @@ Aplikacja została napisana z wykorzystaniem następujących technologii:
 
 # Dlaczego ten projekt został stworzony
 
-....
+Stworzenie tego projektu wynikało z kilku różnych powodów. Jednym z nich było moje pragnienie pokazania swoich umiejętności i zaprezentowania swojego potencjału w programowaniu. Podczas tworzenia projektu miałem okazję wykorzystać różne technologie i narzędzia, takie jak React, TypeScript, Material UI, React Hook Form czy React Toastify, co pozwoliło mi rozwinąć swoje kompetencje w tych obszarach.
+
+Kolejnym powodem, dla którego postanowiłem stworzyć ten projekt, był mój brak doświadczenia w pracy komercyjnej. Chciałem zdobyć praktyczną wiedzę i nabrać pewności siebie w programowaniu, co mogłoby mi pomóc w przyszłych projektach i w pracy zawodowej.
+
+Jestem bardzo zainteresowany dalszym rozwojem i nauką, a tworzenie tej aplikacji było dla mnie wspaniałą okazją do zdobycia nowych umiejętności oraz rozwijania już posiadanych. Podczas pracy nad projektem miałem okazję do eksperymentowania z różnymi rozwiązaniami i poznawania nowych technologii, co z pewnością wpłynie na moją dalszą karierę programisty.
+
+Ostatnim powodem, dla którego postanowiłem stworzyć ten projekt, było zapotrzebowanie na tego typu aplikację w mojej aktualnej pracy. Obecny system nie spełniał naszych potrzeb, a stworzenie własnej aplikacji pozwoliło nam na lepszą organizację i zarządzanie flotą pojazdów we wszystkich oddziałach. 
 
 # Funkcjonalności, które już posiada
 
