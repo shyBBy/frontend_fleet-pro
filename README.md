@@ -12,22 +12,48 @@ Administrator ma możliwość przypisywania pojazdów do konkretnych oddziałów
 Aplikacja została stworzona w technologii React Typescript, co pozwala na jej szybkie i sprawne działanie oraz łatwe rozszerzanie o nowe funkcjonalności.
 
 
-### FUNKCJONALNOŚCI
+# Wykorzystane technologie
+
+Aplikacja została napisana z wykorzystaniem następujących technologii:
+
+![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white&style=flat) ![TypeScript](https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white&style=flat) ![Material UI](https://img.shields.io/badge/-Material%20UI-blueviolet?logo=material-ui&logoColor=white&style=flat) ![React Hook Form](https://img.shields.io/badge/-React%20Hook%20Form-blue?logo=react&logoColor=white&style=flat) ![React Toastify](https://img.shields.io/badge/-React%20Toastify-ff69b4?logo=react&logoColor=white&style=flat)
+
+# Dlaczego ten projekt został stworzony
+
+....
+
+# Funkcjonalności, które już posiada
+
+- Rejestracja i logowanie użytkownika
+- Weryfikacja adresu e-mail i aktywacja konta
+- Dodawanie, usuwanie, wyświetlanie pojazdów
+- Przypisywanie pojazdów do konkretnego oddziału firmy
+- Historia serwisowa pojazdu
+- Lista ostatnich zmian w aplikacji widoczna na stronie głównej Dashboardu
+- Zarządzanie listą użytkowników z panelu administracyjnego
 
 
-- Dodawanie nowych pojazdów do floty firmy.
-- Edycja danych pojazdów, takich jak marka, model, rok produkcji, numer rejestracyjny itp.
-- Przypisywanie pojazdów do określonych oddziałów lub kierowców.
-- Możliwość sortowania pojazdów według różnych kryteriów, takich jak rodzaj pojazdu, marka, model, rok produkcji itp.
-- Tworzenie list pojazdów w flocie firmy według różnych kryteriów.
-- Możliwość wyszukiwania pojazdów według różnych kryteriów, takich jak marka, model, rok produkcji, numer rejestracyjny itp.
-- Wirtualny przegląd pojazdów, umożliwiający sprawdzenie stanu technicznego i konserwacji pojazdów.
-- Raportowanie stanu technicznego pojazdów i kosztów ich utrzymania.
-- Możliwość zarządzania wymianami opon lub innymi naprawami pojazdów.
-- Rejestrowanie przebiegu pojazdów i kontrola kosztów paliwa.
-- Integracja z systemami GPS, umożliwiająca śledzenie położenia pojazdów w czasie rzeczywistym.
-- Monitorowanie stanu technicznego pojazdów i wyświetlanie przypomnień o wymaganych przeglądach lub naprawach.
-- Generowanie raportów i statystyk dotyczących floty pojazdów (np. średnie spalanie, koszty eksploatacji, przejechane kilometry).
-- Możliwość dodawania zdjęć i dokumentów związanych z pojazdami (np. umowy leasingowe, faktury za naprawy).
-- Możliwość zarządzania flotą pojazdów za pomocą aplikacji mobilnej.
+# Funkcjonalności, które mają zostać wprowadzone
+
+- Możliwość tworzenia oraz zarządzania odpowiednimi oddziałami firmy.
+- Rozbudowany system uprawnień użytkownika.
+
+# Demo
+
+Możesz zobaczyć działającą wersję aplikacji pod adresem: [link do DEMO](https://project.dev-olczak.pl).
+
+Aby zalogować się do aplikacji, należy użyć danych:
+
+- Nazwa użytkownika: demo_user
+- Hasło: demo_pass
+
+Po zalogowaniu, można korzystać z dostępnych funkcjonalności, które są intuicyjne i łatwe w obsłudze.
+
+# Video i/lub screeny
+
+Poniżej prezentujemy screeny z aplikacji:
+
+![Screen 1](/screens/screen1.png)
+
+![Screen 2](/screens/screen2.png)
 
