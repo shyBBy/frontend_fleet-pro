@@ -18,10 +18,9 @@ Aplikacja została napisana z wykorzystaniem następujących technologii:
 
 ![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white&style=flat) ![TypeScript](https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white&style=flat) ![Material UI](https://img.shields.io/badge/-Material%20UI-blueviolet?logo=material-ui&logoColor=white&style=flat) ![React Hook Form](https://img.shields.io/badge/-React%20Hook%20Form-blue?logo=react&logoColor=white&style=flat) ![React Toastify](https://img.shields.io/badge/-React%20Toastify-ff69b4?logo=react&logoColor=white&style=flat)
 
-
 # Dlaczego ten projekt został stworzony
 
-Projekt został stworzony w celu zapewnienia użytkownikom intuicyjnego i łatwego w użyciu narzędzia, które pomoże im w wykonywaniu różnych czynności.
+....
 
 # Funkcjonalności, które już posiada
 
@@ -36,9 +35,8 @@ Projekt został stworzony w celu zapewnienia użytkownikom intuicyjnego i łatwe
 
 # Funkcjonalności, które mają zostać wprowadzone
 
-- Integracja z innymi narzędziami
-- Rozbudowanie funkcjonalności wyszukiwania
-- Poprawa wydajności aplikacji
+- Możliwość tworzenia oraz zarządzania odpowiednimi oddziałami firmy.
+- Rozbudowany system uprawnień użytkownika.
 
 # Demo
 
