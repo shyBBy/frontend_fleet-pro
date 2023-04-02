@@ -1,9 +1,10 @@
-import React from 'react'
-import {Grid, Paper, Typography} from "@mui/material";
+import React, {useState} from 'react'
+import {Button, Grid, Modal, Paper, Typography} from "@mui/material";
 import {grey} from "@mui/material/colors";
 import Avatar from "@mui/material/Avatar";
 import {Box} from "@mui/system";
-
+import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
+import {AddUserAvatarForm} from "../../Forms/AddUserAvatarForm";
 
 interface Props {
     name: string;
@@ -13,7 +14,31 @@ interface Props {
 
 };
 
-export const UserAvatar: React.FC<Props> = ({name, surname, position, avatarUrl}) => {
+const AvatarUploadButton = () => {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setOpenModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+    };
+
+    return (
+        <>
+            <Button onClick={handleOpenModal} startIcon={<AddPhotoAlternateIcon fontSize={'small'} />}>
+                Zmień avatar
+            </Button>
+            <Modal open={openModal} onClose={handleCloseModal}>
+                <AddUserAvatarForm closeModal={handleCloseModal}/>
+            </Modal>
+        </>
+    );
+};
+
+export const UserAvatar: React.FC<Props> = (props: any) => {
+    const {name, surname, position, avatarUrl, user} = props
 
 
     return (
@@ -42,6 +67,7 @@ export const UserAvatar: React.FC<Props> = ({name, surname, position, avatarUrl}
                         <Typography variant="subtitle1" sx={{textAlign: "center",}}>
                             {position}
                         </Typography>
+                        <AvatarUploadButton/>
                     </Box>
                 </Paper>
             </Grid>

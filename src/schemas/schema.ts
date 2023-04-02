@@ -54,3 +54,18 @@ export const AddVehicleTechnicalData = yup.object().shape({
     maxAxleLoad: yup.string().required('To pole jest wymagane'),
 
 })
+
+
+export const UpdateUserDataSchema = yup.object().shape({
+    name: yup.string().min(1, 'Nie możesz ustawić pustego pola.'),
+    surname: yup.string().min(1, 'Nie możesz ustawić pustego pola.'),
+    email: yup.string().email('Niepoprawny e-mail.').min(1, 'Nie możesz ustawić pustego pola.'),
+    role: yup.string().oneOf(['Administrator', 'Użytkownik'], 'Niepoprawna nazwa grupy użytkownika'),
+    jobPosition: yup.string().oneOf(['Magazynier', 'Kierownik', 'Dyrektor', 'Kierowca', 'Szef', 'Księgowa'], 'Niepoprawna nazwa stanowiska.'),
+    isActive: yup.string().oneOf(['Aktywny', 'Nieaktywny'], 'Niepoprawny status konta'),
+})
+
+
+export const UploadUserAvatarSchema = yup.object().shape({
+
+})

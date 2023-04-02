@@ -11,6 +11,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import {a11yProps, TabPanel} from "../../components/TabPanel";
 import {UserAvatar} from "../../components/User/ProfilePage/UserAvatar";
+import {UserBasicInfo} from "../../components/User/ProfilePage/UserBasicInfo";
+import {UpdateUserDataForm} from "../../components/Forms/UpdateUserDataForm";
 
 interface RouteParams {
     id: string;
@@ -52,15 +54,15 @@ export const UserProfilePage = () => {
                                         Profil użytkownika
                                     </Typography>}  {...a11yProps(0)} />
                                     <Tab label={<Typography variant="overline" noWrap>
-                                        Ustawienia konta
+                                        edytuj
                                     </Typography>} {...a11yProps(1)} />
                                 </Tabs>
                             </Box>
                             <TabPanel value={value} index={0}>
-                                    1
+                                    <UserBasicInfo user={user}/>
                             </TabPanel>
                             <TabPanel value={value} index={1}>
-                                    2
+                                    <UpdateUserDataForm userData={user} />
                             </TabPanel>
                         </Paper>
                     </Grid>

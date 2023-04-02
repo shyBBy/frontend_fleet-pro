@@ -6,7 +6,7 @@ import TableBody from "@mui/material/TableBody";
 import Table from "@mui/material/Table";
 import {GetListOfVehiclesResponse} from 'types'
 import {VehicleSingleItem} from "./VehicleSingleItem";
-import {Box, IconButton, TableContainer, TextField, Toolbar, Tooltip} from "@mui/material";
+import {Box, CircularProgress, IconButton, TableContainer, TextField, Toolbar, Tooltip} from "@mui/material";
 
 import {VehicleTableOptions} from "./VehicleTableOptions";
 import SearchIcon from '@mui/icons-material/Search';
@@ -57,7 +57,11 @@ export const VehicleTable = () => {
 
 
     if (vehiclesList === null) {
-        return <p>Wczytywanie...</p>
+        return (
+            <Box sx={{ display: 'flex' }}>
+                <CircularProgress />
+            </Box>
+        )
     }
 
     return (
