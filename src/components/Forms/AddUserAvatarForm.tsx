@@ -43,18 +43,17 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
             return;
         }
 
+        const formData = new FormData()
+        formData.append('avatar', file);
         try {
             setUploading(true)
-            const formData = new FormData()
-            formData.append('avatar', file);
-
-
             const res = await fetch(`${config.API_URL}/user/upload/`, {
+                mode: 'cors',
                 credentials: 'include',
                 method: 'POST',
                 body: formData,
             });
-            console.log('Res', res)
+            console.log('formdata', formData)
 
             if (!res.ok) {
                 toast.error(`test`, {
@@ -74,6 +73,7 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
             navigate(`/user/${id}`);
             return
         } catch (error) {
+            console.log('Error', error)
             toast.error('Coś poszło nie tak, spróbuj raz jeszcze.', {
                 position: 'bottom-right',
                 theme: 'light',
