@@ -47,8 +47,7 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
         formData.append('avatar', file);
         try {
             setUploading(true)
-            const res = await fetch(`${config.API_URL}/user/upload/`, {
-                mode: 'cors',
+            const res = await fetch(`${config.API_URL}/user/${id}/avatar`, {
                 credentials: 'include',
                 method: 'POST',
                 body: formData,
@@ -63,7 +62,7 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
                 })
                 return
             }
-            toast.success(`Pomyślnie edytowane dane użytkownika.`, {
+            toast.success(`Pomyślnie ustawiono avatar.`, {
                 position: "bottom-right",
                 theme: "light",
                 autoClose: 1500,

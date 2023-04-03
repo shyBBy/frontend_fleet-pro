@@ -37,8 +37,8 @@ const AvatarUploadButton = () => {
     );
 };
 
-export const UserAvatar: React.FC<Props> = (props: any) => {
-    const {name, surname, position, avatarUrl, user} = props
+export const UserAvatar= (props: any) => {
+    const {user} = props
 
 
     return (
@@ -55,17 +55,17 @@ export const UserAvatar: React.FC<Props> = (props: any) => {
                     }}
                 >
                     <Avatar
-                        alt={`${name} ${surname}`}
-                        src={avatarUrl}
+                        alt={`${user.name} ${user.surname}`}
+                        src={`/user/photo/${user.id}`}
                         sx={{width: 200, height: 200 ,border: `solid 4px`, borderColor: grey[300], borderRadius: "50%"}}
                         variant="rounded"
                     />
                     <Box p={1}>
                         <Typography variant="h5" sx={{textAlign: "center",}}>
-                            {name} {surname}
+                            {user.name} {user.surname}
                         </Typography>
                         <Typography variant="subtitle1" sx={{textAlign: "center",}}>
-                            {position}
+                            {user.jobPosition}
                         </Typography>
                         <AvatarUploadButton/>
                     </Box>

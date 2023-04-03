@@ -45,7 +45,7 @@ export const UserProfilePage = () => {
         <>
             <MainLayout>
                 <>
-                    <UserAvatar name={user.name} surname={user.surname} position={user.role} avatarUrl={`https://cdn.vectorstock.com/i/1000x1000/31/95/user-sign-icon-person-symbol-human-avatar-vector-12693195.webp`}/>
+                    <UserAvatar user={user}/>
                     <Grid item xs={12} md={7} lg={9} mt={5}>
                         <Paper sx={{p: 2, display: 'flex', flexDirection: 'column',}}>
                             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
