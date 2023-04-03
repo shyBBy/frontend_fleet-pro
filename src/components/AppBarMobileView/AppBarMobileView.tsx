@@ -24,6 +24,7 @@ import avatar from '../../assets/img/1.jpg';
 
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
 import { Link } from "react-router-dom";
+import {config} from "../../config/config";
 
 
 export const AppBarMobileView = () => {
@@ -103,7 +104,7 @@ export const AppBarMobileView = () => {
                     <Box sx={{ display: { xs: 'flex', md: 'flex' } }}>
                     <Tooltip title="Opcje">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={avatar} />
+                <Avatar alt="Remy Sharp" src={`${config.API_URL}/user/photo/${user?.id}`} />
               </IconButton>
             </Tooltip>
             <Menu

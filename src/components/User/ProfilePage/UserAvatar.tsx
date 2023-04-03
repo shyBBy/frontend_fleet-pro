@@ -5,6 +5,7 @@ import Avatar from "@mui/material/Avatar";
 import {Box} from "@mui/system";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import {AddUserAvatarForm} from "../../Forms/AddUserAvatarForm";
+import {config} from "../../../config/config";
 
 interface Props {
     name: string;
@@ -56,7 +57,7 @@ export const UserAvatar= (props: any) => {
                 >
                     <Avatar
                         alt={`${user.name} ${user.surname}`}
-                        src={`/user/photo/${user.id}`}
+                        src={`${config.API_URL}/user/photo/${user.id}`}
                         sx={{width: 200, height: 200 ,border: `solid 4px`, borderColor: grey[300], borderRadius: "50%"}}
                         variant="rounded"
                     />
