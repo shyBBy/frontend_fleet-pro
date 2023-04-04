@@ -56,7 +56,7 @@ export const VehicleSingleItem = (props: any) => {
         <>
                 <TableRow>
                     <TableCell>
-                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} src={vehicle.photo}/>
+                        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }} src={`${config.API_URL}/vehicle/photo/${vehicle.id}`}/>
                     </TableCell>
                     <TableCell>{vehicle.registerNumber}</TableCell>
                     <TableCell>{vehicle.name}</TableCell>

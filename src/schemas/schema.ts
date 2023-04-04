@@ -19,7 +19,6 @@ export const createVehicleSchema = yup.object().shape({
     registerNumber: yup.string().min(3, `Numer rejestracyjny musi posiadać minimum 3 znaki`).max(8, 'Maksymalna iloć znakow w numerze rejestracyjnym wynosi 8.').required('Numer rejestracyjny pojazdu jest wymagany.'),
     lastDateOfVehicleInspection: yup.date().required('Data ostatniego badania technicznego jest wymagana.'),
     nextDateOfVehicleInspection: yup.date().required('Data następnego badania technicznego jest wymagana.'),
-    photo: yup.string(),
     vinNumber: yup.string().min(16, `Vin jest zbyt krótki.`).max(18, 'Vin jest zbyt długi.').required('Numer VIN jest wymagany.'),
     yearOfProduction: yup.string().min(3, 'Rok jest niepoprawny.').max(5, 'Rok jest zbyt długi.').required('Rok produkcji jest wymagany.'),
     firstRegistrationDate: yup.string().min(3, 'Rok jest niepoprawny.').max(5, 'Rok jest zbyt długi.').required('Data pierwszej rejestracji jest wymagana.'),
@@ -67,5 +66,9 @@ export const UpdateUserDataSchema = yup.object().shape({
 
 
 export const UploadUserAvatarSchema = yup.object().shape({
+
+})
+
+export const UploadVehicleAvatarSchema = yup.object().shape({
 
 })

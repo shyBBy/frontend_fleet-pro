@@ -1,5 +1,5 @@
-import React from "react";
-import {Grid, Paper, Stack, Typography} from "@mui/material";
+import React, {useState} from "react";
+import {Button, Grid, Modal, Paper, Stack, Typography} from "@mui/material";
 import {BasicInfo} from "./BasicInfo/BasicInfo";
 import {TechnicalData} from "./TechnicalData/TechnicalData";
 import Avatar from "@mui/material/Avatar";
@@ -13,6 +13,33 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import {a11yProps, TabPanel} from "../../../TabPanel";
 import {AddVehicleTechnicalDataForm} from "../../../Forms/AddVehicleTechnicalDataForm";
+import {config} from "../../../../config/config";
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import {AddVehicleAvatarForm} from "../../../Forms/AddVehicleAvatarForm";
+
+
+const AvatarUploadButton = () => {
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleOpenModal = () => {
+        setOpenModal(true);
+    };
+
+    const handleCloseModal = () => {
+        setOpenModal(false);
+    };
+
+    return (
+        <>
+            <Button onClick={handleOpenModal} startIcon={<AddPhotoAlternateIcon fontSize={'small'}/>}>
+                Wgraj zdjęcie
+            </Button>
+            <Modal open={openModal} onClose={handleCloseModal}>
+                <AddVehicleAvatarForm closeModal={handleCloseModal}/>
+            </Modal>
+        </>
+    );
+};
 
 
 export const MainContent = (props: any) => {
@@ -42,7 +69,7 @@ export const MainContent = (props: any) => {
                     marginBottom: '10%'
                 }}>
                     <Avatar
-                        src='https://revistacarro.com.br/wp-content/uploads/2022/01/renault-master-2023_1.jpg'
+                        src={`${config.API_URL}/vehicle/photo/${vehicle.id}`}
                         sx={{width: 200, height: 200, border: `solid 4px`, borderColor: grey[300]}}
                         variant="rounded"
                     />
@@ -54,6 +81,7 @@ export const MainContent = (props: any) => {
                         <a href={'https://historiapojazdu.gov.pl'}><Typography variant="body2" color="textSecondary"
                                                                                mr={1}>Sprawdź pojazd w
                             CEPIKU</Typography></a>
+                        <AvatarUploadButton/>
                     </Box>
                 </Paper>
             </Grid>
@@ -70,8 +98,8 @@ export const MainContent = (props: any) => {
             <Grid item xs={12} md={7} lg={7}>
                 <Grid container alignItems="center" justifyContent="space-between">
                     <Grid item>
-                        <Box sx={{ width: '100%' }}>
-                            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                        <Box sx={{width: '100%'}}>
+                            <Box sx={{borderBottom: 1, borderColor: 'divider'}}>
                                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                                     <Tab label={<Typography variant="overline" noWrap>
                                         Dane techniczne
@@ -88,7 +116,7 @@ export const MainContent = (props: any) => {
                             </TabPanel>
                             <TabPanel value={value} index={1}>
                                 <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                                    <AddVehicleTechnicalDataForm vehicle={vehicle} />
+                                    <AddVehicleTechnicalDataForm vehicle={vehicle}/>
                                 </Paper>
                             </TabPanel>
                         </Box>

@@ -5,18 +5,18 @@ import {useNavigate, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
-import {UploadUserAvatarSchema} from "../../schemas/schema";
+import {UploadVehicleAvatarSchema} from "../../schemas/schema";
 import {Button, TextField} from "@mui/material";
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import {ErrorMessage} from "@hookform/error-message";
 
 
-interface AddUserAvatarFormProps {
+interface AddVehicleAvatarFormProps {
     closeModal: () => void;
 }
 
 
-export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
+export const AddVehicleAvatarForm: FC<AddVehicleAvatarFormProps> = (props: any) => {
 
     const {closeModal} = props
     const {id} = useParams<{ id?: string }>()
@@ -34,7 +34,7 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
         formState: {errors},
     } = useForm({
         mode: 'onSubmit',
-        resolver: yupResolver(UploadUserAvatarSchema),
+        resolver: yupResolver(UploadVehicleAvatarSchema),
     });
 
     const onSubmit = async () => {
@@ -47,12 +47,11 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
         formData.append('avatar', file);
         try {
             setUploading(true)
-            const res = await fetch(`${config.API_URL}/user/${id}/avatar`, {
+            const res = await fetch(`${config.API_URL}/vehicle/${id}/avatar`, {
                 credentials: 'include',
                 method: 'POST',
                 body: formData,
             });
-            console.log('formdata', formData)
 
             if (!res.ok) {
                 toast.error(`Błąd odpowiedzi.`, {
@@ -69,7 +68,7 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
             })
             setUploading(false)
             closeModal();
-            navigate(`/user/${id}`);
+            navigate(`/vehicle/${id}`);
             return
         } catch (error) {
             console.log('Error', error)
@@ -85,6 +84,7 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0] ?? null;
+        console.log(file)
         setFile(file);
     };
 

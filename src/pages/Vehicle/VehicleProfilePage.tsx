@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {GetOneVehResponse} from 'types'
 import {useParams} from "react-router-dom";
 import {MainLayout} from "../../layouts/MainLayout";
-import {Box, Grid, Paper} from "@mui/material";
 import {HeaderContainer} from "../../components/Vehicle/VehicleProfilePage/Header/HeaderContainer";
 import {config} from "../../config/config";
 import {MainContent} from "../../components/Vehicle/VehicleProfilePage/MainContent/MainContent";
@@ -35,7 +34,7 @@ export const VehicleProfilePage = () => {
             <MainLayout>
                 <>
                     <HeaderContainer vehicle={vehicle}/>
-                    <MainContent vehicle={vehicle} />
+                    <MainContent vehicle={vehicle}/>
                 </>
             </MainLayout>
         </>

@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { useForm , Controller} from 'react-hook-form';
-import {
-    TextField,
-    Button,
-    Box,
-    Grid,
-    Select,
-    MenuItem
-} from '@mui/material'
+import React, {useEffect, useState} from 'react';
+import {Controller, useForm} from 'react-hook-form';
+import {Box, Button, Grid, MenuItem, Select, TextField} from '@mui/material'
 import {yupResolver} from "@hookform/resolvers/yup";
 import {createVehicleSchema} from "../../schemas/schema";
-import {VEHICLE_TYPE, VEHICLE_BRAND, VEHICLE_MODEL, DEPARTMENT_LOCATION} from 'types'
+import {VEHICLE_BRAND, VEHICLE_MODEL, VEHICLE_TYPE} from 'types'
 import {toast} from "react-toastify";
 import {config} from '../../config/config'
 import {useNavigate} from "react-router-dom";
@@ -31,7 +24,6 @@ const defaultValues = {
 }
 
 
-
 export const CreateVehicleForm = () => {
 
     const [message, setMessage] = useState('');
@@ -43,7 +35,7 @@ export const CreateVehicleForm = () => {
         handleSubmit,
         reset,
         register,
-        formState: { errors, isSubmitSuccessful },
+        formState: {errors, isSubmitSuccessful},
     } = useForm({
         mode: 'onSubmit',
         resolver: yupResolver(createVehicleSchema),
@@ -99,17 +91,16 @@ export const CreateVehicleForm = () => {
     }, [isSubmitSuccessful, reset]);
 
 
-
     // @ts-ignore
     return (
-        <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 3 }}>
+        <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{mt: 3}}>
             <Grid container spacing={2}>
                 <Grid item xs={12} md={8} lg={4}>
                     <Controller
                         name="registerNumber"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <TextField
                                 {...field}
                                 id="registerNumber"
@@ -119,7 +110,7 @@ export const CreateVehicleForm = () => {
                                 required
                                 fullWidth
                                 autoComplete="off"
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                                 {...register('registerNumber')}
                                 error={!!errors?.registerNumber}
                                 helperText={errors['registerNumber'] ? errors['registerNumber'].message : ''}
@@ -132,8 +123,8 @@ export const CreateVehicleForm = () => {
                     <Controller
                         name="yearOfProduction"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <TextField
                                 {...field}
                                 id="yearOfProduction"
@@ -143,7 +134,7 @@ export const CreateVehicleForm = () => {
                                 required
                                 fullWidth
                                 autoComplete="off"
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                                 {...register('yearOfProduction')}
                                 error={!!errors?.yearOfProduction}
                                 helperText={errors['yearOfProduction'] ? errors['yearOfProduction'].message : ''}
@@ -156,8 +147,8 @@ export const CreateVehicleForm = () => {
                     <Controller
                         name="firstRegistrationDate"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <TextField
                                 {...field}
                                 id="firstRegistrationDate"
@@ -167,7 +158,7 @@ export const CreateVehicleForm = () => {
                                 required
                                 fullWidth
                                 autoComplete="off"
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                                 {...register('firstRegistrationDate')}
                                 error={!!errors?.firstRegistrationDate}
                                 helperText={errors['firstRegistrationDate'] ? errors['firstRegistrationDate'].message : ''}
@@ -180,8 +171,8 @@ export const CreateVehicleForm = () => {
                     <Controller
                         name="vinNumber"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <TextField
                                 {...field}
                                 id="vinNumber"
@@ -191,7 +182,7 @@ export const CreateVehicleForm = () => {
                                 required
                                 fullWidth
                                 autoComplete="off"
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                                 {...register('vinNumber')}
                                 error={!!errors?.vinNumber}
                                 helperText={errors['vinNumber'] ? errors['vinNumber'].message : ''}
@@ -204,8 +195,8 @@ export const CreateVehicleForm = () => {
                     <Controller
                         name="policyNumber"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <TextField
                                 {...field}
                                 id="policyNumber"
@@ -215,7 +206,7 @@ export const CreateVehicleForm = () => {
                                 required
                                 fullWidth
                                 autoComplete="off"
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                                 {...register('policyNumber')}
                                 error={!!errors?.policyNumber}
                                 helperText={errors['policyNumber'] ? errors['policyNumber'].message : ''}
@@ -230,8 +221,8 @@ export const CreateVehicleForm = () => {
                         <Controller
                             name="lastDateOfVehicleInspection"
                             control={control}
-                            rules={{ required: true }}
-                            render={({ field: {...field } }) => (
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="lastDateOfVehicleInspection"
@@ -240,9 +231,9 @@ export const CreateVehicleForm = () => {
                                     required
                                     fullWidth
                                     autoComplete="off"
-                                    InputLabelProps={{ shrink: true }}
+                                    InputLabelProps={{shrink: true}}
                                     label='Data ostatniego przeglądu'
-                                    sx={{ mx: 1, my: 1 }}
+                                    sx={{mx: 1, my: 1}}
                                     {...register('lastDateOfVehicleInspection')}
                                     error={!!errors?.lastDateOfVehicleInspection}
                                     helperText={errors['lastDateOfVehicleInspection'] ? errors['lastDateOfVehicleInspection'].message : ''}
@@ -255,8 +246,8 @@ export const CreateVehicleForm = () => {
                     <Controller
                         name="nextDateOfVehicleInspection"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <TextField
                                 {...field}
                                 id="nextDateOfVehicleInspection"
@@ -265,9 +256,9 @@ export const CreateVehicleForm = () => {
                                 required
                                 fullWidth
                                 autoComplete="off"
-                                InputLabelProps={{ shrink: true }}
+                                InputLabelProps={{shrink: true}}
                                 label='Data następnego przeglądu'
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                                 {...register('nextDateOfVehicleInspection')}
                                 error={!!errors?.nextDateOfVehicleInspection}
                                 helperText={errors['nextDateOfVehicleInspection'] ? errors['nextDateOfVehicleInspection'].message : ''}
@@ -275,46 +266,20 @@ export const CreateVehicleForm = () => {
                         )}
                     />
                 </Grid>
-                <Grid item xs={12} md={8} lg={12}>
-                    <Controller
-                        name="photo"
-                        control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
-                            <TextField
-                                {...field}
-                                id="photo"
-                                label="Adres URL do zdjęcia"
-                                type="text"
-                                variant="standard"
-                                required
-                                fullWidth
-                                autoComplete="off"
-                                sx={{ mx: 1, my: 1 }}
-                                {...register('photo')}
-                                error={!!errors?.photo}
-                                helperText={errors['photo'] ? errors['photo'].message : ''}
-                            />
-                        )}
-                    />
-                </Grid>
-
-
-
 
                 <Grid item xs={12} md={8} lg={6}>
                     <Controller
                         name="vehicleType"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <Select
                                 {...field}
                                 {...register('vehicleType')}
                                 error={!!errors?.vehicleType}
                                 id="vehicleType"
                                 value={field.value || 'Wybierz typ pojazdu'}
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                             >
                                 <MenuItem value="Wybierz typ pojazdu">
                                     Wybierz typ pojazdu
@@ -333,15 +298,15 @@ export const CreateVehicleForm = () => {
                     <Controller
                         name="name"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <Select
                                 {...field}
                                 {...register('name')}
                                 error={!!errors?.name}
                                 id="name"
                                 value={field.value || 'Wybierz markę pojazdu'}
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                             >
                                 <MenuItem value="Wybierz markę pojazdu" disabled>
                                     Wybierz markę pojazdu
@@ -360,15 +325,15 @@ export const CreateVehicleForm = () => {
                     <Controller
                         name="model"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <Select
                                 {...field}
                                 {...register('model')}
                                 error={!!errors?.model}
                                 id="model"
                                 value={field.value || 'Wybierz model pojazdu'}
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                             >
                                 <MenuItem value="Wybierz model pojazdu" disabled>
                                     Wybierz model pojazdu
@@ -387,15 +352,15 @@ export const CreateVehicleForm = () => {
                     <Controller
                         name="placeName"
                         control={control}
-                        rules={{ required: true }}
-                        render={({ field: {...field } }) => (
+                        rules={{required: true}}
+                        render={({field: {...field}}) => (
                             <Select
                                 {...field}
                                 {...register('placeName')}
                                 error={!!errors?.model}
                                 id="placeName"
                                 value={field.value || 'Wybierz oddział'}
-                                sx={{ mx: 1, my: 1 }}
+                                sx={{mx: 1, my: 1}}
                             >
                                 <MenuItem value="Wybierz oddział" disabled>
                                     Wybierz oddział
@@ -417,7 +382,7 @@ export const CreateVehicleForm = () => {
             </Grid>
 
             <Button type="submit" variant="contained" color="primary" sx={{mt: '10%'}}>
-                    Dodaj pojazd
+                Dodaj pojazd
             </Button>
 
 
