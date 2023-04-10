@@ -55,7 +55,8 @@ export const AddUserAvatarForm: FC<AddUserAvatarFormProps> = (props: any) => {
             console.log('formdata', formData)
 
             if (!res.ok) {
-                toast.error(`Błąd odpowiedzi.`, {
+                const errorData = await res.json();
+                toast.error(`${errorData.message}`, {
                     position: "bottom-right",
                     theme: "light",
                     autoClose: 2000,
