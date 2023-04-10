@@ -24,7 +24,7 @@ export const VehicleSingleItem = (props: any) => {
         try {
             setIsDeleting(true);
             // setIsUpdated((prevState) => !prevState);
-            const response = await fetch(`${config.API_URL}/${vehicle.id}`, {
+            const response = await fetch(`${config.API_URL}/vehicle/${vehicle.id}`, {
                 method: "DELETE",
                 credentials: 'include'
             });
