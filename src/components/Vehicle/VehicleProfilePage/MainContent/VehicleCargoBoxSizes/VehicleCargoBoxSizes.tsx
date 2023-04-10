@@ -11,7 +11,16 @@ import VehicleCargoSize from '../../../../../assets/icons/vehicleProfile/icons8-
 
 
 export const VehicleCargoBoxSizes = (props: any) => {
-    const {vehicle} = props
+    const {data} = props
+    const technicalData = data[0]
+
+
+    if (data.length === 0) {
+        return <Typography variant="subtitle2" color="textSecondary">Brak technicznych danych pojazdu, proszę uzupełnij
+            je.</Typography>
+    }
+
+
     return(
         <>
             <Grid container spacing={3}>
@@ -22,7 +31,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Szerokość kipy</Typography>
-                            <Typography>{VehicleInspection.convertToOnlyDate(vehicle.lastDateOfVehicleInspection)}</Typography>
+                            <Typography>{technicalData.cargoBedWidth}</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -33,7 +42,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Długość kipy</Typography>
-                            <Typography>{VehicleInspection.convertToOnlyDate(vehicle.nextDateOfVehicleInspection)}</Typography>
+                            <Typography>{technicalData.cargoBedLenght}</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -44,7 +53,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Wysokość kipy</Typography>
-                            <Typography>{VehicleInspection.checkIsValid(vehicle.lastDateOfVehicleInspection, vehicle.nextDateOfVehicleInspection)? 'Aktualny' : 'Brak przeglądu'}</Typography>
+                            <Typography>{technicalData.cargoBedHeight}</Typography>
                         </Stack>
                     </Stack>
                 </Grid>

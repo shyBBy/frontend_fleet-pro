@@ -51,6 +51,12 @@ export const AddVehicleTechnicalData = yup.object().shape({
     axleSpacing: yup.string().required('To pole jest wymagane'),
     wheelSpacing: yup.string().required('To pole jest wymagane'),
     maxAxleLoad: yup.string().required('To pole jest wymagane'),
+    vehicleWidth: yup.string(),
+    vehicleLenght: yup.string(),
+    vehicleHeight: yup.string(),
+    cargoBedWidth: yup.string(),
+    cargoBedLenght: yup.string(),
+    cargoBedHeight: yup.string(),
 
 })
 

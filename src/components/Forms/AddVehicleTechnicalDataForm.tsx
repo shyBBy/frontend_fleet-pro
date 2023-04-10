@@ -26,6 +26,12 @@ const defaultValues = {
     axleSpacing: '',
     wheelSpacing: '',
     maxAxleLoad: '',
+    vehicleWidth: '',
+    vehicleLenght: '',
+    vehicleHeight: '',
+    cargoBedWidth: '',
+    cargoBedLenght: '',
+    cargoBedHeight: '',
 }
 
 
@@ -497,6 +503,138 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     {...register('maxAxleLoad')}
                                     error={!!errors?.maxAxleLoad}
                                     helperText={errors['maxAxleLoad'] ? errors['maxAxleLoad'].message : ''}
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={8} lg={3}>
+                        <Controller
+                            name="vehicleWidth"
+                            control={control}
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
+                                <TextField
+                                    {...field}
+                                    id="vehicleWidth"
+                                    label="Szerokość pojazdu"
+                                    type="text"
+                                    variant="standard"
+                                    fullWidth
+                                    autoComplete="off"
+                                    sx={{mx: 1, my: 1}}
+                                    {...register('vehicleWidth')}
+                                    error={!!errors?.vehicleWidth}
+                                    helperText={errors['vehicleWidth'] ? errors['vehicleWidth'].message : ''}
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={8} lg={3}>
+                        <Controller
+                            name="vehicleLenght"
+                            control={control}
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
+                                <TextField
+                                    {...field}
+                                    id="vehicleLenght"
+                                    label="Długość pojazdu"
+                                    type="text"
+                                    variant="standard"
+                                    fullWidth
+                                    autoComplete="off"
+                                    sx={{mx: 1, my: 1}}
+                                    {...register('vehicleLenght')}
+                                    error={!!errors?.vehicleLenght}
+                                    helperText={errors['vehicleLenght'] ? errors['vehicleLenght'].message : ''}
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={8} lg={3}>
+                        <Controller
+                            name="vehicleHeight"
+                            control={control}
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
+                                <TextField
+                                    {...field}
+                                    id="vehicleHeight"
+                                    label="Wysokość pojazdu"
+                                    type="text"
+                                    variant="standard"
+                                    fullWidth
+                                    autoComplete="off"
+                                    sx={{mx: 1, my: 1}}
+                                    {...register('vehicleHeight')}
+                                    error={!!errors?.vehicleHeight}
+                                    helperText={errors['vehicleHeight'] ? errors['vehicleHeight'].message : ''}
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={8} lg={3}>
+                        <Controller
+                            name="cargoBedWidth"
+                            control={control}
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
+                                <TextField
+                                    {...field}
+                                    id="cargoBedWidth"
+                                    label="Szerokość kipy ładunkowej"
+                                    type="text"
+                                    variant="standard"
+                                    fullWidth
+                                    autoComplete="off"
+                                    sx={{mx: 1, my: 1}}
+                                    {...register('cargoBedWidth')}
+                                    error={!!errors?.cargoBedWidth}
+                                    helperText={errors['cargoBedWidth'] ? errors['cargoBedWidth'].message : ''}
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={8} lg={3}>
+                        <Controller
+                            name="cargoBedLenght"
+                            control={control}
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
+                                <TextField
+                                    {...field}
+                                    id="cargoBedLenght"
+                                    label="Długość kipy ładunkowej"
+                                    type="text"
+                                    variant="standard"
+                                    fullWidth
+                                    autoComplete="off"
+                                    sx={{mx: 1, my: 1}}
+                                    {...register('cargoBedLenght')}
+                                    error={!!errors?.cargoBedLenght}
+                                    helperText={errors['cargoBedLenght'] ? errors['cargoBedLenght'].message : ''}
+                                />
+                            )}
+                        />
+                    </Grid>
+                    <Grid item xs={12} md={8} lg={3}>
+                        <Controller
+                            name="cargoBedHeight"
+                            control={control}
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
+                                <TextField
+                                    {...field}
+                                    id="cargoBedHeight"
+                                    label="Wysokość kipy ładunkowej"
+                                    type="text"
+                                    variant="standard"
+                                    fullWidth
+                                    autoComplete="off"
+                                    sx={{mx: 1, my: 1}}
+                                    {...register('cargoBedHeight')}
+                                    error={!!errors?.cargoBedHeight}
+                                    helperText={errors['cargoBedHeight'] ? errors['cargoBedHeight'].message : ''}
                                 />
                             )}
                         />

@@ -13,7 +13,15 @@ import VehicleLengthIcon from '../../../../../assets/icons/vehicleProfile/icons8
 import PlateNumberIcon from "../../../../../assets/icons/vehicleProfile/icons8-licence-plate-50.png";
 
 export const VehicleSizes = (props: any) => {
-    const {vehicle} = props
+    const {data} = props
+    const technicalData = data[0]
+
+
+    if (data.length === 0) {
+        return <Typography variant="subtitle2" color="textSecondary">Brak technicznych danych pojazdu, proszę uzupełnij
+            je.</Typography>
+    }
+
     return(
         <>
             <Grid container spacing={3}>
@@ -24,7 +32,7 @@ export const VehicleSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Szerokość</Typography>
-                            <Typography>{VehicleInspection.convertToOnlyDate(vehicle.lastDateOfVehicleInspection)}</Typography>
+                            <Typography>{technicalData.vehicleWidth}</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -35,7 +43,7 @@ export const VehicleSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Długość</Typography>
-                            <Typography>{VehicleInspection.convertToOnlyDate(vehicle.nextDateOfVehicleInspection)}</Typography>
+                            <Typography>{technicalData.vehicleLenght}</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -46,7 +54,7 @@ export const VehicleSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Wysokość</Typography>
-                            <Typography>{VehicleInspection.checkIsValid(vehicle.lastDateOfVehicleInspection, vehicle.nextDateOfVehicleInspection)? 'Aktualny' : 'Brak przeglądu'}</Typography>
+                            <Typography>{technicalData.vehicleHeight}</Typography>
                         </Stack>
                     </Stack>
                 </Grid>

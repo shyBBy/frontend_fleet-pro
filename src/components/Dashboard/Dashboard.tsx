@@ -93,7 +93,7 @@ export const Dashboard = () => {
                     </Grid>
                 </Grid>
                 <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                    <Changelog/>
+                    
                 </Paper>
             </Grid>
             <Grid item xs={12} md={5} lg={4}>
