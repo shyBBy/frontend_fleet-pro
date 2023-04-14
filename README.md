@@ -1,4 +1,4 @@
-# FleetPRO
+![Tekst alternatywny](/screens/logoBlackv2.png)
 
 aplikacja do zarządzania flotą.
 
@@ -43,18 +43,33 @@ Aplikacja została napisana z wykorzystaniem następujących technologii:
 
 Możesz zobaczyć działającą wersję aplikacji pod adresem: [link do DEMO](https://project.dev-olczak.pl).
 
-Aby zalogować się do aplikacji, należy użyć danych:
 
-- Nazwa użytkownika: demo_user
-- Hasło: demo_pass
+# Screeny
 
-Po zalogowaniu, można korzystać z dostępnych funkcjonalności, które są intuicyjne i łatwe w obsłudze.
+LOGOWANIE
 
-# Video i/lub screeny
+| Desktop                                          | Mobile                                           |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Tekst alternatywny](/screens/Screenshot_1.png) | ![Tekst alternatywny](/screens/Screenshot_2.png) |
 
-Poniżej prezentujemy screeny z aplikacji:
+| Profil pojazdu                                   | Mobile                                   |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Tekst alternatywny](/screens/Screenshot_5.png) | ![Tekst alternatywny](/screens/Screenshot_6.png) |
 
-![Screen 1](/screens/screen1.png)
+Lista pojazdów (Desktop)
 
-![Screen 2](/screens/screen2.png)
+![Tekst alternatywny](/screens/Screenshot_10.png)
 
+
+Profil użytkownika
+
+![Tekst alternatywny](/screens/Screenshot_9.png)
+
+| Mobile                                  | Mobile                                   |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Tekst alternatywny](/screens/Screenshot_7.png) | ![Tekst alternatywny](/screens/Screenshot_8.png) |
+
+
+Aktywacja konta
+
+![Tekst alternatywny](/screens/Screenshot_12.png)
