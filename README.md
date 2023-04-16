@@ -1,6 +1,5 @@
 ![Tekst alternatywny](/screens/logoBlackv2.png)
 
-aplikacja do zarządzania flotą.
 
 ## OPIS aplikacji
 
@@ -11,6 +10,8 @@ Administrator ma możliwość przypisywania pojazdów do konkretnych oddziałów
 
 Aplikacja została stworzona w technologii React Typescript, co pozwala na jej szybkie i sprawne działanie oraz łatwe rozszerzanie o nowe funkcjonalności.
 
+[link do Back-End](https://github.com/shyBBy/backend_fleet-pro).
+
 
 # Wykorzystane technologie
 
@@ -18,9 +19,6 @@ Aplikacja została napisana z wykorzystaniem następujących technologii:
 
 ![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white&style=flat) ![TypeScript](https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white&style=flat) ![Material UI](https://img.shields.io/badge/-Material%20UI-blueviolet?logo=material-ui&logoColor=white&style=flat) ![React Hook Form](https://img.shields.io/badge/-React%20Hook%20Form-blue?logo=react&logoColor=white&style=flat) ![React Toastify](https://img.shields.io/badge/-React%20Toastify-ff69b4?logo=react&logoColor=white&style=flat)
 
-# Dlaczego ten projekt został stworzony
-
-....
 
 # Funkcjonalności, które już posiada
 

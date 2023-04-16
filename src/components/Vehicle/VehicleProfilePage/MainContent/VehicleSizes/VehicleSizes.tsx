@@ -1,16 +1,13 @@
 import React from "react";
 import {Grid, Icon, Stack, Typography} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import {amber, lightGreen} from "@mui/material/colors";
-import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import {VehicleInspection} from "../../../../../helpers/VehicleInspection.helper";
+import {amber} from "@mui/material/colors";
 
 
 //ICONS
 import VehicleWidthIcon from '../../../../../assets/icons/vehicleProfile/icons8-truck-width-50.png'
 import VehicleHeightIcon from '../../../../../assets/icons/vehicleProfile/icons8-truck-height-50.png'
 import VehicleLengthIcon from '../../../../../assets/icons/vehicleProfile/icons8-truck-length-50.png'
-import PlateNumberIcon from "../../../../../assets/icons/vehicleProfile/icons8-licence-plate-50.png";
 
 export const VehicleSizes = (props: any) => {
     const {data} = props
@@ -22,7 +19,7 @@ export const VehicleSizes = (props: any) => {
             je.</Typography>
     }
 
-    return(
+    return (
         <>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={7} lg={4}>
@@ -32,7 +29,7 @@ export const VehicleSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Szerokość</Typography>
-                            <Typography>{technicalData.vehicleWidth}</Typography>
+                            <Typography>{technicalData.vehicleWidth} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -43,7 +40,7 @@ export const VehicleSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Długość</Typography>
-                            <Typography>{technicalData.vehicleLenght}</Typography>
+                            <Typography>{technicalData.vehicleLenght} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -54,7 +51,7 @@ export const VehicleSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Wysokość</Typography>
-                            <Typography>{technicalData.vehicleHeight}</Typography>
+                            <Typography>{technicalData.vehicleHeight} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>

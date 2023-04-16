@@ -1,12 +1,9 @@
 import React from "react";
 import {Grid, Icon, Stack, Typography} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import {blue, lightBlue, lightGreen} from "@mui/material/colors";
-import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import {VehicleInspection} from "../../../../../helpers/VehicleInspection.helper";
+import {blue} from "@mui/material/colors";
 
 //ICONS
-
 import VehicleCargoSize from '../../../../../assets/icons/vehicleProfile/icons8-surface-50.png'
 
 
@@ -21,7 +18,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
     }
 
 
-    return(
+    return (
         <>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={7} lg={4}>
@@ -31,7 +28,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Szerokość kipy</Typography>
-                            <Typography>{technicalData.cargoBedWidth}</Typography>
+                            <Typography>{technicalData.cargoBedWidth} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -42,7 +39,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Długość kipy</Typography>
-                            <Typography>{technicalData.cargoBedLenght}</Typography>
+                            <Typography>{technicalData.cargoBedLenght} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -53,7 +50,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Wysokość kipy</Typography>
-                            <Typography>{technicalData.cargoBedHeight}</Typography>
+                            <Typography>{technicalData.cargoBedHeight} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>

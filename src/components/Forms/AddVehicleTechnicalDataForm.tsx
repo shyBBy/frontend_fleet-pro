@@ -1,62 +1,35 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import {useNavigate} from "react-router-dom";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup/dist/yup";
 import {AddVehicleTechnicalData} from "../../schemas/schema";
 import {config} from "../../config/config";
 import {toast} from "react-toastify";
-import {Box, Button, Grid, TextField} from "@mui/material";
-
-
-const defaultValues = {
-    engineCapacity: '',
-    enginePower: '',
-    fuel: '',
-    alternativeFuel: '',
-    CO2Emission: '',
-    avgFuelConsumption: '',
-    totalSeats: '',
-    seatedSeats: '',
-    vehicleWeight: '',
-    maxTrailerWeightWithBrakes: '',
-    maxTrailerWeightWithoutBrakes: '',
-    payload: '',
-    grossWeight: '',
-    numberOfAxles: '',
-    axleSpacing: '',
-    wheelSpacing: '',
-    maxAxleLoad: '',
-    vehicleWidth: '',
-    vehicleLenght: '',
-    vehicleHeight: '',
-    cargoBedWidth: '',
-    cargoBedLenght: '',
-    cargoBedHeight: '',
-}
-
+import {Box, Button, Grid, TextField, Typography} from "@mui/material";
+import {ErrorMessage} from "@hookform/error-message";
 
 
 export const AddVehicleTechnicalDataForm = (props: any) => {
 
-    const {vehicle} = props
+    const {vehicle, data} = props
 
-    const [message, setMessage] = useState('');
+    const technicalData = data[0]
 
     const navigate = useNavigate();
 
     const {
         control,
         handleSubmit,
-        reset,
         register,
-        formState: {errors, isSubmitSuccessful},
+        formState: {errors},
     } = useForm({
         mode: 'onSubmit',
         resolver: yupResolver(AddVehicleTechnicalData),
-        defaultValues: defaultValues,
+        // defaultValues: defaultValues,
     });
 
     const onSubmit = async (data: any) => {
+        console.log('Dane z form', data)
         try {
             const res = await fetch(`${config.API_URL}/vehicle/${vehicle.id}/techdata/add`, {
                 method: "POST",
@@ -77,7 +50,6 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
             }
 
             return res.json().then((data) => {
-                setMessage(data.message);
                 toast.success(`Pomyślnie dodano dane`, {
                     position: "bottom-right",
                     theme: "light",
@@ -98,27 +70,23 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
         }
     };
 
-    useEffect(() => {
-        if (isSubmitSuccessful) {
-            reset(defaultValues);
-        }
-    }, [isSubmitSuccessful, reset]);
 
     return (
         <>
+            <Typography>Dane należy wpisywać bez podawania jednostek miary. Dodawane są one automatycznie! Wymiary pojazdu w cm.</Typography>
             <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{mt: 3}}>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={8} lg={3}>
                         <Controller
                             name="engineCapacity"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="engineCapacity"
-                                    label="Pojemność silnika"
-                                    type="text"
+                                    label="Pojemność silnika (cm)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -126,8 +94,10 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('engineCapacity')}
                                     error={!!errors?.engineCapacity}
-                                    helperText={errors['engineCapacity'] ? errors['engineCapacity'].message : ''}
+                                    defaultValue={technicalData.engineCapacity}
+                                    helperText={<ErrorMessage errors={errors} name='engineCapacity'/>}
                                 />
+
                             )}
                         />
                     </Grid>
@@ -136,13 +106,12 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="enginePower"
                             control={control}
-                            rules={{required: true}}
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="enginePower"
-                                    label="Moc silnika"
-                                    type="text"
+                                    label="Moc silnika (kW)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -150,7 +119,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('enginePower')}
                                     error={!!errors?.enginePower}
-                                    helperText={errors['enginePower'] ? errors['enginePower'].message : ''}
+                                    defaultValue={technicalData.enginePower}
+                                    helperText={<ErrorMessage errors={errors} name='enginePower'/>}
                                 />
                             )}
                         />
@@ -160,7 +130,7 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="fuel"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
@@ -174,7 +144,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('fuel')}
                                     error={!!errors?.fuel}
-                                    helperText={errors['fuel'] ? errors['fuel'].message : ''}
+                                    defaultValue={technicalData.fuel}
+                                    helperText={<ErrorMessage errors={errors} name='fuel'/>}
                                 />
                             )}
                         />
@@ -184,7 +155,7 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="alternativeFuel"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
@@ -198,7 +169,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('alternativeFuel')}
                                     error={!!errors?.alternativeFuel}
-                                    helperText={errors['alternativeFuel'] ? errors['alternativeFuel'].message : ''}
+                                    defaultValue={technicalData.alternativeFuel}
+                                    helperText={<ErrorMessage errors={errors} name='alternativeFuel'/>}
                                 />
                             )}
                         />
@@ -208,13 +180,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="CO2Emission"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="CO2Emission"
-                                    label="Emisja CO₂"
-                                    type="text"
+                                    label="Emisja CO₂ (g/km)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -222,7 +194,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('CO2Emission')}
                                     error={!!errors?.CO2Emission}
-                                    helperText={errors['CO2Emission'] ? errors['CO2Emission'].message : ''}
+                                    defaultValue={technicalData.CO2Emission}
+                                    helperText={<ErrorMessage errors={errors} name='CO2Emission'/>}
                                 />
                             )}
                         />
@@ -234,21 +207,22 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                             <Controller
                                 name="avgFuelConsumption"
                                 control={control}
-                                rules={{required: true}}
+
                                 render={({field: {...field}}) => (
                                     <TextField
                                         {...field}
                                         id="avgFuealConsumption"
-                                        type="text"
+                                        type="number"
                                         variant="standard"
                                         required
                                         fullWidth
                                         autoComplete="off"
-                                        label='Średnie zużycie paliwa'
+                                        label='Średnie zużycie paliwa (L)'
                                         sx={{mx: 1, my: 1}}
                                         {...register('avgFuelConsumption')}
                                         error={!!errors?.avgFuelConsumption}
-                                        helperText={errors['avgFuelConsumption'] ? errors['avgFuelConsumption'].message : ''}
+                                        defaultValue={technicalData.avgFuelConsumption}
+                                        helperText={<ErrorMessage errors={errors} name='avgFuealConsumption'/>}
                                     />
                                 )}
                             />
@@ -258,12 +232,12 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="totalSeats"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="totalSeats"
-                                    type="text"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -272,7 +246,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('totalSeats')}
                                     error={!!errors?.totalSeats}
-                                    helperText={errors['totalSeats'] ? errors['totalSeats'].message : ''}
+                                    defaultValue={technicalData.totalSeats}
+                                    helperText={<ErrorMessage errors={errors} name='totalSeats'/>}
                                 />
                             )}
                         />
@@ -281,13 +256,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="seatedSeats"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="seatedSeats"
                                     label="Liczba miejsc siedzących"
-                                    type="text"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -295,7 +270,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('seatedSeats')}
                                     error={!!errors?.seatedSeats}
-                                    helperText={errors['seatedSeats'] ? errors['seatedSeats'].message : ''}
+                                    defaultValue={technicalData.seatedSeats}
+                                    helperText={<ErrorMessage errors={errors} name='seatedSeats'/>}
                                 />
                             )}
                         />
@@ -304,13 +280,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="vehicleWeight"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="vehicleWeight"
-                                    label="Masa własna pojazdu"
-                                    type="text"
+                                    label="Masa własna pojazdu (kg)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -318,7 +294,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('vehicleWeight')}
                                     error={!!errors?.vehicleWeight}
-                                    helperText={errors['vehicleWeight'] ? errors['vehicleWeight'].message : ''}
+                                    defaultValue={technicalData.vehicleWeight}
+                                    helperText={<ErrorMessage errors={errors} name='vehicleWeight'/>}
                                 />
                             )}
                         />
@@ -327,13 +304,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="maxTrailerWeightWithBrakes"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="maxTrailerWeightWithBrakes"
-                                    label="Maks. masa całkowita ciągniętej przyczepy z hamulcem"
-                                    type="text"
+                                    label="Maks. masa całkowita ciągniętej przyczepy z hamulcem (kg)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -341,7 +318,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('maxTrailerWeightWithBrakes')}
                                     error={!!errors?.seatedSeats}
-                                    helperText={errors['maxTrailerWeightWithBrakes'] ? errors['maxTrailerWeightWithBrakes'].message : ''}
+                                    defaultValue={technicalData.maxTrailerWeightWithBrakes}
+                                    helperText={<ErrorMessage errors={errors} name='maxTrailerWeightWithBrakes'/>}
                                 />
                             )}
                         />
@@ -350,13 +328,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="maxTrailerWeightWithoutBrakes"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="maxTrailerWeightWithoutBrakes"
-                                    label="Maks. masa całkowita ciągniętej przyczepy bez hamulca"
-                                    type="text"
+                                    label="Maks. masa całkowita ciągniętej przyczepy bez hamulca (kg)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -364,7 +342,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('maxTrailerWeightWithoutBrakes')}
                                     error={!!errors?.maxTrailerWeightWithoutBrakes}
-                                    helperText={errors['maxTrailerWeightWithoutBrakes'] ? errors['maxTrailerWeightWithoutBrakes'].message : ''}
+                                    defaultValue={technicalData.maxTrailerWeightWithoutBrakes}
+                                    helperText={<ErrorMessage errors={errors} name='maxTrailerWeightWithoutBrakes'/>}
                                 />
                             )}
                         />
@@ -373,13 +352,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="payload"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="payload"
-                                    label="Dopuszczalna ładowność"
-                                    type="text"
+                                    label="Dopuszczalna ładowność (kg)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -387,7 +366,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('payload')}
                                     error={!!errors?.payload}
-                                    helperText={errors['payload'] ? errors['payload'].message : ''}
+                                    defaultValue={technicalData.payload}
+                                    helperText={<ErrorMessage errors={errors} name='payload'/>}
                                 />
                             )}
                         />
@@ -396,13 +376,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="grossWeight"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="grossWeight"
-                                    label="Dopuszczalna masa całkowita"
-                                    type="text"
+                                    label="Dopuszczalna masa całkowita (kg)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -410,7 +390,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('grossWeight')}
                                     error={!!errors?.grossWeight}
-                                    helperText={errors['grossWeight'] ? errors['grossWeight'].message : ''}
+                                    defaultValue={technicalData.grossWeight}
+                                    helperText={<ErrorMessage errors={errors} name='grossWeight'/>}
                                 />
                             )}
                         />
@@ -419,13 +400,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="numberOfAxles"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="numberOfAxles"
                                     label="Liczba osi"
-                                    type="text"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -433,7 +414,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('numberOfAxles')}
                                     error={!!errors?.numberOfAxles}
-                                    helperText={errors['numberOfAxles'] ? errors['numberOfAxles'].message : ''}
+                                    defaultValue={technicalData.numberOfAxles}
+                                    helperText={<ErrorMessage errors={errors} name='numberOfAxles'/>}
                                 />
                             )}
                         />
@@ -442,13 +424,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="axleSpacing"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="axleSpacing"
-                                    label="Rozstaw osi"
-                                    type="text"
+                                    label="Rozstaw osi (mm)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -456,7 +438,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('axleSpacing')}
                                     error={!!errors?.axleSpacing}
-                                    helperText={errors['axleSpacing'] ? errors['axleSpacing'].message : ''}
+                                    defaultValue={technicalData.axleSpacing}
+                                    helperText={<ErrorMessage errors={errors} name='axleSpacing'/>}
                                 />
                             )}
                         />
@@ -465,13 +448,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="wheelSpacing"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="wheelSpacing"
-                                    label="Rozstaw kół (średni)"
-                                    type="text"
+                                    label="Rozstaw kół (średni) (mm)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -479,7 +462,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('wheelSpacing')}
                                     error={!!errors?.wheelSpacing}
-                                    helperText={errors['wheelSpacing'] ? errors['wheelSpacing'].message : ''}
+                                    defaultValue={technicalData.wheelSpacing}
+                                    helperText={<ErrorMessage errors={errors} name='wheelSpacing'/>}
                                 />
                             )}
                         />
@@ -488,13 +472,13 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="maxAxleLoad"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="maxAxleLoad"
-                                    label="Maksymalny nacisk na oś"
-                                    type="text"
+                                    label="Maksymalny nacisk na oś (kN)"
+                                    type="number"
                                     variant="standard"
                                     required
                                     fullWidth
@@ -502,7 +486,8 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                                     sx={{mx: 1, my: 1}}
                                     {...register('maxAxleLoad')}
                                     error={!!errors?.maxAxleLoad}
-                                    helperText={errors['maxAxleLoad'] ? errors['maxAxleLoad'].message : ''}
+                                    defaultValue={technicalData.maxAxleLoad}
+                                    helperText={<ErrorMessage errors={errors} name='maxAxleLoad'/>}
                                 />
                             )}
                         />
@@ -511,20 +496,21 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="vehicleWidth"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="vehicleWidth"
-                                    label="Szerokość pojazdu"
-                                    type="text"
+                                    label="Szerokość pojazdu (cm)"
+                                    type="number"
                                     variant="standard"
                                     fullWidth
                                     autoComplete="off"
                                     sx={{mx: 1, my: 1}}
                                     {...register('vehicleWidth')}
                                     error={!!errors?.vehicleWidth}
-                                    helperText={errors['vehicleWidth'] ? errors['vehicleWidth'].message : ''}
+                                    defaultValue={technicalData.vehicleWidth}
+                                    helperText={<ErrorMessage errors={errors} name='vehicleWidth'/>}
                                 />
                             )}
                         />
@@ -533,20 +519,21 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="vehicleLenght"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="vehicleLenght"
-                                    label="Długość pojazdu"
-                                    type="text"
+                                    label="Długość pojazdu (cm)"
+                                    type="number"
                                     variant="standard"
                                     fullWidth
                                     autoComplete="off"
                                     sx={{mx: 1, my: 1}}
                                     {...register('vehicleLenght')}
                                     error={!!errors?.vehicleLenght}
-                                    helperText={errors['vehicleLenght'] ? errors['vehicleLenght'].message : ''}
+                                    defaultValue={technicalData.vehicleLenght}
+                                    helperText={<ErrorMessage errors={errors} name='vehicleLenght'/>}
                                 />
                             )}
                         />
@@ -555,20 +542,21 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="vehicleHeight"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="vehicleHeight"
-                                    label="Wysokość pojazdu"
-                                    type="text"
+                                    label="Wysokość pojazdu (cm)"
+                                    type="number"
                                     variant="standard"
                                     fullWidth
                                     autoComplete="off"
                                     sx={{mx: 1, my: 1}}
                                     {...register('vehicleHeight')}
                                     error={!!errors?.vehicleHeight}
-                                    helperText={errors['vehicleHeight'] ? errors['vehicleHeight'].message : ''}
+                                    defaultValue={technicalData.vehicleHeight}
+                                    helperText={<ErrorMessage errors={errors} name='vehicleHeight'/>}
                                 />
                             )}
                         />
@@ -577,20 +565,21 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="cargoBedWidth"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="cargoBedWidth"
-                                    label="Szerokość kipy ładunkowej"
-                                    type="text"
+                                    label="Szerokość kipy ładunkowej (cm)"
+                                    type="number"
                                     variant="standard"
                                     fullWidth
                                     autoComplete="off"
                                     sx={{mx: 1, my: 1}}
                                     {...register('cargoBedWidth')}
                                     error={!!errors?.cargoBedWidth}
-                                    helperText={errors['cargoBedWidth'] ? errors['cargoBedWidth'].message : ''}
+                                    defaultValue={technicalData.cargoBedWidth}
+                                    helperText={<ErrorMessage errors={errors} name='cargoBedWidth'/>}
                                 />
                             )}
                         />
@@ -599,20 +588,21 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="cargoBedLenght"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="cargoBedLenght"
-                                    label="Długość kipy ładunkowej"
-                                    type="text"
+                                    label="Długość kipy ładunkowej (cm)"
+                                    type="number"
                                     variant="standard"
                                     fullWidth
                                     autoComplete="off"
                                     sx={{mx: 1, my: 1}}
                                     {...register('cargoBedLenght')}
                                     error={!!errors?.cargoBedLenght}
-                                    helperText={errors['cargoBedLenght'] ? errors['cargoBedLenght'].message : ''}
+                                    defaultValue={technicalData.cargoBedLenght}
+                                    helperText={<ErrorMessage errors={errors} name='cargoBedLenght'/>}
                                 />
                             )}
                         />
@@ -621,20 +611,21 @@ export const AddVehicleTechnicalDataForm = (props: any) => {
                         <Controller
                             name="cargoBedHeight"
                             control={control}
-                            rules={{required: true}}
+
                             render={({field: {...field}}) => (
                                 <TextField
                                     {...field}
                                     id="cargoBedHeight"
-                                    label="Wysokość kipy ładunkowej"
-                                    type="text"
+                                    label="Wysokość kipy ładunkowej (cm)"
+                                    type="number"
                                     variant="standard"
                                     fullWidth
                                     autoComplete="off"
                                     sx={{mx: 1, my: 1}}
                                     {...register('cargoBedHeight')}
                                     error={!!errors?.cargoBedHeight}
-                                    helperText={errors['cargoBedHeight'] ? errors['cargoBedHeight'].message : ''}
+                                    defaultValue={technicalData.cargoBedHeight}
+                                    helperText={<ErrorMessage errors={errors} name='cargoBedHeight'/>}
                                 />
                             )}
                         />

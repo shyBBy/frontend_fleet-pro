@@ -52,7 +52,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Pojemność silnika</Typography>
-                            <Typography>{technicalData.engineCapacity}</Typography>
+                            <Typography>{technicalData.engineCapacity} cm³</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -63,7 +63,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Moc silnika</Typography>
-                            <Typography>{technicalData.enginePower}</Typography>
+                            <Typography>{technicalData.enginePower} kW</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -96,7 +96,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Emisja CO₂</Typography>
-                            <Typography>{technicalData.CO2Emission}</Typography>
+                            <Typography>{technicalData.CO2Emission} g/km</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -108,7 +108,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Średnie zużycie paliwa na
                                 100km</Typography>
-                            <Typography>{technicalData.avgFuelConsumption}</Typography>
+                            <Typography>{technicalData.avgFuelConsumption} L</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -141,7 +141,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Masa własna pojazdu</Typography>
-                            <Typography>{technicalData.vehicleWeight}</Typography>
+                            <Typography>{technicalData.vehicleWeight} kg</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -153,7 +153,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Maks. masa całkowita ciągniętej
                                 przyczepy z hamulcem</Typography>
-                            <Typography>{technicalData.maxTrailerWeightWithBrakes}</Typography>
+                            <Typography>{technicalData.maxTrailerWeightWithBrakes} kg</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -165,7 +165,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Maks. masa całkowita ciągniętej
                                 przyczepy bez hamulca</Typography>
-                            <Typography>{technicalData.maxTrailerWeightWithoutBrakes}</Typography>
+                            <Typography>{technicalData.maxTrailerWeightWithoutBrakes} kg</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -176,7 +176,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Dopuszczalna ładowność</Typography>
-                            <Typography>{technicalData.payload}</Typography>
+                            <Typography>{technicalData.payload} kg </Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -188,7 +188,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Dopuszczalna masa
                                 całkowita</Typography>
-                            <Typography>{technicalData.grossWeight}</Typography>
+                            <Typography>{technicalData.grossWeight} kg</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -210,7 +210,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Rozstaw osi</Typography>
-                            <Typography>{technicalData.axleSpacing}</Typography>
+                            <Typography>{technicalData.axleSpacing} mm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -221,7 +221,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Rozstaw kół (średni)</Typography>
-                            <Typography>{technicalData.wheelSpacing}</Typography>
+                            <Typography>{technicalData.wheelSpacing} mm </Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -232,7 +232,7 @@ export const TechnicalData = (props: PropsInterface) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Maksymalny nacisk na oś</Typography>
-                            <Typography>{technicalData.maxAxleLoad}</Typography>
+                            <Typography>{technicalData.maxAxleLoad} kN</Typography>
                         </Stack>
                     </Stack>
                 </Grid>

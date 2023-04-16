@@ -45,6 +45,7 @@ const AvatarUploadButton = () => {
 export const MainContent = (props: any) => {
     const {vehicle} = props
 
+    console.log('VEHICLE', vehicle)
     const [value, setValue] = React.useState(0);
 
 
@@ -116,7 +117,7 @@ export const MainContent = (props: any) => {
                             </TabPanel>
                             <TabPanel value={value} index={1}>
                                 <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                                    <AddVehicleTechnicalDataForm vehicle={vehicle}/>
+                                    <AddVehicleTechnicalDataForm vehicle={vehicle} data={vehicle.technicalData}/>
                                 </Paper>
                             </TabPanel>
                         </Box>
