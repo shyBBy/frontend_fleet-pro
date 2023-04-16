@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Grid, MenuItem, Select, TextField} from "@mui/material";
+import {Button, FormControlLabel, Grid, MenuItem, Select, TextField} from "@mui/material";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {UpdateUserDataSchema} from "../../schemas/schema";
@@ -11,10 +11,25 @@ import {isAdmin} from "../../helpers/isAdmin.helper";
 import {ErrorMessage} from '@hookform/error-message';
 import {useAuth} from "../../hooks/useAuth";
 import {getStatusText} from "../../helpers/userStatusToString";
+import Checkbox from '@mui/material/Checkbox';
+import {PERMISSIONS} from 'types'
+
+type FormValues = {
+    canAddVehicles: boolean;
+    canEditVehicles: boolean;
+    canDeleteVehicles: boolean;
+    canViewAllVehicles: boolean;
+    canViewVehiclesByLocation: boolean;
+};
+
+type PermissionValues = {
+    [key in keyof FormValues]?: string | boolean;
+};
+
 
 export const UpdateUserDataForm = (props: any) => {
 
-    const { user } = useAuth();
+    const {user} = useAuth();
 
     const {userData} = props
 
@@ -34,6 +49,36 @@ export const UpdateUserDataForm = (props: any) => {
 
 
     const onSubmit = async (data: any) => {
+
+        const permissions: PermissionValues = {};
+        Object.keys(data).forEach((key) => {
+            const value = data[key as keyof FormValues];
+            if (value === true) {
+                switch (key) {
+                    case 'canAddVehicles':
+                        permissions[key] = PERMISSIONS.ADD_VEH;
+                        break;
+                    case 'canEditVehicles':
+                        permissions[key] = PERMISSIONS.EDIT_VEH;
+                        break;
+                    case 'canDeleteVehicles':
+                        permissions[key] = PERMISSIONS.DELETE_VEH;
+                        break;
+                    case 'canViewAllVehicles':
+                        permissions[key] = PERMISSIONS.VIEW_ALL_VEH;
+                        break;
+                    case 'canViewVehiclesByLocation':
+                        permissions[key] = PERMISSIONS.VIEW_VEH_BY_LOCATION;
+                        break;
+                    default:
+                        break;
+                }
+            } else {
+                permissions[key as keyof FormValues] = value;
+            }
+        });
+        console.log(permissions);
+
         try {
             const res = await fetch(`${config.API_URL}/user/${userData.id}`, {
                 method: "PUT",
@@ -65,7 +110,7 @@ export const UpdateUserDataForm = (props: any) => {
                 autoClose: 1500,
             })
             navigate(`/user/${userData.id}`);
-            console.log('Json',json)
+            console.log('Json', json)
             return json;
         } catch (error) {
             console.log('Error', error)
@@ -119,15 +164,15 @@ export const UpdateUserDataForm = (props: any) => {
                         <Controller
                             name="placeName"
                             control={control}
-                            rules={{ required: true }}
-                            render={({ field: {...field } }) => (
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
                                 <Select
                                     {...field}
                                     {...register('placeName')}
                                     error={!!errors?.placeName}
                                     id="placeName"
                                     defaultValue={userData.placeName}
-                                    sx={{ mx: 1, my: 1 }}
+                                    sx={{mx: 1, my: 1}}
                                     variant={'standard'}
                                 >
                                     <MenuItem value="Wybierz oddział" disabled>
@@ -152,15 +197,15 @@ export const UpdateUserDataForm = (props: any) => {
                         <Controller
                             name="jobPosition"
                             control={control}
-                            rules={{ required: true }}
-                            render={({ field: {...field } }) => (
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
                                 <Select
                                     {...field}
                                     {...register('jobPosition')}
                                     error={!!errors?.jobPosition}
                                     id="jobPosition"
                                     defaultValue={userData.jobPosition}
-                                    sx={{ mx: 1, my: 1 }}
+                                    sx={{mx: 1, my: 1}}
                                     variant={'standard'}
                                 >
                                     <MenuItem value="Wybierz stanowisko" disabled>
@@ -182,15 +227,15 @@ export const UpdateUserDataForm = (props: any) => {
                         <Controller
                             name="isActive"
                             control={control}
-                            rules={{ required: true }}
-                            render={({ field: {...field } }) => (
+                            rules={{required: true}}
+                            render={({field: {...field}}) => (
                                 <Select
                                     {...field}
                                     {...register('isActive')}
                                     error={!!errors?.isActive}
                                     id="jobPosition"
                                     defaultValue={getStatusText(userData.isActive)}
-                                    sx={{ mx: 1, my: 1 }}
+                                    sx={{mx: 1, my: 1}}
                                     variant={'standard'}
                                 >
                                     <MenuItem value="Status konta" disabled>
@@ -199,6 +244,81 @@ export const UpdateUserDataForm = (props: any) => {
                                     <MenuItem value={'Aktywny'}>Aktywny</MenuItem>
                                     <MenuItem value={'Nieaktywny'}>Nieaktywny</MenuItem>
                                 </Select>
+                            )}
+                        />
+                    </Grid>
+                </Grid>
+                <Grid container xs={12} md={7} lg={3}>
+                    <Grid item xs={12} md={7} lg={9}>
+                        <Controller
+                            name="canAddVehicles"
+                            control={control}
+                            defaultValue={false}
+                            render={({field}) => (
+                                <FormControlLabel
+                                    control={<Checkbox {...field} />}
+                                    label={PERMISSIONS.ADD_VEH}
+                                />
+                            )}
+                        />
+                    </Grid>
+                </Grid>
+                <Grid container xs={12} md={7} lg={3}>
+                    <Grid item xs={12} md={7} lg={9}>
+                        <Controller
+                            name="canEditVehicles"
+                            control={control}
+                            defaultValue={false}
+                            render={({field}) => (
+                                <FormControlLabel
+                                    control={<Checkbox {...field} />}
+                                    label={PERMISSIONS.EDIT_VEH}
+                                />
+                            )}
+                        />
+                    </Grid>
+                </Grid>
+                <Grid container xs={12} md={7} lg={3}>
+                    <Grid item xs={12} md={7} lg={9}>
+                        <Controller
+                            name="canDeleteVehicles"
+                            control={control}
+                            defaultValue={false}
+                            render={({field}) => (
+                                <FormControlLabel
+                                    control={<Checkbox {...field} />}
+                                    label={PERMISSIONS.DELETE_VEH}
+                                />
+                            )}
+                        />
+                    </Grid>
+                </Grid>
+                <Grid container xs={12} md={7} lg={3}>
+                    <Grid item xs={12} md={7} lg={9}>
+                        <Controller
+                            name="canViewAllVehicles"
+                            control={control}
+                            defaultValue={false}
+                            render={({field}) => (
+                                <FormControlLabel
+                                    control={<Checkbox {...field} />}
+                                    label={PERMISSIONS.VIEW_ALL_VEH}
+                                />
+                            )}
+                        />
+                    </Grid>
+                </Grid>
+                <Grid container xs={12} md={7} lg={3}>
+                    <Grid item xs={12} md={7} lg={9}>
+                        <Controller
+                            name="canViewVehiclesByLocation"
+                            control={control}
+                            defaultValue={false}
+                            render={({field}) => (
+                                <FormControlLabel
+                                    control={<Checkbox {...field} />}
+                                    label={PERMISSIONS.VIEW_VEH_BY_LOCATION}
+                                />
                             )}
                         />
                     </Grid>

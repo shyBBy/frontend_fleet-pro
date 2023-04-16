@@ -84,11 +84,11 @@ export const VehicleTable = () => {
                     <VehicleTableOptions maxPage={maxPage} handleChangePage={handleChange}/>
                 </Box>
                 <Box>
-                    <Tooltip title="Filtry">
+                    {/* <Tooltip title="Filtry">
                         <IconButton>
                             <FilterListIcon/>
                         </IconButton>
-                    </Tooltip>
+                    </Tooltip> */}
                 </Box>
             </Toolbar>
             <TableContainer>

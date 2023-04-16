@@ -1,18 +1,24 @@
 import React from "react";
 import {Grid, Icon, Stack, Typography} from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import {blue, lightBlue, lightGreen} from "@mui/material/colors";
-import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import {VehicleInspection} from "../../../../../helpers/VehicleInspection.helper";
+import {blue} from "@mui/material/colors";
 
 //ICONS
-
 import VehicleCargoSize from '../../../../../assets/icons/vehicleProfile/icons8-surface-50.png'
 
 
 export const VehicleCargoBoxSizes = (props: any) => {
-    const {vehicle} = props
-    return(
+    const {data} = props
+    const technicalData = data[0]
+
+
+    if (data.length === 0) {
+        return <Typography variant="subtitle2" color="textSecondary">Brak technicznych danych pojazdu, proszę uzupełnij
+            je.</Typography>
+    }
+
+
+    return (
         <>
             <Grid container spacing={3}>
                 <Grid item xs={12} md={7} lg={4}>
@@ -22,7 +28,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Szerokość kipy</Typography>
-                            <Typography>{VehicleInspection.convertToOnlyDate(vehicle.lastDateOfVehicleInspection)}</Typography>
+                            <Typography>{technicalData.cargoBedWidth} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -33,7 +39,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Długość kipy</Typography>
-                            <Typography>{VehicleInspection.convertToOnlyDate(vehicle.nextDateOfVehicleInspection)}</Typography>
+                            <Typography>{technicalData.cargoBedLenght} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>
@@ -44,7 +50,7 @@ export const VehicleCargoBoxSizes = (props: any) => {
                         </Avatar>
                         <Stack>
                             <Typography variant="subtitle2" color="textSecondary">Wysokość kipy</Typography>
-                            <Typography>{VehicleInspection.checkIsValid(vehicle.lastDateOfVehicleInspection, vehicle.nextDateOfVehicleInspection)? 'Aktualny' : 'Brak przeglądu'}</Typography>
+                            <Typography>{technicalData.cargoBedHeight} cm</Typography>
                         </Stack>
                     </Stack>
                 </Grid>

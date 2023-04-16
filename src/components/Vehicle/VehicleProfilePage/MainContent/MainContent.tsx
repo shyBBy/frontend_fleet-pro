@@ -45,6 +45,7 @@ const AvatarUploadButton = () => {
 export const MainContent = (props: any) => {
     const {vehicle} = props
 
+    console.log('VEHICLE', vehicle)
     const [value, setValue] = React.useState(0);
 
 
@@ -116,7 +117,7 @@ export const MainContent = (props: any) => {
                             </TabPanel>
                             <TabPanel value={value} index={1}>
                                 <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                                    <AddVehicleTechnicalDataForm vehicle={vehicle}/>
+                                    <AddVehicleTechnicalDataForm vehicle={vehicle} data={vehicle.technicalData}/>
                                 </Paper>
                             </TabPanel>
                         </Box>
@@ -141,7 +142,7 @@ export const MainContent = (props: any) => {
                         </Grid>
                     </Grid>
                     <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                        <VehicleSizes vehicle={vehicle}/>
+                        <VehicleSizes data={vehicle.technicalData}/>
                     </Paper>
                 </Grid>
                 <Grid item xs={12} md={5} lg={12}>
@@ -151,7 +152,7 @@ export const MainContent = (props: any) => {
                         </Grid>
                     </Grid>
                     <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                        <VehicleCargoBoxSizes vehicle={vehicle}/>
+                        <VehicleCargoBoxSizes data={vehicle.technicalData}/>
                     </Paper>
                 </Grid>
 
@@ -163,7 +164,7 @@ export const MainContent = (props: any) => {
                     </Grid>
                 </Grid>
                 <Paper sx={{p: 2, display: 'flex', flexDirection: 'column'}}>
-                    <Changelog/>
+                <Typography variant="overline">Usługa jeszcze niedostępna.</Typography>
                 </Paper>
             </Grid>
         </>

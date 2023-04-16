@@ -1,6 +1,5 @@
-# FleetPRO
+![Tekst alternatywny](/screens/logoBlackv2.png)
 
-aplikacja do zarządzania flotą.
 
 ## OPIS aplikacji
 
@@ -11,6 +10,8 @@ Administrator ma możliwość przypisywania pojazdów do konkretnych oddziałów
 
 Aplikacja została stworzona w technologii React Typescript, co pozwala na jej szybkie i sprawne działanie oraz łatwe rozszerzanie o nowe funkcjonalności.
 
+[link do Back-End](https://github.com/shyBBy/backend_fleet-pro).
+
 
 # Wykorzystane technologie
 
@@ -18,9 +19,6 @@ Aplikacja została napisana z wykorzystaniem następujących technologii:
 
 ![React](https://img.shields.io/badge/-React-blue?logo=react&logoColor=white&style=flat) ![TypeScript](https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white&style=flat) ![Material UI](https://img.shields.io/badge/-Material%20UI-blueviolet?logo=material-ui&logoColor=white&style=flat) ![React Hook Form](https://img.shields.io/badge/-React%20Hook%20Form-blue?logo=react&logoColor=white&style=flat) ![React Toastify](https://img.shields.io/badge/-React%20Toastify-ff69b4?logo=react&logoColor=white&style=flat)
 
-# Dlaczego ten projekt został stworzony
-
-....
 
 # Funkcjonalności, które już posiada
 
@@ -43,18 +41,33 @@ Aplikacja została napisana z wykorzystaniem następujących technologii:
 
 Możesz zobaczyć działającą wersję aplikacji pod adresem: [link do DEMO](https://project.dev-olczak.pl).
 
-Aby zalogować się do aplikacji, należy użyć danych:
 
-- Nazwa użytkownika: demo_user
-- Hasło: demo_pass
+# Screeny
 
-Po zalogowaniu, można korzystać z dostępnych funkcjonalności, które są intuicyjne i łatwe w obsłudze.
+LOGOWANIE
 
-# Video i/lub screeny
+| Desktop                                          | Mobile                                           |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Tekst alternatywny](/screens/Screenshot_1.png) | ![Tekst alternatywny](/screens/Screenshot_2.png) |
 
-Poniżej prezentujemy screeny z aplikacji:
+| Profil pojazdu                                   | Mobile                                   |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Tekst alternatywny](/screens/Screenshot_5.png) | ![Tekst alternatywny](/screens/Screenshot_6.png) |
 
-![Screen 1](/screens/screen1.png)
+Lista pojazdów (Desktop)
 
-![Screen 2](/screens/screen2.png)
+![Tekst alternatywny](/screens/Screenshot_10.png)
 
+
+Profil użytkownika
+
+![Tekst alternatywny](/screens/Screenshot_9.png)
+
+| Mobile                                  | Mobile                                   |
+|--------------------------------------------------|--------------------------------------------------|
+| ![Tekst alternatywny](/screens/Screenshot_7.png) | ![Tekst alternatywny](/screens/Screenshot_8.png) |
+
+
+Aktywacja konta
+
+![Tekst alternatywny](/screens/Screenshot_12.png)
